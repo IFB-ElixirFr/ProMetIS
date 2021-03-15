@@ -1,0 +1,12 @@
+category	color	color_light	color_code
+liver	#8C510A	#BF812D	RColorBrewer::brewer.pal(11, 'BrBG')[c(2, 3)]
+plasma	#A50F15	#EF3B2C	RColorBrewer::brewer.pal(9, 'Reds')[c(8, 6)]
+metabolomics	#006D2C	#41AB5D	RColorBrewer::brewer.pal(9, 'Greens')[c(8, 6)]
+proteomics	#08519C	#4292C6	RColorBrewer::brewer.pal(9, 'Blues')[c(8, 6)]
+gene	#FF7F00		RColorBrewer::brewer.pal(12, 'Paired')[8]
+LAT	#6A51A3	#9E9AC8	RColorBrewer::brewer.pal(9, 'Purples')[c(8, 6)]
+MX2	#D94801	#FD8D3C	RColorBrewer::brewer.pal(9, 'Oranges')[c(8, 6)]
+WT	black		
+sex	#B3E2CD		RColorBrewer::brewer.pal(8, 'Pastel2')[1]
+M	#386CB0		RColorBrewer::brewer.pal(8, 'Accent')[5]
+F	#F0027F		RColorBrewer::brewer.pal(8, 'Accent')[6]

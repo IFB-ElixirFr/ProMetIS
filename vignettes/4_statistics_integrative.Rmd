@@ -1,0 +1,292 @@
+---
+title: "Integrative data analysis (in progress)"
+author: "Alyssa Imbert and Etienne A. Thévenot (ProMetIS consortium)"
+date: "`r doc_date()`"
+
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: "ProMetIS.bib"
+output:
+  BiocStyle::html_document:
+    toc: yes
+    toc_depth: 4
+    toc_float:
+      collapsed: false
+---
+
+![](figures/prometis_logo.png)
+
+
+```{r preliminary, include=FALSE}
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.height = 8,
+                      fig.path = 'figures/temp/4_statistics_integrative/',
+                      warning = FALSE)
+```
+
+# Multiblocks data analysis
+
+## The RGCCA and SGCCA approaches
+
+[@Tenenhaus_VariableSelectionGeneralized_2014](https://doi.org/10.1093/biostatistics/kxu001)
+
+[@Tenenhaus_RegularizedGeneralizedCanonical_2011](https://doi.org/10.1007/s11336-011-9206-8)
+
+## The mixOmics software
+
+[@Rohart_MixomicsRPackage_2017](https://doi.org/10.1371/journal.pcbi.1005752)
+
+## Application to the ProMetIS dataset
+
+```{r data_import, message=FALSE}
+selvar.i <- 20 # number of features to select
+
+latmx2.mset <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+                                 report.c = "none")
+
+sgccda.ls <- list()
+
+for (gene.c in ProMetIS::genes.vc()) {
+  
+  # gene.c <- "LAT"
+  wtgene.vc <- c("WT", gene.c)
+  
+  for (tissue.c in ProMetIS::tissues.vc()) {
+    
+    # tissue.c <- "plasma"
+    
+    mset <- ProMetIS::subsetting(latmx2.mset,
+                                 genes.vc = wtgene.vc,
+                                 tissues.vc = tissue.c,
+                                 common_samples.l = TRUE)
+    
+    # mset <- ProMetIA::abbrev_mset(mset)
+    
+    preclinical.eset <- mset[["preclinical"]]
+    
+    gene.fc <- factor(Biobase::pData(preclinical.eset)[, "gene"],
+                      levels = wtgene.vc)
+    sex.fc <- factor(Biobase::pData(preclinical.eset)[, "sex"],
+                      levels = ProMetIS::sex.vc())
+    
+    mset <- mset[, setdiff(names(mset), "preclinical")]
+    
+    exprs.ls <- MultiDataSet::as.list(mset)
+    
+    ## Correcting the 'sex' effect
+    
+    exprs.ls <- lapply(exprs.ls,
+                       function(exprs.mn)
+                         t(sva::ComBat(exprs.mn, sex.fc)))
+    
+    ## Design matrix
+    
+    # We create the design matrix. The weights were set to 0.1 between the blocks of omics and to 1 between the blocks of omics and the response block.
+    
+    design.mn <- matrix(0.1,
+                        ncol = length(exprs.ls),
+                        nrow = length(exprs.ls), 
+                        dimnames = list(names(exprs.ls),
+                                        names(exprs.ls)))
+
+    diag(design.mn) <- 0
+    
+    keep_x.ls <- lapply(names(exprs.ls),
+                        function(set.c) rep(selvar.i, 2))
+    names(keep_x.ls) <- names(exprs.ls)
+    
+    block_splsda <- mixOmics::block.splsda(X = exprs.ls,
+                                           Y = gene.fc, 
+                                           ncomp = 2,
+                                           keepX = keep_x.ls,
+                                           design = design.mn)
+    
+    gene_tissue.c <- paste0(gene.c, "_", tissue.c)
+    
+    sgccda.ls[[gene_tissue.c]] <- list(gene.fc = gene.fc,
+                                       sex.fc = sex.fc,
+                                       exprs.ls = exprs.ls,
+                                       block_splsda = block_splsda)
+    
+  }
+}
+```
+
+### Scores
+
+```{r plotDiablo}
+plot_diablo <- lapply(sgccda.ls,
+                      function(data_model.ls)
+                        mixOmics::plotDiablo(data_model.ls[["block_splsda"]]))
+```
+
+### Loadings
+
+```{r include=FALSE}
+sgccda_loadings.ls <- lapply(sgccda.ls,
+                             function(data_model.ls) {
+                               loadings.ls <- data_model.ls[["block_splsda"]][["loadings"]]
+                               loadings.ls[["Y"]] <- NULL
+                               sapply(loadings.ls,
+                                      function(loadings.mn) {
+                                        loadings.vn <- loadings.mn[, "comp1"]
+                                        loadings.vn <- loadings.vn[abs(loadings.vn) > 0]
+                                        loadings.vn <- loadings.vn[order(abs(loadings.vn),
+                                                                         decreasing = TRUE)]
+                                        paste0(ifelse(loadings.vn > 0, "- ", "+ "), names(loadings.vn))
+                                      })
+                             })
+lapply(sgccda_loadings.ls, knitr::kable)
+```
+
+```{r plotLoadings}
+plot_loadings <- lapply(names(sgccda.ls),
+                        function(gene_tissue.c)
+                          mixOmics::plotLoadings(sgccda.ls[[gene_tissue.c]][["block_splsda"]],
+                                                 comp = 1,
+                                                 legend.color = ProMetIS::palette.vc()[c("WT", substr(gene_tissue.c, 1, 3))],
+                                                 contrib = 'max', method = 'median'))
+```
+
+### Plot individuals
+
+```{r plotIndiv}
+plot_indiv <- lapply(names(sgccda.ls),
+                     function(gene_tissue.c)
+                       mixOmics::plotIndiv(sgccda.ls[[gene_tissue.c]][["block_splsda"]],
+                                           ind.names = TRUE, 
+                                           legend = TRUE,
+                                           ellipse = TRUE,
+                                           col.per.group = ProMetIS::palette.vc()[c("WT", substr(gene_tissue.c, 1, 3))]))
+```
+
+```{r plotArrow}
+plot_arrow <- lapply(names(sgccda.ls),
+                     function(gene_tissue.c)
+                       mixOmics::plotArrow(sgccda.ls[[gene_tissue.c]][["block_splsda"]],
+                                           ind.names = FALSE, 
+                                           col = ProMetIS::palette.vc()[as.character(sgccda.ls[[gene_tissue.c]][["gene.fc"]])],
+                                           title = gene_tissue.c))
+```
+
+### Plot variables
+
+```{r plotVar}
+plot_var <- lapply(sgccda.ls,
+                   function(data_model.ls)
+                     mixOmics::plotVar(data_model.ls[["block_splsda"]],
+                                       var.names = FALSE, 
+                                       style = 'graphics', 
+                                       legend = TRUE))
+```
+
+### Circos
+
+```{r circosPlot}
+circos_plot <- lapply(names(sgccda.ls),
+                      function(gene_tissue.c)
+                        mixOmics::circosPlot(sgccda.ls[[gene_tissue.c]][["block_splsda"]],
+                                             cutoff = 0.7,
+                                             line = TRUE,
+                                             comp = 1,
+                                             color.Y = ProMetIS::palette.vc()[c("WT",
+                                                                              substr(gene_tissue.c, 1, 3))]))
+
+```
+
+### Heatmap
+
+```{r cimDiablo}
+cim_diablo <- lapply(sgccda.ls,
+                     function(data_model.ls)
+                       mixOmics::cimDiablo(data_model.ls[["block_splsda"]],
+                                           comp = 1,
+                                           color.Y = ProMetIS::palette.vc()[c("WT", "LAT")]))
+```
+
+
+### Network
+
+```{r}
+net_work <- lapply(sgccda.ls,
+                   function(data_model.ls)
+                     mixOmics::network(data_model.ls[["block_splsda"]],
+                                       color.node = c("#1F78B4", '#33A02C'),
+                                       shape.node = c("rectangle", "rectangle"),
+                                       lty.edge = "solid", lwd.edge =  1,
+                                       cutoff = 0.75))
+```
+
+### Integrating the variable selection results in the dataset
+
+```{r}
+
+for (set.c in setdiff(ProMetIS::sets.vc(), "preclinical")) {
+  
+  eset <- latmx2.mset[[set.c]]
+  
+  fdata.df <- Biobase::fData(eset)
+  
+  tissue.c <- unlist(strsplit(set.c, "_"))[2]
+  
+  for (gene.c in ProMetIS::genes.vc()) {
+    
+    block_splsda <- sgccda.ls[[paste0(gene.c, "_", tissue.c)]][["block_splsda"]]
+    
+    loadings.ls <- block_splsda[["loadings"]]
+    
+    loadings.vn <- loadings.ls[[set.c]][, "comp1"]
+    
+    loadings.vn <- loadings.vn[abs(loadings.vn) > 0]
+    
+    mixomics.vn <- numeric(nrow(fdata.df))
+    names(mixomics.vn) <- rownames(fdata.df)
+    
+    stopifnot(all(names(loadings.vn) %in% names(mixomics.vn)))
+    
+    mixomics.vn[names(loadings.vn)] <- loadings.vn
+    
+    fdata.df[, paste0("mixomics_", gene.c)] <- mixomics.vn
+    
+  }
+  
+  Biobase::fData(eset) <- fdata.df
+  
+  stopifnot(methods::validObject(eset))
+  
+  latmx2.mset <- MultiDataSet::add_eset(latmx2.mset,
+                                        eset,
+                                        dataset.type = set.c,
+                                        GRanges = NA,
+                                        overwrite = TRUE,
+                                        warnings = FALSE)
+  
+}
+
+latmx2.mset <- latmx2.mset[, ProMetIS::sets.vc()]
+
+```
+
+
+# Re-ordering metadata
+
+```{r}
+#latmx2.mset <- ProMetIS::order_mset(latmx2.mset)
+latmx2.mset <- ProMetIS:::metadata_select(latmx2.mset, step.c = "4_statistics_integrative")
+```
+
+
+### Saving (not run)
+
+```{r}
+phenomis::writing(latmx2.mset,
+                  file.path(gsub(ProMetIS::data_dir.c(),
+                                   "../../ProMetIS/inst/extdata",
+                                   ProMetIS::statistics_integrative_dir.c())),
+                  overwrite.l = TRUE,
+                  report.c = "none")
+```
+
+# References

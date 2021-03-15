@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+archive/
+vignettes/figures/temp/
+vignettes/figures/article_data/
+vignettes/figures/tutorial/
+supplementary/
+

@@ -1,0 +1,380 @@
+---
+title: "Single omics data analysis"
+author: "Alyssa Imbert and Etienne A. Thévenot (ProMetIS consortium)"
+date: "`r doc_date()`"
+
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: "ProMetIS.bib"
+output:
+  BiocStyle::html_document:
+    toc: yes
+    toc_depth: 4
+    toc_float:
+      collapsed: false
+---
+
+![](figures/prometis_logo.png)
+
+```{r preliminary, include=FALSE}
+# knit options
+
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.height = 8,
+                      fig.path = 'figures/temp/3_statistics_singleomics/',
+                      warning = FALSE)
+
+```
+
+# Loading
+
+```{r loading}
+latmx2.mset <- phenomis::reading(ProMetIS::post_processed_dir.c(),
+                                   report.c = "none")
+latmx2.mset <- latmx2.mset[, ProMetIS::sets.vc()]
+```
+
+# Splitting LAT and MX2
+
+Discarding features with either:
+
+* NAs > 20%
+
+* variance < 1e-5
+
+* proteomics: imputation > 20% in both conditions
+
+```{r splitting}
+gene_mset.ls <- lapply(ProMetIS::genes.vc(),
+                       function(gene.c) {
+                         message(gene.c)
+                         ProMetIS::subsetting(latmx2.mset,
+                                              genes.vc = c("WT", gene.c))
+                       })
+names(gene_mset.ls) <- ProMetIS::genes.vc()
+```
+
+# Univariate hypothesis testing
+
+```{r univariate}
+for (gene.c in ProMetIS::genes.vc()) {
+  
+  message(gene.c)
+  
+  gene.mset <- gene_mset.ls[[gene.c]]
+  
+  if (gene.c == "MX2") {
+    # all sets: performing 'limma' 2 ways testing for gene and sex
+    
+    gene.mset <- phenomis::hypotesting(gene.mset,
+                                       test.c = "limma2ways",
+                                       factor_names.vc = c("gene", "sex"),
+                                       factor_levels.ls = list(factor1.vc = c("WT", gene.c),
+                                                               factor2.vc = ProMetIS::sex.vc()),
+                                       signif_maxprint.i = 10,
+                                       title.c = gene.c,
+                                       report.c = "none")
+     
+    
+  } else if (gene.c == "LAT") {
+    # 'proteomics_liver' set: performing the 'limma' testing for gene in the male and female subsets, and 'limma' testing for sex in the LAT and WT subsets
+    # all other sets: performing 'limma' 2 ways testing for gene and sex
+        
+    protliv.eset <- gene.mset[["proteomics_liver"]]
+    
+    protliv_fda.df <- Biobase::fData(protliv.eset)
+ 
+    ## 'proteomics_liver': 'limma' testing for gene in the male and female subsets
+    
+    for (sex.c in ProMetIS::sex.vc()) {
+      
+      protlivsex.eset <- ProMetIS::subsetting(protliv.eset,
+                                              set.c = "proteomics_liver",
+                                              genes.vc = c("WT", "LAT"),
+                                              sex.vc = sex.c)
+      
+      protlivsex.eset <- phenomis::hypotesting(protlivsex.eset,
+                                               test.c = "limma",
+                                               factor_names.vc = "gene",
+                                               factor_levels.ls = list(factor1.vc = c("WT", gene.c)),
+                                               signif_maxprint.i = 10,
+                                               title.c = paste0("proteomics_liver, ", sex.c),
+                                               report.c = "none")
+      
+      protlivsex.df <- Biobase::fData(protlivsex.eset)
+      
+      limmasex.df <- protlivsex.df[, grep("limma", colnames(protlivsex.df))]
+      
+      colnames(limmasex.df) <- gsub("limma_gene_",
+                                    paste0("limma", sex.c, "_"),
+                                    colnames(limmasex.df))
+      
+      protliv_fda.df <- merge(protliv_fda.df,
+                              limmasex.df,
+                              by = 0, all = TRUE, sort = FALSE)
+      rownames(protliv_fda.df) <- protliv_fda.df[, "Row.names"]
+      protliv_fda.df[, "Row.names"] <- NULL
+      
+    }
+    
+    stopifnot(identical(sort(rownames(protliv_fda.df)),
+                        sort(Biobase::featureNames(protliv.eset))))
+    
+    Biobase::fData(protliv.eset) <- protliv_fda.df[Biobase::featureNames(protliv.eset), ]
+    
+    ## 'proteomics_liver': 'limma' testing for sex in the LAT and WT subsets
+    
+    for (gene.c in c("WT", "LAT")) {
+      
+      protlivgene.eset <- protliv.eset[, Biobase::pData(protliv.eset)[, "gene"] == gene.c]
+      
+      protlivgene.eset <- ProMetIS::subsetting(protlivgene.eset,
+                                               set.c = "proteomics_liver",
+                                               genes.vc = gene.c,
+                                               sex.vc = ProMetIS::sex.vc())
+      
+      protlivgene.eset <- phenomis::hypotesting(protlivgene.eset,
+                                                test.c = "limma",
+                                                factor_names.vc = "sex",
+                                                factor_levels.ls = list(factor1.vc = ProMetIS::sex.vc()),
+                                                signif_maxprint.i = 10,
+                                                title.c = paste0("proteomics_liver, ", gene.c),
+                                                report.c = "none")
+      
+      protlivgene.df <- Biobase::fData(protlivgene.eset)
+      
+      limmagene.df <- protlivgene.df[, grep("limma_sex_",
+                                            colnames(protlivgene.df))]
+      
+      colnames(limmagene.df) <- gsub("limma_sex_",
+                                     paste0("limma", gene.c, "_"),
+                                     colnames(limmagene.df))
+      
+      protliv_fda.df <- merge(protliv_fda.df,
+                              limmagene.df,
+                              by = 0, all = TRUE, sort = FALSE)
+      rownames(protliv_fda.df) <- protliv_fda.df[, "Row.names"]
+      protliv_fda.df[, "Row.names"] <- NULL
+      
+    }
+    
+    stopifnot(identical(sort(rownames(protliv_fda.df)),
+                        sort(Biobase::featureNames(protliv.eset))))
+    
+    Biobase::fData(protliv.eset) <- protliv_fda.df[Biobase::featureNames(protliv.eset), ]
+ 
+    ## all other sets: 'limma2ways' testing for gene and sex
+    
+    gene.mset <- gene.mset[, setdiff(names(gene.mset), "proteomics_liver")]
+    
+    gene.mset <- phenomis::hypotesting(gene.mset,
+                                       test.c = "limma2ways",
+                                       factor_names.vc = c("gene", "sex"),
+                                       factor_levels.ls = list(factor1.vc = c("WT", gene.c),
+                                                               factor2.vc = ProMetIS::sex.vc()),
+                                       signif_maxprint.i = 10,
+                                       title.c = gene.c,
+                                       report.c = "none")
+    
+    # including the 'proteomics_liver' dataset back
+    
+    gene.mset <- MultiDataSet::add_eset(gene.mset,
+                                        protliv.eset,
+                                        dataset.type = "proteomics_liver",
+                                        GRanges = NA,
+                                        overwrite = TRUE,
+                                        warnings = FALSE)
+    
+    # re-ordering
+    
+    gene.mset <- gene.mset[,
+                           ProMetIS::sets.vc()[ProMetIS::sets.vc() %in% names(gene.mset)]]
+    
+  }
+  
+  gene_mset.ls[[gene.c]] <- gene.mset
+  
+}
+```
+
+
+# Principal Component Analysis
+
+Score plot colored according to genotype or sex.
+
+```{r pca}
+for (gene.c in ProMetIS::genes.vc()) {
+  
+  message(gene.c)
+  
+  gene.mset <- gene_mset.ls[[gene.c]]
+  
+  gene_mset.pca <- ropls::opls(gene.mset, fig.pdfC = "none")
+  
+  ropls::plot(gene_mset.pca, plotPhenoDataC = "gene", typeVc = "x-score",
+              parPaletteVc = ProMetIS::palette.vc()[rev(c("WT", gene.c))])
+  
+  ropls::plot(gene_mset.pca, plotPhenoDataC = "sex", typeVc = "x-score",
+              parPaletteVc = ProMetIS::palette.vc()[rev(ProMetIS::sex.vc())])
+  
+  gene.mset <- ropls::getMset(gene_mset.pca)
+  
+  gene_mset.ls[[gene.c]] <- gene.mset
+  
+}
+```
+
+# OPLS-DA
+
+```{r oplsda}
+for (gene.c in ProMetIS::genes.vc()) {
+  
+  message(gene.c)
+  
+  gene.mset <- gene_mset.ls[[gene.c]]
+  
+  gene_mset.oplsda <- ropls::opls(gene.mset, "gene", predI = 1, orthoI = 1,
+                                  fig.pdfC = "none")
+  
+  ropls::plot(gene_mset.oplsda, typeVc = "permutation")
+  ropls::plot(gene_mset.oplsda, typeVc = "x-score",
+              parPaletteVc = ProMetIS::palette.vc()[rev(c("WT", gene.c))])
+  
+  gene.mset <- ropls::getMset(gene_mset.oplsda)
+  
+  gene_mset.ls[[gene.c]] <- gene.mset
+  
+}
+```
+
+# Feature selection
+
+```{r feature_selection}
+for (gene.c in ProMetIS::genes.vc()) {
+  
+  message(gene.c)
+  
+  gene.mset <- gene_mset.ls[[gene.c]]
+  
+  gene_mset.biosign <- biosigner::biosign(gene.mset,
+                                          "gene",
+                                          seedI = 123,
+                                          plotTierMaxC = "A")
+  
+  gene.mset <- biosigner::getMset(gene_mset.biosign)
+  
+  gene_mset.ls[[gene.c]] <- gene.mset
+  
+}
+```
+
+# Combining
+
+```{r combining}
+# Merging LAT and MX2 results
+
+# Common column names which have to be individualized
+common_fvar.vc <- c("limma2ways_sex_M.F_",
+                   # "limma2waysInter_sex_M.F_",
+                   # "limma2waysInter_gene:sex_",
+                   # "anova2ways_sex_M.F_",
+                   # "anova2waysInter_sex_M.F_",
+                   # "anova2waysInter_gene:sex_",
+                   "limmaWT_M.F_", # proteomics_liver
+                   # "limma_sex_M.F_diff_WT",        
+                   # "limma_sex_M.F_BH_WT",                 
+                   # "limma_sex_M.F_signif_WT",
+                   # "limma_sex_M.F_", 
+                   "PCA_xload-p",
+                   "hclust",
+                   "gene_OPLSDA_",
+                   "gene_biosign_")
+
+for (set.c in names(latmx2.mset)) {
+  
+  # initial ExpressionSet
+  eset <- latmx2.mset[[set.c]]
+  
+  # initial fData
+  fdata.df <- Biobase::fData(eset)
+  
+  # initial features
+  features.vc <- Biobase::featureNames(eset)
+  
+  for (gene.c in ProMetIS::genes.vc()) {
+    
+    if (set.c %in% names(gene_mset.ls[[gene.c]])) {
+      
+      # gene fData
+      gene_fdata.df <- Biobase::fData(gene_mset.ls[[gene.c]][[set.c]])
+      
+      # adding a 'LAT' or 'MX2' tag at the end of columns with identical names
+      # for the two 'gene-specific' analyzes
+      gene_fvar.vc <- colnames(gene_fdata.df)
+      for (fvar.c in common_fvar.vc) {
+        
+        common_fvar.vi <- grep(fvar.c, gene_fvar.vc, fixed = TRUE)
+        
+        if (length(common_fvar.vi)) {
+          gene_fvar.vc[common_fvar.vi] <- paste0(gene_fvar.vc[common_fvar.vi],
+                                               "_", gene.c)
+        }
+      }
+      colnames(gene_fdata.df) <- gene_fvar.vc
+      
+      # additional name simplification
+      colnames(gene_fdata.df) <- gsub("gene_biosign_",
+                                      "biosign_",
+                                      gsub("gene_OPLSDA_",
+                                           "OPLSDA_",
+                                           gsub("limma2ways_gene_",
+                                                "limma2ways_",
+                                                gsub("limma2ways_sex_",
+                                                     "limma2ways_",
+                                                     colnames(gene_fdata.df)))))
+      
+      # merging
+      fdata.df <- merge(fdata.df,
+                        gene_fdata.df[, setdiff(colnames(gene_fdata.df),
+                                                colnames(fdata.df))],
+                        by = 0, all = TRUE, sort = FALSE)
+      rownames(fdata.df) <- fdata.df[, "Row.names"]
+      fdata.df[, "Row.names"] <- NULL
+      fdata.df <- fdata.df[features.vc, ]
+      
+    }
+    
+  }
+  
+  Biobase::fData(eset) <- fdata.df
+  
+  latmx2.mset <- MultiDataSet::add_eset(latmx2.mset,
+                                          eset,
+                                          dataset.type = set.c,
+                                          GRanges = NA,
+                                          overwrite = TRUE,
+                                          warnings = FALSE)
+  
+}
+```
+
+# Re-ordering metadata
+
+```{r reordering}
+latmx2.mset <- ProMetIS:::metadata_select(latmx2.mset, 
+                                          step.c = "3_statistics_singleomics")
+
+```
+
+# Saving (not run)
+
+```{r writing}
+phenomis::writing(latmx2.mset,
+                  gsub(ProMetIS::data_dir.c(),
+                       "../../ProMetIS/inst/extdata",
+                       ProMetIS::statistics_singleomics_dir.c()),
+                  overwrite.l = TRUE)
+```
+

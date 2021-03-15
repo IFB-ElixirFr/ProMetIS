@@ -1,0 +1,237 @@
+variableMetadata	measurement	category
+Anapath...A2.heart	Anapath:% A2 heart	Anapath
+Anapath.A2.heart..g.	Anapath:A2 heart (g)	Anapath
+Anapath.A2.heart..mg...mg.	Anapath:A2 heart (mg) (mg)	Anapath
+Anapath.body.weight..g.	Anapath:body weight (g)	Anapath
+Auditory.brainstem.response.nb.cage	Auditory brainstem response:nb/cage	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1...PP70	Auditory startle reflex reactivity and PPI - P1:% PP70	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1...PP75	Auditory startle reflex reactivity and PPI - P1:% PP75	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1...PP85	Auditory startle reflex reactivity and PPI - P1:% PP85	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1...PP90	Auditory startle reflex reactivity and PPI - P1:% PP90	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.BN..65.	Auditory startle reflex reactivity and PPI - P1:BN (65)	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.Body.weight..g.	Auditory startle reflex reactivity and PPI - P1:Body weight (g)	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.Glb	Auditory startle reflex reactivity and PPI - P1:Glb	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.P70	Auditory startle reflex reactivity and PPI - P1:P70	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.P75	Auditory startle reflex reactivity and PPI - P1:P75	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.P85	Auditory startle reflex reactivity and PPI - P1:P85	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.P90	Auditory startle reflex reactivity and PPI - P1:P90	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.PP70	Auditory startle reflex reactivity and PPI - P1:PP70	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.PP75	Auditory startle reflex reactivity and PPI - P1:PP75	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.PP85	Auditory startle reflex reactivity and PPI - P1:PP85	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.PP90	Auditory startle reflex reactivity and PPI - P1:PP90	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.ST110	Auditory startle reflex reactivity and PPI - P1:ST110	Auditory and PPI
+Auditory.startle.reflex.reactivity.and.PPI...P1.nb.cage	Auditory startle reflex reactivity and PPI - P1:nb/cage	Auditory and PPI
+Body.Weight.body.weight.w7..g.	Body Weight:body weight w7 (g)	Body
+Clinical.chemistry.parameters.ALAT..U.l.	Clinical chemistry parameters:ALAT (U/l)	Clinical chemistry
+Clinical.chemistry.parameters.ALP..U.l.	Clinical chemistry parameters:ALP (U/l)	Clinical chemistry
+Clinical.chemistry.parameters.ASAT..U.l.	Clinical chemistry parameters:ASAT (U/l)	Clinical chemistry
+Clinical.chemistry.parameters.Albumin..g.l.	Clinical chemistry parameters:Albumin (g/l)	Clinical chemistry
+Clinical.chemistry.parameters.Blood.Urea.Nitrogen.mg.dl..mg.dl.	Clinical chemistry parameters:Blood Urea Nitrogen mg/dl (mg/dl)	Clinical chemistry
+Clinical.chemistry.parameters.Glucose..mmol.l.	Clinical chemistry parameters:Glucose (mmol/l)	Clinical chemistry
+Clinical.chemistry.parameters.Glucose.mg.dl..mg.dl.	Clinical chemistry parameters:Glucose mg/dl (mg/dl)	Clinical chemistry
+Clinical.chemistry.parameters.HDL.Chol...mmol.l.	Clinical chemistry parameters:HDL Chol. (mmol/l)	Clinical chemistry
+Clinical.chemistry.parameters.HDL.Chol..mg.dl..mg.dl.	Clinical chemistry parameters:HDL Chol. mg/dl (mg/dl)	Clinical chemistry
+Clinical.chemistry.parameters.Non.HDL.Chol...mmol.l.	Clinical chemistry parameters:Non HDL Chol. (mmol/l)	Clinical chemistry
+Clinical.chemistry.parameters.P..mmol.l.	Clinical chemistry parameters:P (mmol/l)	Clinical chemistry
+Clinical.chemistry.parameters.P.mg.dl..mg.dl.	Clinical chemistry parameters:P mg/dl (mg/dl)	Clinical chemistry
+Clinical.chemistry.parameters.T..Chol...mmol.l.	Clinical chemistry parameters:T. Chol. (mmol/l)	Clinical chemistry
+Clinical.chemistry.parameters.T..Chol..mg.dl..mg.dl.	Clinical chemistry parameters:T. Chol. mg/dl (mg/dl)	Clinical chemistry
+Clinical.chemistry.parameters.T..bilirubin..µmol.l.	Clinical chemistry parameters:T. bilirubin (µmol/l)	Clinical chemistry
+Clinical.chemistry.parameters.T..bilirubin.mg.dl..mg.dl.	Clinical chemistry parameters:T. bilirubin mg/dl (mg/dl)	Clinical chemistry
+Clinical.chemistry.parameters.TG..mmol.l.	Clinical chemistry parameters:TG (mmol/l)	Clinical chemistry
+Clinical.chemistry.parameters.TG.mg.dl..mg.dl.	Clinical chemistry parameters:TG mg/dl (mg/dl)	Clinical chemistry
+Clinical.chemistry.parameters.Urea..mmol.l.	Clinical chemistry parameters:Urea (mmol/l)	Clinical chemistry
+Clinical.chemistry.parameters.Urea.mg.dl..mg.dl.	Clinical chemistry parameters:Urea mg/dl (mg/dl)	Clinical chemistry
+Dysmorphology.IMPC.Body.weight..g.	Dysmorphology IMPC:Body weight (g)	Dysmorphology
+Dysmorphology.IMPC.Loc..activity	Dysmorphology IMPC:Loc. activity	Dysmorphology
+Dysmorphology.IMPC.Nb.cage	Dysmorphology IMPC:Nb/cage	Dysmorphology
+Dysmorphology.IMPC.Startle.response	Dysmorphology IMPC:Startle response	Dysmorphology
+Dysmorphology.IMPC.Transfer.arousal	Dysmorphology IMPC:Transfer arousal	Dysmorphology
+ECG.in.anaesthetized.conditions.HR..bpm.	ECG in anaesthetized conditions:HR (bpm)	ECG
+ECG.in.anaesthetized.conditions.Number.of.signals	ECG in anaesthetized conditions:Number of signals	ECG
+ECG.in.anaesthetized.conditions.PR..ms.	ECG in anaesthetized conditions:PR (ms)	ECG
+ECG.in.anaesthetized.conditions.Pdur..ms.	ECG in anaesthetized conditions:Pdur (ms)	ECG
+ECG.in.anaesthetized.conditions.QRS..ms.	ECG in anaesthetized conditions:QRS (ms)	ECG
+ECG.in.anaesthetized.conditions.QT..ms.	ECG in anaesthetized conditions:QT (ms)	ECG
+ECG.in.anaesthetized.conditions.QT.corrigé..ms.Corr.	ECG in anaesthetized conditions:QT corrigé (ms Corr)	ECG
+ECG.in.anaesthetized.conditions.RR..ms.	ECG in anaesthetized conditions:RR (ms)	ECG
+ECG.in.anaesthetized.conditions.Ramp..mv.	ECG in anaesthetized conditions:Ramp (mv)	ECG
+ECG.in.anaesthetized.conditions.ST..ms.	ECG in anaesthetized conditions:ST (ms)	ECG
+ECG.in.anaesthetized.conditions.STE..mv.	ECG in anaesthetized conditions:STE (mv)	ECG
+Echocardiography.using.the.Vevo.light.Body.mass..g.	Echocardiography using the Vevo light:Body mass (g)	Echocardiography
+Echocardiography.using.the.Vevo.light.EF....	Echocardiography using the Vevo light:EF (%)	Echocardiography
+Echocardiography.using.the.Vevo.light.FS....	Echocardiography using the Vevo light:FS (%)	Echocardiography
+Echocardiography.using.the.Vevo.light.HR..bpm.	Echocardiography using the Vevo light:HR (bpm)	Echocardiography
+Echocardiography.using.the.Vevo.light.LV.Mass.AW..Corrected...mg.	Echocardiography using the Vevo light:LV Mass AW (Corrected) (mg)	Echocardiography
+Echocardiography.using.the.Vevo.light.LV.Mass.AW..mg.	Echocardiography using the Vevo light:LV Mass AW (mg)	Echocardiography
+Echocardiography.using.the.Vevo.light.LV.Vol_d..uL.	Echocardiography using the Vevo light:LV Vol_d (uL)	Echocardiography
+Echocardiography.using.the.Vevo.light.LV.Vol_s..uL.	Echocardiography using the Vevo light:LV Vol_s (uL)	Echocardiography
+Echocardiography.using.the.Vevo.light.LVAW_d..mm.	Echocardiography using the Vevo light:LVAW_d (mm)	Echocardiography
+Echocardiography.using.the.Vevo.light.LVAW_s..mm.	Echocardiography using the Vevo light:LVAW_s (mm)	Echocardiography
+Echocardiography.using.the.Vevo.light.LVID_d..mm.	Echocardiography using the Vevo light:LVID_d (mm)	Echocardiography
+Echocardiography.using.the.Vevo.light.LVID_s..mm.	Echocardiography using the Vevo light:LVID_s (mm)	Echocardiography
+Echocardiography.using.the.Vevo.light.LVPW_d..mm.	Echocardiography using the Vevo light:LVPW_d (mm)	Echocardiography
+Echocardiography.using.the.Vevo.light.LVPW_s..mm.	Echocardiography using the Vevo light:LVPW_s (mm)	Echocardiography
+Eye.Morphology.Body.weight..g.	Eye Morphology:Body weight (g)	Eye
+Eye.Morphology.Left.inner.plexiform.layer..µm.	Eye Morphology:Left inner plexiform layer (µm)	Eye
+Eye.Morphology.Left.segments..µm.	Eye Morphology:Left segments (µm)	Eye
+Eye.Morphology.Left.vitreous.humor.thickness..µm.	Eye Morphology:Left vitreous humor thickness (µm)	Eye
+Eye.Morphology.OCT.left.anterior.chamber.depth	Eye Morphology:OCT left anterior chamber depth	Eye
+Eye.Morphology.OCT.left.corneal.thickness	Eye Morphology:OCT left corneal thickness	Eye
+Eye.Morphology.OCT.left.inner.nuclear.layer..µm.	Eye Morphology:OCT left inner nuclear layer (µm)	Eye
+Eye.Morphology.OCT.left.outer.nuclear.layer..µm.	Eye Morphology:OCT left outer nuclear layer (µm)	Eye
+Eye.Morphology.OCT.left.total.retinal.thickness..µm.	Eye Morphology:OCT left total retinal thickness (µm)	Eye
+Eye.Morphology.OCT.right.anterior.chamber.depth	Eye Morphology:OCT right anterior chamber depth	Eye
+Eye.Morphology.OCT.right.corneal.thickness	Eye Morphology:OCT right corneal thickness	Eye
+Eye.Morphology.OCT.right.inner.nuclear.layer..µm.	Eye Morphology:OCT right inner nuclear layer (µm)	Eye
+Eye.Morphology.OCT.right.outer.nuclear.layer..µm.	Eye Morphology:OCT right outer nuclear layer (µm)	Eye
+Eye.Morphology.OCT.right.total.retinal.thickness..µm.	Eye Morphology:OCT right total retinal thickness (µm)	Eye
+Eye.Morphology.Right.inner.plexiform.layer..µm.	Eye Morphology:Right inner plexiform layer (µm)	Eye
+Eye.Morphology.Right.segments..µm.	Eye Morphology:Right segments (µm)	Eye
+Eye.Morphology.Right.vitreous.humor.thickness..µm.	Eye Morphology:Right vitreous humor thickness (µm)	Eye
+Grip.test.Grip.mean..4paws...g.	Grip test:Grip mean (4paws) (g)	Grip test
+Grip.test.Grip.mean..g.	Grip test:Grip mean (g)	Grip test
+Grip.test.Grip.mean.ratio..g.g.	Grip test:Grip mean ratio (g/g)	Grip test
+Grip.test.Grip.mean.ratio.4paws...g.g.	Grip test:Grip mean ratio(4paws) (g/g)	Grip test
+Grip.test.Nb.cage	Grip test:Nb/cage	Grip test
+Grip.test.Trial.1..g.	Grip test:Trial 1 (g)	Grip test
+Grip.test.Trial.2..g.	Grip test:Trial 2 (g)	Grip test
+Grip.test.Trial.3..g.	Grip test:Trial 3 (g)	Grip test
+Grip.test.Trial1..4paws...g.	Grip test:Trial1 (4paws) (g)	Grip test
+Grip.test.Trial2..4paws...g.	Grip test:Trial2 (4paws) (g)	Grip test
+Grip.test.Trial3..4paws...g.	Grip test:Trial3 (4paws) (g)	Grip test
+Grip.test.Weight..g.	Grip test:Weight (g)	Grip test
+Gross.Pathology.Body.Weight..g.	Gross Pathology:Body Weight (g)	Gross
+Haematology...Complete.blood.count..CBC.on.the.Advia.120..BASO....	Haematology - Complete blood count (CBC)on the Advia 120:%BASO (%)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120..EOSINO....	Haematology - Complete blood count (CBC)on the Advia 120:%EOSINO (%)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120..LUC....	Haematology - Complete blood count (CBC)on the Advia 120:%LUC (%)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120..LYMPHO....	Haematology - Complete blood count (CBC)on the Advia 120:%LYMPHO (%)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120..MONO....	Haematology - Complete blood count (CBC)on the Advia 120:%MONO (%)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120..NEUTRO....	Haematology - Complete blood count (CBC)on the Advia 120:%NEUTRO (%)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.CHCM..g.dL.	Haematology - Complete blood count (CBC)on the Advia 120:CHCM (g/dL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.CHDW..g.dL.	Haematology - Complete blood count (CBC)on the Advia 120:CHDW (g/dL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.EOSINO..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:EOSINO (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.EOSINO.BRUT..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:EOSINO BRUT (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.HCT....	Haematology - Complete blood count (CBC)on the Advia 120:HCT (%)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.HGB..g.dL.	Haematology - Complete blood count (CBC)on the Advia 120:HGB (g/dL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.HGB.brut..g.dL.	Haematology - Complete blood count (CBC)on the Advia 120:HGB brut (g/dL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.Hte.brut....	Haematology - Complete blood count (CBC)on the Advia 120:Hte brut (%)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.LUC..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:LUC (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.LUC.BRUT..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:LUC BRUT (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.LYMPHO..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:LYMPHO (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.LYMPHO.BRUT..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:LYMPHO BRUT (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.MCH..pg.	Haematology - Complete blood count (CBC)on the Advia 120:MCH (pg)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.MCHC..g.dL.	Haematology - Complete blood count (CBC)on the Advia 120:MCHC (g/dL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.MCV..fL.	Haematology - Complete blood count (CBC)on the Advia 120:MCV (fL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.MONO..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:MONO (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.MONO.BRUT..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:MONO BRUT (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.MPV..fL.	Haematology - Complete blood count (CBC)on the Advia 120:MPV (fL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.NEUTRO..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:NEUTRO (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.NEUTRO.BRUT..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:NEUTRO BRUT (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.PLT..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:PLT (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.PLT.brut..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:PLT brut (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.RBC..x10E06.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:RBC (x10E06 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.RBC.brut..x10E06.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:RBC brut (x10E06 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.RDW....	Haematology - Complete blood count (CBC)on the Advia 120:RDW (%)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.WBC..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:WBC (x10E03 cells/µL)	Haematology
+Haematology...Complete.blood.count..CBC.on.the.Advia.120.WBC.brut..x10E03.cells.µL.	Haematology - Complete blood count (CBC)on the Advia 120:WBC brut (x10E03 cells/µL)	Haematology
+Hot.plate.test.Body.weight..g.	Hot plate test:Body weight (g)	Hot plate
+Hot.plate.test.Hot.plate.1..s.	Hot plate test:Hot plate 1 (s)	Hot plate
+Hot.plate.test.Nb.cage	Hot plate test:Nb/cage	Hot plate
+Hot.plate.test.Type.of.response	Hot plate test:Type of response	Hot plate
+Modified.SHIRPA.Body.weight	Modified SHIRPA:Body weight	SHIRPA
+Modified.SHIRPA.Loc..activity	Modified SHIRPA:Loc. activity	SHIRPA
+Modified.SHIRPA.Nb.cage	Modified SHIRPA:Nb/cage	SHIRPA
+Modified.SHIRPA.Nb.cage.Eumodic	Modified SHIRPA:Nb/cage Eumodic	SHIRPA
+Modified.SHIRPA.Startle.response	Modified SHIRPA:Startle response	SHIRPA
+Modified.SHIRPA.Transfer.arousal	Modified SHIRPA:Transfer arousal	SHIRPA
+Open.field.test...Time.Spent.in.the.Center.I1..cm.	Open field test:% Time Spent in the Center I1 (cm)	Open field
+Open.field.test...Time.Spent.in.the.Center.I2..cm.	Open field test:% Time Spent in the Center I2 (cm)	Open field
+Open.field.test...Time.Spent.in.the.Center.I3..cm.	Open field test:% Time Spent in the Center I3 (cm)	Open field
+Open.field.test...Time.Spent.in.the.Center.I4..cm.	Open field test:% Time Spent in the Center I4 (cm)	Open field
+Open.field.test...distance.in.the.Center.I1..cm.	Open field test:% distance in the Center I1 (cm)	Open field
+Open.field.test...distance.in.the.Center.I2..cm.	Open field test:% distance in the Center I2 (cm)	Open field
+Open.field.test...distance.in.the.Center.I3..cm.	Open field test:% distance in the Center I3 (cm)	Open field
+Open.field.test...distance.in.the.Center.I4..cm.	Open field test:% distance in the Center I4 (cm)	Open field
+Open.field.test...distance.in.the.Center.glob...cm.	Open field test:% distance in the Center glob. (cm)	Open field
+Open.field.test..Time.Spent.in.the.Center.glob	Open field test:%Time Spent in the Center glob	Open field
+Open.field.test.Dist.I1..cm.	Open field test:Dist I1 (cm)	Open field
+Open.field.test.Dist.I2..cm.	Open field test:Dist I2 (cm)	Open field
+Open.field.test.Dist.I3..cm.	Open field test:Dist I3 (cm)	Open field
+Open.field.test.Dist.I4..cm.	Open field test:Dist I4 (cm)	Open field
+Open.field.test.Dist.global..cm.	Open field test:Dist global (cm)	Open field
+Open.field.test.Distance.center..cm.	Open field test:Distance center (cm)	Open field
+Open.field.test.Distance.periphery..cm.	Open field test:Distance periphery (cm)	Open field
+Open.field.test.Distance.whole.arena..cm.	Open field test:Distance whole arena (cm)	Open field
+Open.field.test.Latency.center..s.	Open field test:Latency center (s)	Open field
+Open.field.test.NEntries.center	Open field test:NEntries center	Open field
+Open.field.test.Number.of.Rearings.I1	Open field test:Number of Rearings I1	Open field
+Open.field.test.Number.of.Rearings.I2	Open field test:Number of Rearings I2	Open field
+Open.field.test.Number.of.Rearings.I3	Open field test:Number of Rearings I3	Open field
+Open.field.test.Number.of.Rearings.I4	Open field test:Number of Rearings I4	Open field
+Open.field.test.Number.of.Rearings.global	Open field test:Number of Rearings global	Open field
+Open.field.test.Permanence.Time.center..s.	Open field test:Permanence Time center (s)	Open field
+Open.field.test.Permanence.Time.periphery..s.	Open field test:Permanence Time periphery (s)	Open field
+Open.field.test.Resting.Time.center..s.	Open field test:Resting Time center (s)	Open field
+Open.field.test.Resting.Time.periphery..s.	Open field test:Resting Time periphery (s)	Open field
+Open.field.test.Resting.Time.whole.arena..s.	Open field test:Resting Time whole arena (s)	Open field
+Open.field.test.av..speed.center..cm.s.	Open field test:av. speed center (cm/s)	Open field
+Open.field.test.av..speed.periphery..cm.s.	Open field test:av. speed periphery (cm/s)	Open field
+Open.field.test.av..speed.whole.arena..cm.s.	Open field test:av. speed whole arena (cm/s)	Open field
+Pavlovian.fear.conditioning.Freezing.....Con.1	Pavlovian fear conditioning:Freezing (%) Con-1	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.....Con.2	Pavlovian fear conditioning:Freezing (%) Con-2	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.....Con.3	Pavlovian fear conditioning:Freezing (%) Con-3	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.....Cue.1	Pavlovian fear conditioning:Freezing (%) Cue-1	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.....Cue.2	Pavlovian fear conditioning:Freezing (%) Cue-2	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.....total	Pavlovian fear conditioning:Freezing (%) total	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.Cue.1	Pavlovian fear conditioning:Freezing Cue 1	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.Cue.2	Pavlovian fear conditioning:Freezing Cue 2	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.Pre.cue.1	Pavlovian fear conditioning:Freezing Pre-cue 1	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.Pre.cue.2	Pavlovian fear conditioning:Freezing Pre-cue 2	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.conditioning.Hab.1	Pavlovian fear conditioning:Freezing conditioning Hab-1	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.conditioning.Hab.2	Pavlovian fear conditioning:Freezing conditioning Hab-2	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Freezing.conditioning.post.us1	Pavlovian fear conditioning:Freezing conditioning post-us1	Pavlovian fear cond.
+Pavlovian.fear.conditioning.Nb.cage	Pavlovian fear conditioning:Nb/cage	Pavlovian fear cond.
+Pavlovian.fear.conditioning.context.freezing.con.1	Pavlovian fear conditioning:context freezing con-1	Pavlovian fear cond.
+Pavlovian.fear.conditioning.context.freezing.con.2	Pavlovian fear conditioning:context freezing con-2	Pavlovian fear cond.
+Pavlovian.fear.conditioning.context.freezing.con.3	Pavlovian fear conditioning:context freezing con-3	Pavlovian fear cond.
+Pavlovian.fear.conditioning.freezing.total.context	Pavlovian fear conditioning:freezing total context	Pavlovian fear cond.
+Rotarod.test.Body.weight..g.	Rotarod test:Body weight (g)	Rotarod
+Rotarod.test.Mean.latency	Rotarod test:Mean latency	Rotarod
+Rotarod.test.Nb.cage	Rotarod test:Nb/cage	Rotarod
+Rotarod.test.Passive.rotation..T1.	Rotarod test:Passive rotation (T1)	Rotarod
+Rotarod.test.Passive.rotation..T2.	Rotarod test:Passive rotation (T2)	Rotarod
+Rotarod.test.Passive.rotation..T3.	Rotarod test:Passive rotation (T3)	Rotarod
+Rotarod.test.Trial.1..s.	Rotarod test:Trial 1 (s)	Rotarod
+Rotarod.test.Trial.2..s.	Rotarod test:Trial 2 (s)	Rotarod
+Rotarod.test.Trial.3..s.	Rotarod test:Trial 3 (s)	Rotarod
+Shock.threshold.test.Nb.cage	Shock threshold test:Nb/cage	Shock threshold
+Shock.threshold.test.Vocalization	Shock threshold test:Vocalization	Shock threshold
+Test.de.Tolérance.au.Glucose..GTT..Body.weight..g.	Test de Tolérance au Glucose (GTT):Body weight (g)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T0..mg.dl.	Test de Tolérance au Glucose (GTT):Glucose T0 (mg/dl)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T0..mmol.l.	Test de Tolérance au Glucose (GTT):Glucose T0 (mmol/l)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T120..mg.dl.	Test de Tolérance au Glucose (GTT):Glucose T120 (mg/dl)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T120..mmol.l.	Test de Tolérance au Glucose (GTT):Glucose T120 (mmol/l)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T15..mg.dl.	Test de Tolérance au Glucose (GTT):Glucose T15 (mg/dl)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T15..mmol.l.	Test de Tolérance au Glucose (GTT):Glucose T15 (mmol/l)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T30..mg.dl.	Test de Tolérance au Glucose (GTT):Glucose T30 (mg/dl)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T30..mmol.l.	Test de Tolérance au Glucose (GTT):Glucose T30 (mmol/l)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T60..mg.dl.	Test de Tolérance au Glucose (GTT):Glucose T60 (mg/dl)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.T60..mmol.l.	Test de Tolérance au Glucose (GTT):Glucose T60 (mmol/l)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.auc.positive..0.120...min.mg.dl.	Test de Tolérance au Glucose (GTT):Glucose auc positive (0-120) (min*mg/dl)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.auc.positive..0.120...min.mmol.l.	Test de Tolérance au Glucose (GTT):Glucose auc positive (0-120) (min*mmol/l)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.auc.0.120...min.mg.dl.	Test de Tolérance au Glucose (GTT):Glucose auc(0-120) (min*mg/dl)	Glucose tolerance test
+Test.de.Tolérance.au.Glucose..GTT..Glucose.auc.0.120...min.mmol.l.	Test de Tolérance au Glucose (GTT):Glucose auc(0-120) (min*mmol/l)	Glucose tolerance test
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.BMC..g.	Ultrafocus - Densitométrie osseuse et composition corporelle:BMC (g)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.BMD..g.cm2.	Ultrafocus - Densitométrie osseuse et composition corporelle:BMD (g/cm2)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.BMD..mg.cm2.	Ultrafocus - Densitométrie osseuse et composition corporelle:BMD (mg/cm2)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.Body.length..cm.	Ultrafocus - Densitométrie osseuse et composition corporelle:Body length (cm)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.body.weight..g.	Ultrafocus - Densitométrie osseuse et composition corporelle:body weight (g)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.bone.area..cm2.	Ultrafocus - Densitométrie osseuse et composition corporelle:bone area (cm2)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.fat.percent....	Ultrafocus - Densitométrie osseuse et composition corporelle:fat percent (%)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.fat.weight..g.	Ultrafocus - Densitométrie osseuse et composition corporelle:fat weight (g)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.lean.percent....	Ultrafocus - Densitométrie osseuse et composition corporelle:lean percent (%)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.lean.weight..g.	Ultrafocus - Densitométrie osseuse et composition corporelle:lean weight (g)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.sample.area..cm2.	Ultrafocus - Densitométrie osseuse et composition corporelle:sample area (cm2)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.soft.weight..g.	Ultrafocus - Densitométrie osseuse et composition corporelle:soft weight (g)	Body composition
+Ultrafocus...Densitométrie.osseuse.et.composition.corporelle.total.weight..g.	Ultrafocus - Densitométrie osseuse et composition corporelle:total weight (g)	Body composition
