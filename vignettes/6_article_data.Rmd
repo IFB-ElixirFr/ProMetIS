@@ -162,8 +162,8 @@ ggplot2::ggsave("figures/article_data/sets_dims_aggregated.pdf", data_dims.ggplo
 preclinical.eset <- mset.ls[["LAT"]][["preclinical"]]
 
 preclinical_pie.ggplot <- .preclin_pie(Biobase::fData(preclinical.eset), y.c = "category",
-                                           geom_text.ls = list(lab.i = 4, legend_text.i = 8, title.i = 18),
-                                           label.c = "value")
+                                       geom_text.ls = list(lab.i = 4, legend_text.i = 8, title.i = 18),
+                                       label.c = "value")
 
 ggplot2::ggsave("figures/article_data/ImbertEtAl_Fig2_preclinical_categories.pdf", preclinical_pie.ggplot,
                 width = 7, height = 8)
