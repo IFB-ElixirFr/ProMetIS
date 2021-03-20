@@ -14,15 +14,18 @@ Etienne A. Thévenot (etienne.thevenot@cea.fr)
 
 ## Experimental design
 
-![A total of 42 mice from the *Lat-/-* and *Mx2-/-* genotypes (as well as the wild-type controls), and from both sex, were analyzed by a series of phenomic (preclinical) measurements. Liver and plasma samples from all mice were further analyzed at the molecular level by proteomics and metabolomics.](vignettes/figures/prometis_design.png)
+A total of 42 mice from the *Lat-/-* and *Mx2-/-* genotypes (as well as the wild-type controls), and from both sex, were analyzed by a series of phenomic (preclinical) measurements. Liver and plasma samples from all mice were further analyzed at the molecular level by proteomics and metabolomics.
+![](vignettes/figures/prometis_design.png)
 
 ## Datasets
 
-![The number of features after the post-processing step is shown for each of the 9 datasets (1 preclinical, 2 proteomics, 6 metabolomics). The number of annotated metabolites is indicated in squared brackets. The names of the metabolomics datasets include the reference to the chromatographic column (c18hypersil: Hypersil GOLD C18, hilic: ZIC-pHILIC, and c18acquity: Acquity HSS-T3) and the ionization mode (pos: positive, and neg: negative).](vignettes/figures/prometis_datasets.png)
+The number of features after the post-processing step is shown for each of the 9 datasets (1 preclinical, 2 proteomics, 6 metabolomics). The number of annotated metabolites is indicated in squared brackets. The names of the metabolomics datasets include the reference to the chromatographic column (c18hypersil: Hypersil GOLD C18, hilic: ZIC-pHILIC, and c18acquity: Acquity HSS-T3) and the ionization mode (pos: positive, and neg: negative).
+![](vignettes/figures/prometis_datasets.png)
 
 ## Package structure: data and vignettes
 
-![The data are available in the extdata folder, which is organized into subfolders corresponding to the successive steps of the analysis (e.g, *1_processed*, *2_post_processed*, *5_aggregated*, etc.). Within each subfolder, the 9 datasets are stored as a triplet of tabular files containing the matrix of intensities (*dataMatrix.tsv*), the sample metadata (*sampleMetadata.tsv*) and the variable metadata (*variableMetadata.tsv*). For each step, a vignette describes the methods used to process the data. As an example, the *2_post_processed* vignette details how the datasets were post-processed, between the *1_processed* and the *2_post_processed* folders. The *tutorial* vignette describes how to access the final aggregated data to perform integrative bioinformatic and biostatistic analyses.](vignettes/figures/prometis_package_structure.png)
+The data are available in the extdata folder, which is organized into subfolders corresponding to the successive steps of the analysis (e.g, *1_processed*, *2_post_processed*, *5_aggregated*, etc.). Within each subfolder, the 9 datasets are stored as a triplet of tabular files containing the matrix of intensities (*dataMatrix.tsv*), the sample metadata (*sampleMetadata.tsv*) and the variable metadata (*variableMetadata.tsv*). For each step, a vignette describes the methods used to process the data. As an example, the *2_post_processed* vignette details how the datasets were post-processed, between the *1_processed* and the *2_post_processed* folders. The *tutorial* vignette describes how to access the final aggregated data to perform integrative bioinformatic and biostatistic analyses.
+![](vignettes/figures/prometis_package_structure.png)
 
 ## Funding
 
