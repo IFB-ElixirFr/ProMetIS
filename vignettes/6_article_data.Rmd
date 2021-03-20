@@ -504,9 +504,9 @@ cv_liver.tb <- suppressMessages(readxl::read_excel(prot_liver_file.c,
 cv_liver.df <- as.data.frame(cv_liver.tb,
                              stringsAsFactors = FALSE)
 
-cv_liver.df <- cbind.data.frame(type = factor(rep(c("Pool", "WT", "Lat", "Mx2"),
+cv_liver.df <- cbind.data.frame(type = factor(rep(c("Pool", "WT", "LAT", "MX2"),
                                                   each = nrow(cv_liver.df)),
-                                              levels = c("Pool", "WT", "Lat", "Mx2")),
+                                              levels = c("Pool", "WT", "LAT", "MX2")),
                                 value = c(cv_liver.df[, 2], cv_liver.df[, 3],
                                           cv_liver.df[, 4], cv_liver.df[, 5]))
 
@@ -518,9 +518,9 @@ cv_plasma.tb <- suppressMessages(readxl::read_excel(prot_plasma_file.c,
 cv_plasma.df <- as.data.frame(cv_plasma.tb,
                                 stringsAsFactors = FALSE)
 
-cv_plasma.df <- cbind.data.frame(type = factor(rep(c("WT", "Mx2", "Lat", "Pool"),
+cv_plasma.df <- cbind.data.frame(type = factor(rep(c("WT", "MX2", "LAT", "Pool"),
                                                    each = nrow(cv_plasma.df)),
-                                               levels = c("Pool", "WT", "Lat", "Mx2")),
+                                               levels = c("Pool", "WT", "LAT", "MX2")),
                                  value = c(cv_plasma.df[, 69], cv_plasma.df[, 70],
                                            cv_plasma.df[, 71], cv_plasma.df[, 72]))
 ```
@@ -559,15 +559,16 @@ Post-processing in the 'technical validation' mode (keeping standards, keeping p
 
 ```{r metabosets_postprocessing_technical_validation}
 metabo.mset <- ProMetIS:::.metabo_postprocessing(metabo.mset = metabo.mset,
-                                                 drift_correct.c = "prometis",
+                                                 drift_correct.c = "sample",
                                                  .technical_validation.l = TRUE)
-# save(metabo.mset, file = "../supplementary/technical_validation/metabolomics/metabo_mset.rdata")
+# save(metabo.mset, file = "../supplementary/technical_validation/metabolomics/metabo_mset_sample.rdata")
+# load("../supplementary/technical_validation/metabolomics/metabo_mset.rdata")
 ```
 
 ### Standards
 
 ```{r metabo_standards_matching}
-standards_cv.ls <- list()
+out_sample.ls <- standards_cv.ls <- list()
 
 for (set.c in grep("(c18hyper|hilic)", names(metabo.mset), value = TRUE)) {
   
@@ -611,6 +612,9 @@ for (set.c in grep("(c18hyper|hilic)", names(metabo.mset), value = TRUE)) {
                                   levels = c("pool",
                                              "sample"))
   
+  ggplot.df[, "sample_name"] <- rep(Biobase::sampleNames(eset),
+                                    ncol(tlog2exprs.df) - 1)
+  
   ggplot.df[, "compound_standard"] <- ggplot.df[, "variable"]
   ggplot.df[, "compound"] <- vapply(as.character(ggplot.df[, "compound_standard"]),
                                            function(comp.c) {
@@ -627,8 +631,25 @@ for (set.c in grep("(c18hyper|hilic)", names(metabo.mset), value = TRUE)) {
   
   ggplot.df[, "mean"] <- rep(tapply(ggplot.df[, "intensity"], ggplot.df[, "variable"], mean), table(ggplot.df[, "variable"]))
   ggplot.df[, "sd"] <- rep(tapply(ggplot.df[, "intensity"], ggplot.df[, "variable"], sd), table(ggplot.df[, "variable"]))
-  ggplot.df[, "ucl"] <- ggplot.df[, "mean"] + 2 * ggplot.df[, "sd"]
   ggplot.df[, "lcl"] <- ggplot.df[, "mean"] - 2 * ggplot.df[, "sd"]
+    ggplot.df[, "ucl"] <- ggplot.df[, "mean"] + 2 * ggplot.df[, "sd"]
+
+  ggplot.df[, "zscore"] <- (ggplot.df[, "intensity"] - ggplot.df[, "mean"]) / ggplot.df[, "sd"]
+    
+  ggplot.df[, "pval"] <- format(2 * (1 - pnorm(abs(ggplot.df[, "zscore"]))), scientific = TRUE)
+
+  out_sample.vl <- abs(ggplot.df[, "zscore"]) > 3
+  if (sum(out_sample.vl)) {
+    out_sample.ls[[set.c]] <- ggplot.df[out_sample.vl, c("sample_name",
+                                                         "compound_standard",
+                                                         "injectionOrder",
+                                                         "intensity",
+                                                         "lcl",
+                                                         "ucl",
+                                                         "zscore",
+                                                         "pval"), drop = FALSE]
+  } else
+    out_sample.ls[[set.c]] <- data.frame()
   
   #plot
   standards.ggplot <- ggplot2::ggplot(ggplot.df,
@@ -639,7 +660,8 @@ for (set.c in grep("(c18hyper|hilic)", names(metabo.mset), value = TRUE)) {
     ggplot2::geom_point(ggplot2::aes(shape = sample), size = 3) +
     ggplot2::geom_line(ggplot2::aes(lty = standard), size = 2) +
     ggplot2::geom_line(ggplot2::aes(x = injectionOrder, y = mean, colour = compound), lty = "solid") +
-    ggplot2::geom_ribbon(ggplot2::aes(x = injectionOrder, ymin = lcl, ymax = ucl, group = compound, fill = compound, linetype = "dashed"), alpha = 0.1) +
+    ggplot2::geom_ribbon(ggplot2::aes(x = injectionOrder, ymin = lcl, ymax = ucl, group = compound,
+                                      fill = compound), linetype = "dashed", alpha = 0.1) +
     ggplot2::labs(title = gsub("metabolomics_", "", set.c),
                   x = "Injection order", y = "Intensity") +
     ggplot2::scale_shape_manual(values = c(15, 16)) +
@@ -656,14 +678,31 @@ for (set.c in grep("(c18hyper|hilic)", names(metabo.mset), value = TRUE)) {
   ggplot2::ggsave(paste0("figures/article_data/ImbertEtAl_FigS5_metabo_standards_",
                          gsub("metabolomics_", "", set.c), ".pdf"),
                   standards.ggplot, width = 12)
-  
+
 }
 
 print(round(c(min = min(unlist(standards_cv.ls)),
               mean = mean(unlist(standards_cv.ls)),
               max = max(unlist(standards_cv.ls)),
               sd = sd(unlist(standards_cv.ls))) * 100))
+
+print(out_sample.ls)
+print(max(abs(Reduce("rbind.data.frame", out_sample.ls)[, "zscore"])))
+sapply(out_sample.ls, nrow)
 ```
+
+```{r metabo_standards_outlier_pca}
+for (set.c in names(out_sample.ls)) {
+eset <- metabo.mset[[set.c]]
+eset.pca <- ropls::opls(eset, fig.pdfC = "none", info.txtC = "none", predI = 4)
+ropls::plot(eset.pca,
+            typeVc = "x-score",
+            parAsColFcVn = ifelse(Biobase::sampleNames(eset) %in% out_sample.ls[[set.c]][, "sample_name"], 1, 0),
+            parTitleL = FALSE)
+title(gsub("metabolomics_", "", set.c))
+}
+```
+
 
 ### Quality metrics
 
@@ -671,86 +710,117 @@ print(round(c(min = min(unlist(standards_cv.ls)),
 quality_metrics.ls <- ProMetIS:::.metabo_quality_metrics(metabo.mset)
 
 # save(quality_metrics.ls, file = "../supplementary/technical_validation/metabolomics/quality_metrics_ls.rdata")
+# load("../supplementary/technical_validation/metabolomics/quality_metrics_ls.rdata")
 ```
 
-```{r}
-quality.mn <- quality_metrics.ls[["quality.mn"]]
-knitr::kable(round(quality.mn))
+```{r metabosets_quality_table}
+quality_table.ls <- list()
+
+for (method.c in c("none", "pool", "sample", "prometis")) {
+  
+  load(paste0("../supplementary/technical_validation/metabolomics/quality_metrics_ls",
+              ifelse(method.c != "prometis", paste0("_", method.c), ""),
+              ".rdata"))
+  
+  quality.mn <- quality_metrics.ls[["quality.mn"]]
+  
+  quality.mn <- t(quality.mn)[, c("correl_inj_test",
+                                  "correl_inj_pca",
+                                  "pool_spread_pca",
+                                  "poolCV_0.3",
+                                  "ICCpool")]
+  colnames(quality.mn) <- c("Drift Spearman", "Drift PCA", "QC spread", "QC CV", "QC ICC")
+  
+  for (metric.c in c("Drift Spearman", "Drift PCA", "QC spread"))
+    quality.mn[, metric.c] <- 100 - quality.mn[, metric.c]
+  
+  quality.mn <- round(quality.mn)
+  
+  quality_table.ls[[method.c]] <- quality.mn
+  
+}
+
+min_quality.mn <- t(sapply(quality_table.ls, function(matrix.mn) {
+  c(drift = min(matrix.mn[, 1:2]), qc = min(matrix.mn[, 3:5]))
+}))
+rownames(min_quality.mn) <- c("None", "Pools", "Samples", "ProMetIS")
+
+plot(min_quality.mn, type = "n", xlim = c(0, 100), ylim = c(0, 100),
+     xlab = "Drift metrics", ylab = "QC metrics",
+     main = "Minimum quality metric values\ndepending on the correction method")
+text(min_quality.mn, labels = rownames(min_quality.mn))
+
+
+write.table(quality_table.ls[["prometis"]],
+                col.names = NA,
+                file = "figures/article_data/ImbertEtAl_Table1_techval_metabo_metrics.tsv",
+                sep = "\t")
+
+rowMeans(quality_table.ls[["prometis"]])
 ```
 
-```{r}
-quality.df <- as.data.frame(t(quality.mn)[, c("correl_inj_test",
-                                              "correl_inj_pca",
-                                              "pool_spread_pca",
-                                              "poolCV_0.3",
-                                              "ICCpool")])
-colnames(quality.df) <- c("Drift Spearman", "Drift PCA", "QC spread", "QC CV", "QC ICC")
-quality.df <- cbind.data.frame(group = factor(rownames(quality.df),
-                                              levels = rownames(quality.df)),
-                               quality.df)
-for (metric.c in c("Drift Spearman", "Drift PCA", "QC spread"))
-  quality.df[, metric.c] <- 100 - quality.df[, metric.c]
+```{r metabosets_quality_ggplot}
+quality_ggparcoord.ls <- quality_ggradar.ls <- list()
 
-quality_save.mn <- t(as.matrix(quality.df[, -1]))
-quality_save.mn <- rbind(quality_save.mn,
-                         mean = apply(quality_save.mn, 2, mean),
-                         min = apply(quality_save.mn, 2, min),
-                         max = apply(quality_save.mn, 2, max))
-
-quality_save.mn <- round(quality_save.mn)
-
-knitr::kable(quality_save.mn)
-
-write.table(quality_save.mn,
-            col.names = NA,
-            file = "figures/article_data/ImbertEtAl_Table1_techval_metabo_metrics.tsv",
-            sep = "\t")
-```
-
-
-```{r inj_order_radarplot}
-quality.ggradar <- ggradar::ggradar(quality.df,
-                                    base.size = 15,
-                                    values.radar = c("0", "50", "100"),
-                                    grid.min = 0, grid.mid = 50, grid.max = 100,
-                                    # Polygones
-                                    group.line.width = 2, 
-                                    group.point.size = 3,
-                                    group.colours = RColorBrewer::brewer.pal(9, "Set1")[c(1:5, 7)],
-                                    # Background
-                                    background.circle.colour = "white",
-                                    gridline.mid.colour = "grey",
-                                    # Legend
-                                  #  plot.title = "Quality metrics",
-                                    legend.text.size = 15,
-                                    legend.position = "right")
-
+for (method.c in c("none", "pool", "sample", "prometis")) {
+  
+  quality.df <- as.data.frame(quality_table.ls[[method.c]])
+  
+  quality.df <- cbind.data.frame(group = factor(rownames(quality.df),
+                                                levels = rownames(quality.df)),
+                                 quality.df)
+  
+  quality_ggradar.ls[[method.c]] <- ggradar::ggradar(quality.df,
+                                                     base.size = 15,
+                                                     values.radar = c("0", "50", "100"),
+                                                     grid.min = 0, grid.mid = 50, grid.max = 100,
+                                                     # Polygones
+                                                     group.line.width = 2, 
+                                                     group.point.size = 3,
+                                                     group.colours = RColorBrewer::brewer.pal(9, "Set1")[c(1:5, 7)],
+                                                     # Background
+                                                     background.circle.colour = "white",
+                                                     gridline.mid.colour = "grey",
+                                                     # Legend
+                                                     plot.title = method.c,
+                                                     legend.text.size = 15,
+                                                     legend.position = "right")
+  
+  quality_ggparcoord.ls[[method.c]] <- GGally::ggparcoord(quality.df, columns = c(3, 2, 4:6),
+                                                          groupColumn = 1,
+                                                          scale = "globalminmax") +
+    ggplot2::geom_line(size = 2) +
+    ggplot2::labs(title = "",
+                  x = "", y = "Score") +
+    ggplot2::scale_color_manual(values = RColorBrewer::brewer.pal(9, "Set1")[c(1:5, 7)]) +
+    ggplot2::coord_cartesian(ylim = c(0, 100)) +
+    ggplot2::theme_light() +
+    ggplot2::theme(plot.title = ggplot2::element_text(size = 20, face = "bold"),
+                   axis.text = ggplot2::element_text(size = 17),
+                   axis.title = ggplot2::element_text(size = 17, face = "bold"),
+                   legend.position = "bottom",
+                   legend.title = ggplot2::element_blank(),
+                   legend.text = ggplot2::element_text(size = 17))
+  
+}
 
 ggplot2::ggsave("figures/article_data/ImbertEtAl_Fig7A_techval_metabo_radar.pdf",
-                quality.ggradar,
+                quality_ggradar.ls[["prometis"]],
                 height = 7, width = 10.5)
-
-
-quality.ggplot <- GGally::ggparcoord(quality.df, columns = c(3, 2, 4:6),
-                                     groupColumn = 1,
-                                     scale = "globalminmax") +
-  ggplot2::geom_line(size = 2) +
-  ggplot2::labs(title = "",
-                x = "", y = "Score") +
-  ggplot2::scale_color_manual(values = RColorBrewer::brewer.pal(9, "Set1")[c(1:5, 7)]) +
-  ggplot2::coord_cartesian(ylim = c(0, 100)) +
-  ggplot2::theme_light() +
-  ggplot2::theme(plot.title = ggplot2::element_text(size = 20, face = "bold"),
-                 axis.text = ggplot2::element_text(size = 17),
-                 axis.title = ggplot2::element_text(size = 17, face = "bold"),
-                 legend.position = "bottom",
-                 legend.title = ggplot2::element_blank(),
-                 legend.text = ggplot2::element_text(size = 17))
-
 ggplot2::ggsave("figures/article_data/ImbertEtAl_Fig7Abis_techval_metabo_parallel.pdf",
-                quality.ggplot,
+                quality_ggparcoord.ls[["prometis"]],
                 height = 7, width = 10.5)
+
+for (method.c in setdiff(names(quality_ggradar.ls), "prometis")) {
+  ggplot2::ggsave(paste0("../supplementary/technical_validation/metabolomics/ImbertEtAl_Fig7A_techval_metabo_radar_", method.c, ".pdf"),
+                  quality_ggradar.ls[[method.c]],
+                  height = 7, width = 10.5)
+  ggplot2::ggsave(paste0("../supplementary/technical_validation/metabolomics/ImbertEtAl_Fig7Abis_techval_metabo_parallel_", method.c, ".pdf"),
+                  quality_ggparcoord.ls[[method.c]],
+                  height = 7, width = 10.5)
+}
 ```
+
 
 ### Score plots
 
@@ -822,9 +892,9 @@ for (set.c in names(metabo.mset)) {
                       if (Biobase::pData(eset)[sample.i, "sampleType"] == "pool") {
                         return("Pool")
                       } else if (genotype.vc[sample.i] == "l") {
-                        return("Lat")
+                        return("LAT")
                       } else if (genotype.vc[sample.i] == "m") {
-                        return("Mx2")
+                        return("MX2")
                       } else {
                         return("WT")
                       }
@@ -835,11 +905,11 @@ for (set.c in names(metabo.mset)) {
                                             function(x) sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE))
                                    })))
   
-  cv.df <- cbind.data.frame(type = factor(rep(c("Pool", "WT", "Lat", "Mx2"),
+  cv.df <- cbind.data.frame(type = factor(rep(c("Pool", "WT", "LAT", "MX2"),
                                               each = nrow(cv.mn)),
-                                          levels = c("Pool", "WT", "Lat", "Mx2")),
+                                          levels = c("Pool", "WT", "LAT", "MX2")),
                             value = c(cv.mn[, "Pool"], cv.mn[, "WT"],
-                                      cv.mn[, "Lat"], cv.mn[, "Mx2"]))
+                                      cv.mn[, "LAT"], cv.mn[, "MX2"]))
   
   cv_ggplot.ls[[set.c]] <- ProMetIS:::.cv_ggplot(cv.df, title.c = gsub("metabolomics_", "", set.c))
   
