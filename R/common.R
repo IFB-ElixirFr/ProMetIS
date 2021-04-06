@@ -358,6 +358,14 @@ metadata_select <- function(mset,
     } else
       fdata_supp.df <- data.frame()
     
+    if (grepl("metabolomics", set.c)) {
+      annot_level.vc <- fdata.df[, "annot_level"]
+      annot_level.vc <- as.character(annot_level.vc)
+      annot_level_na.vi <- which(is.na(annot_level.vc) | annot_level.vc == "NA")
+      annot_level.vc[annot_level_na.vi] <- ""
+      fdata.df[, "annot_level"] <- annot_level.vc
+    }
+    
     Biobase::fData(eset) <- fdata.df[, variablemeta.vc]
     
     stopifnot(methods::validObject(eset))
@@ -406,7 +414,9 @@ metadata_select <- function(mset,
   if (grepl("metabolomics", set.c))
     varmeta.vc <- c("chromato",
                     "name",
-                    "chebi_id")
+                    "chebi_id",
+                    "annot_level",
+                    "annot_confidence")
   
   if (grepl("proteomics", set.c))
     varmeta.vc <- c("accession",
@@ -446,8 +456,7 @@ metadata_select <- function(mset,
   
   if (grepl("metabolomics", set.c)) {
 
-    if (grepl("(hyper|hilic)", set.c)) {
-      
+    if (grepl("(hyper|hilic)", set.c))
       varmeta.vc <- c(varmeta.vc,
                       "kegg_id",
                       "kegg_pathway_family",
@@ -459,11 +468,6 @@ metadata_select <- function(mset,
                       "monoisotopic_mass",
                       "inchikey",
                       "inchi")
-      
-    } else if (grepl("acqui", set.c))
-      varmeta.vc <- c(varmeta.vc,
-                      "annot_level",
-                      "annot_confidence")
     
     varmeta.vc <- c(varmeta.vc,
                     "MT",

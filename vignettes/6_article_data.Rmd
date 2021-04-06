@@ -161,7 +161,7 @@ ggplot2::ggsave("figures/article_data/sets_dims_aggregated.pdf", data_dims.ggplo
 ```{r preclinical}
 preclinical.eset <- mset.ls[["LAT"]][["preclinical"]]
 
-preclinical_pie.ggplot <- .preclin_pie(Biobase::fData(preclinical.eset), y.c = "category",
+preclinical_pie.ggplot <- ProMetIS:::.preclin_pie(Biobase::fData(preclinical.eset), y.c = "category",
                                        geom_text.ls = list(lab.i = 4, legend_text.i = 8, title.i = 18),
                                        label.c = "value")
 
@@ -528,9 +528,9 @@ cv_plasma.df <- cbind.data.frame(type = factor(rep(c("WT", "MX2", "LAT", "Pool")
 ### Plotting
 
 ```{r}
-irt_liver.gg <- ProMetIS:::.irt_plot(irt_liver.mn)
+irt_liver.gg <- ProMetIS:::.irt_plot(irt_liver.mn, "liver")
 irt_plasma.gg <- ProMetIS:::.irt_plot(irt_plasma.mn, "plasma")
-cv_liver.gg <- ProMetIS:::.cv_ggplot(cv_liver.df)
+cv_liver.gg <- ProMetIS:::.cv_ggplot(cv_liver.df, "liver")
 cv_plasma.gg <- ProMetIS:::.cv_ggplot(cv_plasma.df, "plasma")
 ```
 
@@ -559,15 +559,46 @@ Post-processing in the 'technical validation' mode (keeping standards, keeping p
 
 ```{r metabosets_postprocessing_technical_validation}
 metabo.mset <- ProMetIS:::.metabo_postprocessing(metabo.mset = metabo.mset,
-                                                 drift_correct.c = "sample",
+                                                 drift_correct.c = "prometis",
                                                  .technical_validation.l = TRUE)
-# save(metabo.mset, file = "../supplementary/technical_validation/metabolomics/metabo_mset_sample.rdata")
+# save(metabo.mset, file = "../supplementary/technical_validation/metabolomics/metabo_mset.rdata")
 # load("../supplementary/technical_validation/metabolomics/metabo_mset.rdata")
 ```
 
 ### Standards
 
 ```{r metabo_standards_matching}
+standards_info.vc <- c("2-Aminoanthracene [ExS]_#0000FF",
+                       "Alanine 13C [ExS]_#0040FF",
+                       "Amiloride [ExS]_#0080FF",
+                       "Aspartate 15N [ExS]_#00BFFF",
+                       "Atropine [ExS]_#00FFFF",
+                       "Colchicine [ExS]_#00FFBF", 
+                       "Dihydrostreptomycin [ExS]_#00FF80",
+                       "Ethylmalonic acid [ExS]_#00FF40",
+                       "Glucose 13C [ExS]_#00FF00",
+                       "Imipramine [ExS]_#40FF00",
+                       "Metformin [ExS]_#80FF00",
+                       "Prednisone [ExS]_#BFFF00",
+                       "Roxithromycin (fragment) [ExS]_#FFFF00",
+                       "AMPA [IS]_#FFBF00",
+                       "Dimetridazole [IS]_#FF8000",
+                       "Dinoseb [IS]_#FF4000",
+                       "MCPA [IS]_#FF0000")
+standards_type.vc <-  sapply(standards_info.vc,
+                     function(info.c)
+                       unlist(strsplit(info.c, "_"))[1])
+standards_name.vc <-  sapply(standards_type.vc,
+                     function(standard.c)
+                       unlist(strsplit(standard.c, " [", fixed = TRUE))[1])
+palette.vc <- sapply(standards_info.vc,
+                     function(info.c)
+                       unlist(strsplit(info.c, "_"))[2])
+palette.vc <- c(RColorBrewer::brewer.pal(8, "Dark2"),
+                RColorBrewer::brewer.pal(9, "Set1")[c(1:5, 7:9)],
+                RColorBrewer::brewer.pal(3, "Set2")[1])
+names(palette.vc) <- standards_name.vc
+
 out_sample.ls <- standards_cv.ls <- list()
 
 for (set.c in grep("(c18hyper|hilic)", names(metabo.mset), value = TRUE)) {
@@ -583,22 +614,11 @@ for (set.c in grep("(c18hyper|hilic)", names(metabo.mset), value = TRUE)) {
   
   tlog2exprs.df <- as.data.frame(t(log2(1 + exprs.mn)))
   colnames(tlog2exprs.df) <- Biobase::fData(eset)[, "standard"]
-  
-  detected_standards.vc <- switch(set.c,
-                                  metabolomics_liver_c18hypersil_pos = {
-                                    c("Glucose 13C [ExS]", "Aspartate 15N [ExS]", "2-Aminoanthracene [ExS]", "Amiloride [ExS]", "Imipramine [ExS]", "Prednisone [ExS]")
-                                  },
-                                  metabolomics_liver_hilic_neg = {
-                                    c("Glucose 13C [ExS]", "Amiloride [ExS]")
-                                  },
-                                  metabolomics_plasma_c18hypersil_pos = {
-                                    c("Dimetridazole [IS]", "Glucose 13C [ExS]", "Imipramine [ExS]", "Atropine [ExS]", "Prednisone [ExS]", "Dihydrostreptomycin [ExS]")
-                                  },
-                                  metabolomics_plasma_hilic_neg = {
-                                    c("MCPA [IS]", "AMPA [IS]", "Glucose 13C [ExS]", "Dinoseb [IS]")
-                                  })
-  tlog2exprs.df <- tlog2exprs.df[, detected_standards.vc, drop = FALSE]
-  
+ 
+  # re-ordering
+  tlog2exprs.df <- tlog2exprs.df[, standards_type.vc[standards_type.vc %in% colnames(tlog2exprs.df)]]
+
+  # computing CVs
   standards_cv.ls[[set.c]] <- apply(as.matrix(tlog2exprs.df), 2, function(x) sd(x) / mean(x))
   
   #id variable for position in matrix 
@@ -665,8 +685,10 @@ for (set.c in grep("(c18hyper|hilic)", names(metabo.mset), value = TRUE)) {
     ggplot2::labs(title = gsub("metabolomics_", "", set.c),
                   x = "Injection order", y = "Intensity") +
     ggplot2::scale_shape_manual(values = c(15, 16)) +
-    ggplot2::scale_color_brewer(palette = "Dark2") +
-    ggplot2::scale_fill_brewer(palette = "Dark2") +
+    ggplot2::scale_color_manual(values = palette.vc[unique(ggplot.df[, "compound"])]) +
+    ggplot2::scale_fill_manual(values = palette.vc[unique(ggplot.df[, "compound"])]) +
+    # ggplot2::scale_color_brewer(palette = "Set3") +
+    # ggplot2::scale_fill_brewer(palette = "Set3") +
     ggplot2::coord_cartesian(ylim = c(0, 30)) +
     ggplot2::theme_light() +
     ggplot2::theme(plot.title = ggplot2::element_text(size = 20, face = "bold"),
@@ -941,6 +963,38 @@ pdf("figures/article_data/ImbertEtAl_FigS8_metabo_icc_cumulative.pdf",
 ProMetIS:::.metabo_quality_plot(quality_metrics.ls = quality_metrics.ls, "icc_intens")
 
 dev.off()
+```
+
+# Supplementary tables
+
+```{r}
+prometis.mset <- phenomis::reading(ProMetIS::post_processed_dir.c())
+prometis.mset <- prometis.mset[, ProMetIS::sets.vc()]
+
+for (set.c in names(prometis.mset)) {
+  # set.c <- names(prometis.mset)[5]
+  prometis.eset <- prometis.mset[[set.c]]
+  
+  if (grepl("metabolomics", set.c))
+    prometis.eset <- prometis.eset[Biobase::fData(prometis.eset)[, "name"] != "", ]
+  
+  if (which(names(prometis.mset) == set.c) < 3) {
+    xlsx::write.xlsx(cbind.data.frame(Biobase::fData(prometis.eset),
+                                      Biobase::exprs(prometis.eset)),
+                     file = "figures/article_data/ImbertEtAl_2021_supp_table.xlsx",
+                     sheet = gsub("proteomics", "proteo",
+                                  gsub("metabolomics", "metabo", set.c)),
+                     append = which(names(prometis.mset) == set.c) > 1)
+  } else
+    xlsx::write.xlsx(cbind.data.frame(Biobase::fData(prometis.eset),
+                                      Biobase::exprs(prometis.eset)),
+                     file = "figures/article_data/ImbertEtAl_2021_supp_table.xlsx",
+                     sheet = gsub("proteomics", "proteo",
+                                  gsub("metabolomics", "metabo", set.c)),
+                     append = which(names(prometis.mset) == set.c) > 3)
+}
+
+
 ```
 
 
