@@ -43,6 +43,10 @@ The ProMetIS project is funded by five French National Infrastructures:
 
 In particular, Alyssa Imbert is supported by a post-doctoral fellowship from IFB as part of the [pilot projects in integrative bioinformatics](https://www.france-bioinformatique.fr/en/pilot-projects).
 
+## License
+
+[CeCILL 2.1 free software license](https://cecill.info/licences/Licence_CeCILL_V2.1-en.html)
+
 ## Citation
 
 **ProMetIS: deep phenotyping of mouse models by combined proteomics and metabolomics analysis.** Alyssa Imbert, Magali Rompais, Mohammed Selloum, Florence Castelli, Emmanuelle Mouton-Barbosa, Marion Brandolini-Bunlon, Emeline Chu-Van, Charlotte Joly, Aurélie Hirschler, Pierrick Roger, Thomas Burger, Sophie Leblanc, Tania Sorg, Sadia Ouzia, Yves Vandenbrouck, Claudine Médigue, Christophe Junot, Myriam Ferro, Estelle Pujos-Guillot, Anne Gonzalez de Peredo, François Fenaille, Christine Carapito, Yann Herault, and Etienne A. Thévenot (ProMetIS consortium), *submitted*, [https://github.com/IFB-ElixirFr/ProMetIS](https://github.com/IFB-ElixirFr/ProMetIS).
