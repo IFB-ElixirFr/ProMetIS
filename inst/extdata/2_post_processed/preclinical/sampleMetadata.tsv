@@ -1,43 +1,43 @@
-sampleMetadata	gene	mouse_nb	sex
-X501f	MX2	501	F
-X502m	MX2	502	M
-X503m	MX2	503	M
-X506m	MX2	506	M
-X508f	MX2	508	F
-X509f	MX2	509	F
-X513m	MX2	513	M
-X517f	MX2	517	F
-X518f	MX2	518	F
-X521f	MX2	521	F
-X527m	MX2	527	M
-X528m	MX2	528	M
-X529f	MX2	529	F
-X531f	MX2	531	F
-W616f	WT	616	F
-W617f	WT	617	F
-W620f	WT	620	F
-W621f	WT	621	F
-W622f	WT	622	F
-W623f	WT	623	F
-W625m	WT	625	M
-W627m	WT	627	M
-W628m	WT	628	M
-W629m	WT	629	M
-W630m	WT	630	M
-W631m	WT	631	M
-W632f	WT	632	F
-W633f	WT	633	F
-W634m	WT	634	M
-L818f	LAT	818	F
-L819f	LAT	819	F
-L824m	LAT	824	M
-L825m	LAT	825	M
-L826m	LAT	826	M
-L827m	LAT	827	M
-L836f	LAT	836	F
-L841f	LAT	841	F
-L848m	LAT	848	M
-L849m	LAT	849	M
-L854f	LAT	854	F
-L859m	LAT	859	M
-L862f	LAT	862	F
+sampleMetadata	gene	mouse_id	sex	gene_name	mgi_id	variant	impc_id	impc_genotype	impc_phenotype
+X501f	MX2	501	F	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93326	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X502m	MX2	502	M	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93327	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X503m	MX2	503	M	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93328	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X506m	MX2	506	M	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93331	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X508f	MX2	508	F	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93332	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X509f	MX2	509	F	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93333	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X513m	MX2	513	M	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93334	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X517f	MX2	517	F	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93335	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X518f	MX2	518	F	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93336	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X521f	MX2	521	F	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93337	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X527m	MX2	527	M	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93340	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X528m	MX2	528	M	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93341	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X529f	MX2	529	F	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93338	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+X531f	MX2	531	F	MX dynamin-like GTPase 2	MGI:97244	C57BL/6N Mouse	93339	P5964Del/Del	https://www.mousephenotype.org/data/genes/MGI:97244#phenotypesTab
+W616f	WT	616	F			C57BL/6N Mouse	93299	CRLWT/WT	
+W617f	WT	617	F			C57BL/6N Mouse	93300	CRLWT/WT	
+W620f	WT	620	F			C57BL/6N Mouse	93301	CRLWT/WT	
+W621f	WT	621	F			C57BL/6N Mouse	93302	CRLWT/WT	
+W622f	WT	622	F			C57BL/6N Mouse	93303	CRLWT/WT	
+W623f	WT	623	F			C57BL/6N Mouse	93304	CRLWT/WT	
+W625m	WT	625	M			C57BL/6N Mouse	93295	CRLWT/WT	
+W627m	WT	627	M			C57BL/6N Mouse	93306	CRLWT/WT	
+W628m	WT	628	M			C57BL/6N Mouse	93307	CRLWT/WT	
+W629m	WT	629	M			C57BL/6N Mouse	93308	CRLWT/WT	
+W630m	WT	630	M			C57BL/6N Mouse	93309	CRLWT/WT	
+W631m	WT	631	M			C57BL/6N Mouse	93310	CRLWT/WT	
+W632f	WT	632	F			C57BL/6N Mouse	93297	CRLWT/WT	
+W633f	WT	633	F			C57BL/6N Mouse	93298	CRLWT/WT	
+W634m	WT	634	M			C57BL/6N Mouse	93296	CRLWT/WT	
+L818f	LAT	818	F	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93312	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L819f	LAT	819	F	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93313	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L824m	LAT	824	M	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93314	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L825m	LAT	825	M	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93315	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L826m	LAT	826	M	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93316	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L827m	LAT	827	M	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93317	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L836f	LAT	836	F	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93318	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L841f	LAT	841	F	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93319	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L848m	LAT	848	M	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93321	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L849m	LAT	849	M	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93322	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L854f	LAT	854	F	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93323	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L859m	LAT	859	M	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93324	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab
+L862f	LAT	862	F	linker for activation of T cells	MGI:1342293	C57BL/6N Mouse	93325	P5960Del/Del	https://www.mousephenotype.org/data/genes/MGI:1342293#phenotypesTab

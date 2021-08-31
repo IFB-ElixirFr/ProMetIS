@@ -1,0 +1,201 @@
+variableMetadata	category	measurement	category_full	transformation
+Anapath_..A2.heart	Anapath	% A2 heart	Anapath	inverse
+Anapath_A2.heart..g.	Anapath	A2 heart (g)	Anapath	inverse
+Anapath_A2.heart..mg...mg.	Anapath	A2 heart (mg) (mg)	Anapath	inverse
+Anapath_body.weight..g.	Anapath	body weight (g)	Anapath	normal
+Auditory.and.PPI_..PP70	Auditory and PPI	% PP70	Auditory startle reflex reactivity and PPI - P1	non parametric
+Auditory.and.PPI_..PP75	Auditory and PPI	% PP75	Auditory startle reflex reactivity and PPI - P1	non parametric
+Auditory.and.PPI_..PP85	Auditory and PPI	% PP85	Auditory startle reflex reactivity and PPI - P1	non parametric
+Auditory.and.PPI_..PP90	Auditory and PPI	% PP90	Auditory startle reflex reactivity and PPI - P1	non parametric
+Auditory.and.PPI_BN..65.	Auditory and PPI	BN (65)	Auditory startle reflex reactivity and PPI - P1	log
+Auditory.and.PPI_Body.weight..g.	Auditory and PPI	Body weight (g)	Auditory startle reflex reactivity and PPI - P1	normal
+Auditory.and.PPI_Glb	Auditory and PPI	Glb	Auditory startle reflex reactivity and PPI - P1	normal
+Auditory.and.PPI_P70	Auditory and PPI	P70	Auditory startle reflex reactivity and PPI - P1	log
+Auditory.and.PPI_P75	Auditory and PPI	P75	Auditory startle reflex reactivity and PPI - P1	log
+Auditory.and.PPI_P85	Auditory and PPI	P85	Auditory startle reflex reactivity and PPI - P1	log
+Auditory.and.PPI_P90	Auditory and PPI	P90	Auditory startle reflex reactivity and PPI - P1	log
+Auditory.and.PPI_PP70	Auditory and PPI	PP70	Auditory startle reflex reactivity and PPI - P1	non parametric
+Auditory.and.PPI_PP75	Auditory and PPI	PP75	Auditory startle reflex reactivity and PPI - P1	non parametric
+Auditory.and.PPI_PP85	Auditory and PPI	PP85	Auditory startle reflex reactivity and PPI - P1	non parametric
+Auditory.and.PPI_PP90	Auditory and PPI	PP90	Auditory startle reflex reactivity and PPI - P1	non parametric
+Auditory.and.PPI_ST110	Auditory and PPI	ST110	Auditory startle reflex reactivity and PPI - P1	log
+Body_body.weight.w7..g.	Body	body weight w7 (g)	Body Weight	normal
+Clinical.chemistry_ALAT..U.l.	Clinical chemistry	ALAT (U/l)	Clinical chemistry parameters	non parametric
+Clinical.chemistry_ALP..U.l.	Clinical chemistry	ALP (U/l)	Clinical chemistry parameters	normal
+Clinical.chemistry_ASAT..U.l.	Clinical chemistry	ASAT (U/l)	Clinical chemistry parameters	non parametric
+Clinical.chemistry_Albumin..g.l.	Clinical chemistry	Albumin (g/l)	Clinical chemistry parameters	non parametric
+Clinical.chemistry_Blood.Urea.Nitrogen.mg.dl..mg.dl.	Clinical chemistry	Blood Urea Nitrogen mg/dl (mg/dl)	Clinical chemistry parameters	log
+Clinical.chemistry_Glucose..mmol.l.	Clinical chemistry	Glucose (mmol/l)	Clinical chemistry parameters	normal
+Clinical.chemistry_HDL.Chol...mmol.l.	Clinical chemistry	HDL Chol. (mmol/l)	Clinical chemistry parameters	non parametric
+Clinical.chemistry_Non.HDL.Chol...mmol.l.	Clinical chemistry	Non HDL Chol. (mmol/l)	Clinical chemistry parameters	normal
+Clinical.chemistry_P..mmol.l.	Clinical chemistry	P (mmol/l)	Clinical chemistry parameters	normal
+Clinical.chemistry_T..Chol...mmol.l.	Clinical chemistry	T. Chol. (mmol/l)	Clinical chemistry parameters	normal
+Clinical.chemistry_T..bilirubin..µmol.l.	Clinical chemistry	T. bilirubin (µmol/l)	Clinical chemistry parameters	non parametric
+Clinical.chemistry_TG..mmol.l.	Clinical chemistry	TG (mmol/l)	Clinical chemistry parameters	normal
+Clinical.chemistry_Urea..mmol.l.	Clinical chemistry	Urea (mmol/l)	Clinical chemistry parameters	log
+Dysmorphology_Body.weight..g.	Dysmorphology	Body weight (g)	Dysmorphology IMPC	normal
+Dysmorphology_Loc..activity	Dysmorphology	Loc. activity	Dysmorphology IMPC	normal
+ECG_HR..bpm.	ECG	HR (bpm)	ECG in anaesthetized conditions	normal
+ECG_Number.of.signals	ECG	Number of signals	ECG in anaesthetized conditions	non parametric
+ECG_PR..ms.	ECG	PR (ms)	ECG in anaesthetized conditions	non parametric
+ECG_Pdur..ms.	ECG	Pdur (ms)	ECG in anaesthetized conditions	normal
+ECG_QRS..ms.	ECG	QRS (ms)	ECG in anaesthetized conditions	inverse
+ECG_QT..ms.	ECG	QT (ms)	ECG in anaesthetized conditions	non parametric
+ECG_QT.corrigé..ms.Corr.	ECG	QT corrigé (ms Corr)	ECG in anaesthetized conditions	non parametric
+ECG_RR..ms.	ECG	RR (ms)	ECG in anaesthetized conditions	normal
+ECG_Ramp..mv.	ECG	Ramp (mv)	ECG in anaesthetized conditions	non parametric
+ECG_ST..ms.	ECG	ST (ms)	ECG in anaesthetized conditions	log
+ECG_STE..mv.	ECG	STE (mv)	ECG in anaesthetized conditions	non parametric
+Echocardiography_Body.mass..g.	Echocardiography	Body mass (g)	Echocardiography using the Vevo light	normal
+Echocardiography_EF....	Echocardiography	EF (%)	Echocardiography using the Vevo light	normal
+Echocardiography_FS....	Echocardiography	FS (%)	Echocardiography using the Vevo light	normal
+Echocardiography_HR..bpm.	Echocardiography	HR (bpm)	Echocardiography using the Vevo light	sqrt
+Echocardiography_LV.Mass.AW..Corrected...mg.	Echocardiography	LV Mass AW (Corrected) (mg)	Echocardiography using the Vevo light	log
+Echocardiography_LV.Mass.AW..mg.	Echocardiography	LV Mass AW (mg)	Echocardiography using the Vevo light	log
+Echocardiography_LV.Vol_d..uL.	Echocardiography	LV Vol_d (uL)	Echocardiography using the Vevo light	normal
+Echocardiography_LV.Vol_s..uL.	Echocardiography	LV Vol_s (uL)	Echocardiography using the Vevo light	normal
+Echocardiography_LVAW_d..mm.	Echocardiography	LVAW_d (mm)	Echocardiography using the Vevo light	normal
+Echocardiography_LVAW_s..mm.	Echocardiography	LVAW_s (mm)	Echocardiography using the Vevo light	normal
+Echocardiography_LVID_d..mm.	Echocardiography	LVID_d (mm)	Echocardiography using the Vevo light	normal
+Echocardiography_LVID_s..mm.	Echocardiography	LVID_s (mm)	Echocardiography using the Vevo light	normal
+Echocardiography_LVPW_d..mm.	Echocardiography	LVPW_d (mm)	Echocardiography using the Vevo light	log
+Echocardiography_LVPW_s..mm.	Echocardiography	LVPW_s (mm)	Echocardiography using the Vevo light	log
+Eye_Body.weight..g.	Eye	Body weight (g)	Eye Morphology	normal
+Eye_Left.inner.plexiform.layer..µm.	Eye	Left inner plexiform layer (µm)	Eye Morphology	normal
+Eye_Left.segments..µm.	Eye	Left segments (µm)	Eye Morphology	normal
+Eye_Left.vitreous.humor.thickness..µm.	Eye	Left vitreous humor thickness (µm)	Eye Morphology	normal
+Eye_OCT.left.anterior.chamber.depth	Eye	OCT left anterior chamber depth	Eye Morphology	normal
+Eye_OCT.left.corneal.thickness	Eye	OCT left corneal thickness	Eye Morphology	normal
+Eye_OCT.left.inner.nuclear.layer..µm.	Eye	OCT left inner nuclear layer (µm)	Eye Morphology	normal
+Eye_OCT.left.outer.nuclear.layer..µm.	Eye	OCT left outer nuclear layer (µm)	Eye Morphology	normal
+Eye_OCT.left.total.retinal.thickness..µm.	Eye	OCT left total retinal thickness (µm)	Eye Morphology	normal
+Eye_OCT.right.corneal.thickness	Eye	OCT right corneal thickness	Eye Morphology	normal
+Eye_OCT.right.inner.nuclear.layer..µm.	Eye	OCT right inner nuclear layer (µm)	Eye Morphology	normal
+Eye_OCT.right.outer.nuclear.layer..µm.	Eye	OCT right outer nuclear layer (µm)	Eye Morphology	normal
+Eye_OCT.right.total.retinal.thickness..µm.	Eye	OCT right total retinal thickness (µm)	Eye Morphology	normal
+Eye_Right.inner.plexiform.layer..µm.	Eye	Right inner plexiform layer (µm)	Eye Morphology	normal
+Eye_Right.segments..µm.	Eye	Right segments (µm)	Eye Morphology	normal
+Eye_Right.vitreous.humor.thickness..µm.	Eye	Right vitreous humor thickness (µm)	Eye Morphology	normal
+Grip.test_Grip.mean..4paws...g.	Grip test	Grip mean (4paws) (g)	Grip test	normal
+Grip.test_Grip.mean..g.	Grip test	Grip mean (g)	Grip test	normal
+Grip.test_Grip.mean.ratio..g.g.	Grip test	Grip mean ratio (g/g)	Grip test	normal
+Grip.test_Grip.mean.ratio.4paws...g.g.	Grip test	Grip mean ratio(4paws) (g/g)	Grip test	normal
+Grip.test_Trial.1..g.	Grip test	Trial 1 (g)	Grip test	normal
+Grip.test_Trial.2..g.	Grip test	Trial 2 (g)	Grip test	normal
+Grip.test_Trial.3..g.	Grip test	Trial 3 (g)	Grip test	normal
+Grip.test_Trial1..4paws...g.	Grip test	Trial1 (4paws) (g)	Grip test	normal
+Grip.test_Trial2..4paws...g.	Grip test	Trial2 (4paws) (g)	Grip test	normal
+Grip.test_Trial3..4paws...g.	Grip test	Trial3 (4paws) (g)	Grip test	normal
+Grip.test_Weight..g.	Grip test	Weight (g)	Grip test	normal
+Gross_Body.Weight..g.	Gross	Body Weight (g)	Gross Pathology	normal
+Haematology_.BASO....	Haematology	%BASO (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_.EOSINO....	Haematology	%EOSINO (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_.LUC....	Haematology	%LUC (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_.LYMPHO....	Haematology	%LYMPHO (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_.MONO....	Haematology	%MONO (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_.NEUTRO....	Haematology	%NEUTRO (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_CHCM..g.dL.	Haematology	CHCM (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_CHDW..g.dL.	Haematology	CHDW (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	normal
+Haematology_EOSINO..x10E03.cells.µL.	Haematology	EOSINO (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_EOSINO.BRUT..x10E03.cells.µL.	Haematology	EOSINO BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_HCT....	Haematology	HCT (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_HGB..g.dL.	Haematology	HGB (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_HGB.brut..g.dL.	Haematology	HGB brut (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_Hte.brut....	Haematology	Hte brut (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_LUC..x10E03.cells.µL.	Haematology	LUC (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_LUC.BRUT..x10E03.cells.µL.	Haematology	LUC BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_LYMPHO..x10E03.cells.µL.	Haematology	LYMPHO (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_LYMPHO.BRUT..x10E03.cells.µL.	Haematology	LYMPHO BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_MCH..pg.	Haematology	MCH (pg)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_MCHC..g.dL.	Haematology	MCHC (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_MCV..fL.	Haematology	MCV (fL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_MONO..x10E03.cells.µL.	Haematology	MONO (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_MONO.BRUT..x10E03.cells.µL.	Haematology	MONO BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_MPV..fL.	Haematology	MPV (fL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_NEUTRO..x10E03.cells.µL.	Haematology	NEUTRO (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_NEUTRO.BRUT..x10E03.cells.µL.	Haematology	NEUTRO BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_PLT..x10E03.cells.µL.	Haematology	PLT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_PLT.brut..x10E03.cells.µL.	Haematology	PLT brut (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_RBC..x10E06.cells.µL.	Haematology	RBC (x10E06 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_RBC.brut..x10E06.cells.µL.	Haematology	RBC brut (x10E06 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_RDW....	Haematology	RDW (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_WBC..x10E03.cells.µL.	Haematology	WBC (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	normal
+Haematology_WBC.brut..x10E03.cells.µL.	Haematology	WBC brut (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	normal
+Hot.plate_Body.weight..g.	Hot plate	Body weight (g)	Hot plate test	normal
+Hot.plate_Hot.plate.1..s.	Hot plate	Hot plate 1 (s)	Hot plate test	normal
+Open.field_..Time.Spent.in.the.Center.I1..cm.	Open field	% Time Spent in the Center I1 (cm)	Open field test	log
+Open.field_..Time.Spent.in.the.Center.I2..cm.	Open field	% Time Spent in the Center I2 (cm)	Open field test	log
+Open.field_..Time.Spent.in.the.Center.I3..cm.	Open field	% Time Spent in the Center I3 (cm)	Open field test	log
+Open.field_..Time.Spent.in.the.Center.I4..cm.	Open field	% Time Spent in the Center I4 (cm)	Open field test	log
+Open.field_..distance.in.the.Center.I1..cm.	Open field	% distance in the Center I1 (cm)	Open field test	log
+Open.field_..distance.in.the.Center.I2..cm.	Open field	% distance in the Center I2 (cm)	Open field test	log
+Open.field_..distance.in.the.Center.I3..cm.	Open field	% distance in the Center I3 (cm)	Open field test	log
+Open.field_..distance.in.the.Center.I4..cm.	Open field	% distance in the Center I4 (cm)	Open field test	log
+Open.field_..distance.in.the.Center.glob...cm.	Open field	% distance in the Center glob. (cm)	Open field test	log
+Open.field_.Time.Spent.in.the.Center.glob	Open field	%Time Spent in the Center glob	Open field test	log
+Open.field_Dist.I1..cm.	Open field	Dist I1 (cm)	Open field test	normal
+Open.field_Dist.I2..cm.	Open field	Dist I2 (cm)	Open field test	normal
+Open.field_Dist.I3..cm.	Open field	Dist I3 (cm)	Open field test	normal
+Open.field_Dist.I4..cm.	Open field	Dist I4 (cm)	Open field test	normal
+Open.field_Dist.global..cm.	Open field	Dist global (cm)	Open field test	normal
+Open.field_Distance.center..cm.	Open field	Distance center (cm)	Open field test	normal
+Open.field_Distance.periphery..cm.	Open field	Distance periphery (cm)	Open field test	normal
+Open.field_Distance.whole.arena..cm.	Open field	Distance whole arena (cm)	Open field test	normal
+Open.field_Latency.center..s.	Open field	Latency center (s)	Open field test	log
+Open.field_NEntries.center	Open field	NEntries center	Open field test	sqrt
+Open.field_Number.of.Rearings.I1	Open field	Number of Rearings I1	Open field test	normal
+Open.field_Number.of.Rearings.I2	Open field	Number of Rearings I2	Open field test	normal
+Open.field_Number.of.Rearings.I3	Open field	Number of Rearings I3	Open field test	normal
+Open.field_Number.of.Rearings.I4	Open field	Number of Rearings I4	Open field test	normal
+Open.field_Number.of.Rearings.global	Open field	Number of Rearings global	Open field test	normal
+Open.field_Permanence.Time.center..s.	Open field	Permanence Time center (s)	Open field test	normal
+Open.field_Permanence.Time.periphery..s.	Open field	Permanence Time periphery (s)	Open field test	normal
+Open.field_Resting.Time.center..s.	Open field	Resting Time center (s)	Open field test	normal
+Open.field_Resting.Time.periphery..s.	Open field	Resting Time periphery (s)	Open field test	normal
+Open.field_Resting.Time.whole.arena..s.	Open field	Resting Time whole arena (s)	Open field test	normal
+Open.field_av..speed.center..cm.s.	Open field	av. speed center (cm/s)	Open field test	normal
+Open.field_av..speed.periphery..cm.s.	Open field	av. speed periphery (cm/s)	Open field test	normal
+Open.field_av..speed.whole.arena..cm.s.	Open field	av. speed whole arena (cm/s)	Open field test	normal
+Pavlovian.fear.cond._Freezing.....Con.1	Pavlovian fear cond.	Freezing (%) Con-1	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.....Con.2	Pavlovian fear cond.	Freezing (%) Con-2	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.....Con.3	Pavlovian fear cond.	Freezing (%) Con-3	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.....Cue.1	Pavlovian fear cond.	Freezing (%) Cue-1	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.....Cue.2	Pavlovian fear cond.	Freezing (%) Cue-2	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.....total	Pavlovian fear cond.	Freezing (%) total	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.Cue.1	Pavlovian fear cond.	Freezing Cue 1	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.Cue.2	Pavlovian fear cond.	Freezing Cue 2	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.Pre.cue.1	Pavlovian fear cond.	Freezing Pre-cue 1	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.Pre.cue.2	Pavlovian fear cond.	Freezing Pre-cue 2	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.conditioning.Hab.1	Pavlovian fear cond.	Freezing conditioning Hab-1	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.conditioning.Hab.2	Pavlovian fear cond.	Freezing conditioning Hab-2	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._Freezing.conditioning.post.us1	Pavlovian fear cond.	Freezing conditioning post-us1	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._context.freezing.con.1	Pavlovian fear cond.	context freezing con-1	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._context.freezing.con.2	Pavlovian fear cond.	context freezing con-2	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._context.freezing.con.3	Pavlovian fear cond.	context freezing con-3	Pavlovian fear conditioning	non parametric
+Pavlovian.fear.cond._freezing.total.context	Pavlovian fear cond.	freezing total context	Pavlovian fear conditioning	non parametric
+Rotarod_Body.weight..g.	Rotarod	Body weight (g)	Rotarod test	normal
+Rotarod_Mean.latency	Rotarod	Mean latency	Rotarod test	normal
+Rotarod_Trial.1..s.	Rotarod	Trial 1 (s)	Rotarod test	normal
+Rotarod_Trial.2..s.	Rotarod	Trial 2 (s)	Rotarod test	normal
+Rotarod_Trial.3..s.	Rotarod	Trial 3 (s)	Rotarod test	normal
+Shock.threshold_Vocalization	Shock threshold	Vocalization	Shock threshold test	non parametric
+Glucose.tolerance.test_Body.weight..g.	Glucose tolerance test	Body weight (g)	Test de Tolérance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T0..mmol.l.	Glucose tolerance test	Glucose T0 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T120..mmol.l.	Glucose tolerance test	Glucose T120 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T15..mmol.l.	Glucose tolerance test	Glucose T15 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T30..mmol.l.	Glucose tolerance test	Glucose T30 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T60..mmol.l.	Glucose tolerance test	Glucose T60 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.auc.positive..0.120...min.mmol.l.	Glucose tolerance test	Glucose auc positive (0-120) (min*mmol/l)	Test de Tolérance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.auc.0.120...min.mmol.l.	Glucose tolerance test	Glucose auc(0-120) (min*mmol/l)	Test de Tolérance au Glucose (GTT)	normal
+Body.composition_BMC..g.	Body composition	BMC (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	log
+Body.composition_BMD..g.cm2.	Body composition	BMD (g/cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_Body.length..cm.	Body composition	Body length (cm)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_body.weight..g.	Body composition	body weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_bone.area..cm2.	Body composition	bone area (cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_fat.percent....	Body composition	fat percent (%)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_fat.weight..g.	Body composition	fat weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_lean.percent....	Body composition	lean percent (%)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_lean.weight..g.	Body composition	lean weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_sample.area..cm2.	Body composition	sample area (cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_soft.weight..g.	Body composition	soft weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Body.composition_total.weight..g.	Body composition	total weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal

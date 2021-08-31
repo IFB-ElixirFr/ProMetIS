@@ -123,10 +123,10 @@
   score.mn <- ropls::getScoreMN(eset.pca)
   data.df <- cbind.data.frame(data.df,
                               score.mn)
-  data.df <- data.df[order(data.df[, "WT_mice"], decreasing = TRUE), ]
+  data.df <- data.df[order(data.df[, "prometis"], decreasing = TRUE), ]
   
   p <- ggplot2::ggplot(data.df, ggplot2::aes(x = p1, y = p2)) +
-    ggplot2::geom_point(ggplot2::aes(color = WT_mice), size = 3) +
+    ggplot2::geom_point(ggplot2::aes(color = prometis), size = 3) +
     ggplot2::geom_hline(ggplot2::aes(yintercept = 0)) +
     ggplot2::geom_vline(ggplot2::aes(xintercept = 0)) +
     ggplot2::stat_ellipse(ggplot2::aes(x = p1, y = p2, group = 1), type = 'norm') +
@@ -198,14 +198,16 @@
 }
 
 .cv_ggplot <- function(data.tb,
-                       title.c = "") {
+                       title.c = "",
+                       color.vc = RColorBrewer::brewer.pal(9, "Set1")) {
   
-  color.c <- x.c <- "type"
-  y.c <- "value"
+  stopifnot(ncol(data.tb) == 2)
   
-  p <- ggplot2::ggplot(data.tb, ggplot2::aes(x = type, y = value, color = type)) +
+  p <- ggplot2::ggplot(data.tb, ggplot2::aes_string(x = colnames(data.tb)[1],
+                                                    y = colnames(data.tb)[2],
+                                                    color = colnames(data.tb)[1])) +
     ggplot2::geom_boxplot(outlier.size = 1) +
-    ggplot2::scale_colour_brewer(palette = "Set1") +
+    ggplot2::scale_color_manual(values = color.vc) +
     ggplot2::labs(title = title.c, x = "", y = "CV (%)") +
     ggplot2::theme_light() +
     ggplot2::theme(plot.title = ggplot2::element_text(size = 11, face = "bold"),

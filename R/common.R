@@ -396,8 +396,17 @@ metadata_select <- function(mset,
 .sample_metadata_select <- function(set.c) {
   
   first.vc <- c("gene",
-                "mouse_nb",
+                "mouse_id",
                 "sex")
+  
+  if(set.c == "preclinical")
+    first.vc <- c(first.vc,
+                  c("gene_name",
+                    "mgi_id",
+                    "variant",
+                    "impc_id",
+                    "impc_genotype",
+                    "impc_phenotype"))
   
   return(first.vc)
   
@@ -408,8 +417,10 @@ metadata_select <- function(mset,
   # post-processing
   
   if (set.c == "preclinical")
-    varmeta.vc <- c("measurement",
-                     "category")
+    varmeta.vc <- c("category",
+                    "measurement",
+                    "category_full",
+                    "transformation")
   
   if (grepl("metabolomics", set.c))
     varmeta.vc <- c("chromato",

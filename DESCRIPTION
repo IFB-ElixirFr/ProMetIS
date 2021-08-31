@@ -1,8 +1,8 @@
 Package: ProMetIS
 Type: Package
 Title: Multi-omics phenotyping of the LAT and MX2 knockout mice
-Version: 0.5.2
-Date: 2021-07-19
+Version: 0.5.4
+Date: 2021-08-31
 Author: Alyssa Imbert, Florence Castelli, Magali Rompais, Mohammed Selloum,
     Emmanuelle Mouton-Barbosa, Thomas Burger, Marion Brandolini-Bunlon, Arthur Tenenhaus,
     Yves Vandenbrouck, Olivier Sand, Pierrick Roger, Natacha Lenuzza, Emeline Chu-Van,
