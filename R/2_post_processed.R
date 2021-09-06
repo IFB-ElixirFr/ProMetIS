@@ -174,7 +174,7 @@
 
 
 .format_metabonames <- function(metabo.mset,
-                                mice.ls) {
+                                mice_id.df) {
   # mice_id.df, mice_id.vc, mice_num.vc) {
   
   for (set.c in ProMetIS::metabo_sets.vc()) {
@@ -190,33 +190,42 @@
     } else
       stop("Unknown metabolomics dataset name.")
     
-    stopifnot(identical(sort(samp_num.vc), sort(mice.ls[["num.vc"]])))
+    stopifnot(identical(sort(samp_num.vc), sort(as.character(mice_id.df[, "mouse_id"]))))
     
     if (grepl("acqui", set.c)) {
       eset <- eset[, order(as.numeric(samp_num.vc))]
       samp_num.vc <- substr(Biobase::sampleNames(eset), 10, 12)
     }
     
-    stopifnot(identical(sort(samp_num.vc), sort(mice.ls[["num.vc"]])))
+    stopifnot(identical(sort(samp_num.vc), sort(as.character(mice_id.df[, "mouse_id"]))))
     
     samp_ord.vi <- order(samp_num.vc)
     eset <- eset[, samp_ord.vi]
     samp_num.vc <- samp_num.vc[samp_ord.vi]
     
-    stopifnot(identical(samp_num.vc, mice.ls[["num.vc"]]))
+    stopifnot(identical(samp_num.vc, as.character(mice_id.df[, "mouse_id"])))
     
-    Biobase::pData(eset) <- cbind.data.frame(mice.ls[["id.df"]],
+    Biobase::pData(eset) <- cbind.data.frame(mice_id.df,
                                              initial_name = Biobase::sampleNames(eset),
                                              Biobase::pData(eset))
     
-    Biobase::sampleNames(eset) <- mice.ls[["id.vc"]]
+    Biobase::sampleNames(eset) <- rownames(mice_id.df)
     
     # variable metadata: adding the name of the chromatographic column
 
     fdata.df <- Biobase::fData(eset)
 
     fdata.df[, "chromato"] <- rep(unlist(strsplit(set.c, split = "_"))[3],
-                                          nrow(fdata.df))
+                                  nrow(fdata.df))
+    
+    if (grepl("acqui", set.c)) {
+      for (col.c in c("name", "chebi_id", "annot_confidence")) {
+        if (col.c %in% colnames(fdata.df)) {
+          fdata.df[, col.c] <- as.character(fdata.df[, col.c])
+          fdata.df[is.na(fdata.df[, col.c]), col.c] <- ""
+        }
+      }
+    }
 
     Biobase::fData(eset) <- fdata.df
 

@@ -317,7 +317,7 @@ for (set.c in ProMetIS::proteo_sets.vc()) {
 ## Loading
 
 ```{r metabo_loading}
-metabo.mset <- phenomis::reading(file.path(ProMetIS::processed_dir.c()),
+metabo.mset <- phenomis::reading(ProMetIS::processed_dir.c(),
                                  subsets.vc = ProMetIS::metabo_sets.vc(),
                                  report.c = "none")
 ```
@@ -346,7 +346,7 @@ metabo.mset <- ProMetIS:::.metabo_postprocessing(metabo.mset = metabo.mset,
 
 ```{r metabo_format_names}
 metabo.mset <- ProMetIS:::.format_metabonames(metabo.mset = metabo.mset,
-                                              mice.ls = mice.ls)
+                                              mice_id.df = mice_id.df)
 ```
 
 ## Log2 transformation

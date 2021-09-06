@@ -1,4 +1,4 @@
-sampleMetadata	gene	mouse_nb	sex	id
+sampleMetadata	gene	mouse_id	sex	id
 W616f	WT	616	F	W616f
 W617f	WT	617	F	W617f
 W620f	WT	620	F	W620f

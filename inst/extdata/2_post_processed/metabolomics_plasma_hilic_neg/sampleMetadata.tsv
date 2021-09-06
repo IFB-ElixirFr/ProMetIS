@@ -1,4 +1,4 @@
-sampleMetadata	gene	mouse_nb	sex
+sampleMetadata	gene	mouse_id	sex
 X501f	MX2	501	F
 X502m	MX2	502	M
 X503m	MX2	503	M

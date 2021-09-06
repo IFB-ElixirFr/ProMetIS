@@ -26,7 +26,7 @@ testthat::test_that("dimensions", {
                               "metabolomics_plasma_c18acquity_pos|6104|28",
                               "metabolomics_plasma_c18hypersil_pos|4788|28",
                               "metabolomics_plasma_hilic_neg|3131|28",
-                              "preclinical|203|28",
+                              "preclinical|167|28",
                               "proteomics_liver|2098|28",
                               "proteomics_plasma|419|24"),
                       MX2 = c("metabolomics_liver_c18hypersil_pos|5665|29",
@@ -35,7 +35,7 @@ testthat::test_that("dimensions", {
                               "metabolomics_plasma_c18acquity_pos|6104|29",
                               "metabolomics_plasma_c18hypersil_pos|4788|29",
                               "metabolomics_plasma_hilic_neg|3131|29",
-                              "preclinical|234|29",
+                              "preclinical|199|29",
                               "proteomics_liver|2090|29",
                               "proteomics_plasma|422|25"))
   test_dim.ls <- lapply(test_dim.ls,

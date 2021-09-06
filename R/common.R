@@ -364,6 +364,12 @@ metadata_select <- function(mset,
       annot_level_na.vi <- which(is.na(annot_level.vc) | annot_level.vc == "NA")
       annot_level.vc[annot_level_na.vi] <- ""
       fdata.df[, "annot_level"] <- annot_level.vc
+      
+      monoiso_col.c <- "monoisotopic_mass"
+      if(monoiso_col.c %in% colnames(fdata.df)) {
+        fdata.df[, monoiso_col.c] <- as.character(fdata.df[, monoiso_col.c])
+        fdata.df[is.na(fdata.df[, monoiso_col.c]), monoiso_col.c] <- ""
+      }
     }
     
     Biobase::fData(eset) <- fdata.df[, variablemeta.vc]
