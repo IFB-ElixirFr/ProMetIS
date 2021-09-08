@@ -41,10 +41,9 @@ mice_id.df[, "id"] <- NULL
 ```{r proteo_files}
 proteo_files.vc <- vapply(ProMetIS::proteo_sets.vc(),
                           function(set.c) {
-                            file.c <- list.files(file.path(ProMetIS::processed_dir.c(), set.c),
+                            files.vc <- list.files(file.path(ProMetIS::processed_dir.c(), set.c),
                                                  pattern = ".xlsx", full.names = TRUE)
-                            stopifnot(length(file.c) == 1)
-                            file.c
+                            files.vc[!grepl("(ProMetIS|prometis)", basename(files.vc))]
                           }, FUN.VALUE = character(1))
 
 proteo.mset <- MultiDataSet::createMultiDataSet()
