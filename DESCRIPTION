@@ -1,15 +1,35 @@
 Package: ProMetIS
 Type: Package
 Title: Multi-omics phenotyping of the LAT and MX2 knockout mice
-Version: 0.5.8
-Date: 2021-09-08
-Author: Alyssa Imbert, Florence Castelli, Magali Rompais, Mohammed Selloum,
-    Emmanuelle Mouton-Barbosa, Thomas Burger, Marion Brandolini-Bunlon, Arthur Tenenhaus,
-    Yves Vandenbrouck, Olivier Sand, Pierrick Roger, Natacha Lenuzza, Emeline Chu-Van,
-    Charlotte Joly, Julia Novion Ducassou, Tania Sorg, Bernard Malissen, Christophe Bruley, Laurent Vasseur, Aurélie Hirschler, Yohann Couté, David Bouyssié, Marie Courçon, Odile Schiltz, Virginie Brun, Jérôme Garin,
-    Claudine Médigue, Christophe Junot, David Vallenet, Anne Gonzalez-de-Peredo, Myriam Ferro,
-    Estelle Pujos-Guillot, Yann Herault, Christine Carapito, François Fenaille
-    and Etienne A. Thévenot (ProMetIS consortium)
+Version: 1.0.0
+Date: 2021-10-29
+Author@R:
+    c(
+    person(given = "Alyssa", family = "Imbert", role = c("aut")),
+    person(given = "Magali", family = "Rompais", role = c("ctb")),
+    person(given = "Mohammed", family = "Selloum", role = c("ctb")),
+    person(given = "Florence", family = "Castelli", role = c("ctb")),
+    person(given = "Emmanuelle", family = "Mouton-Barbosa", role = c("ctb")),
+    person(given = "Marion", family = "Brandolini-Bunlon", role = c("ctb")),
+    person(given = "Emeline", family = "Chu-Van", role = c("ctb")),
+    person(given = "Charlotte", family = "Joly", role = c("ctb")),
+    person(given = "Aurélie", family = "Hirschler", role = c("ctb")),
+    person(given = "Pierrick", family = "Roger", role = c("ctb")),
+    person(given = "Thomas", family = "Burger", role = c("ctb")),
+    person(given = "Sophie", family = "Leblanc", role = c("ctb")),
+    person(given = "Tania", family = "Sorg", role = c("ctb")),
+    person(given = "Sadia", family = "Ouzia", role = c("ctb")),
+    person(given = "Yves", family = "Vandenbrouck", role = c("ctb")),
+    person(given = "Claudine", family = "Médigue", role = c("ctb")),
+    person(given = "Christophe", family = "Junot", role = c("ctb")),
+    person(given = "Myriam", family = "Ferro", role = c("ctb")),
+    person(given = "Estelle", family = "Pujos-Guillot", role = c("ctb")),
+    person(given = "Anne", family = "Gonzalez de Peredo", role = c("ctb")),
+    person(given = "François", family = "Fenaille", role = c("ctb")),
+    person(given = "Christine", family = "Carapito", role = c("ctb")),
+    person(given = "Yann", family = "Herault", role = c("ctb")),
+    person(given = "Etienne", family = "Thevenot", role = c("aut", "cre"), email = "ethienne.thevenot@cea.fr")
+     )
 Maintainer: Etienne A. Thevenot <etienne.thevenot@cea.fr>
 Description: This package provides the data and analyses used in the proteomics and
     metabolomics study of the LAT and MX2 knockout mice.
@@ -32,4 +52,4 @@ Remotes:
 License: CeCILL
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

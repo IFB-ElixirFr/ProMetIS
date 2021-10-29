@@ -30,9 +30,139 @@ knitr::opts_chunk$set(fig.width = 8,
 
 ## Loading the LAT and MX2 data
 
+### Post-processed data (pp.mset)
+Figures 2, S6, S12, and Supplementary File 2
+
 ```{r}
 pp.mset <- phenomis::reading(ProMetIS::post_processed_dir.c(),
                              report.c = "none")[, ProMetIS::sets.vc()]
+```
+
+### Processed data (p.mset)
+Figures S1-4
+
+```{r}
+p.mset <- phenomis::reading(ProMetIS::processed_dir.c(),
+                            report.c = "none")
+```
+
+Including the proteomics raw intensities (i.e. before the normalization, filtering, imputation and log2 transformation with ProStaR):
+
+```{r}
+load(file.path(ProMetIS::post_processed_dir.c(), "metadata_supp.rdata"))
+
+for (tissue.c in ProMetIS::tissues.vc()) {
+  prot_set.c <- paste0("proteomics_", tissue.c)
+  prot_tissue.ls <- metadata_supp.ls[[prot_set.c]]
+  prot_tissue_pda.df <- prot_tissue.ls[["pdata"]]
+  prot_tissue_fda.df <- prot_tissue.ls[["fdata"]]
+  prot_tissue_exprs.mn <- as.matrix(prot_tissue_fda.df[, grep("raw_", colnames(prot_tissue_fda.df))])
+  colnames(prot_tissue_exprs.mn) <- make.names(sapply(colnames(prot_tissue_exprs.mn),
+                                                      function(colname.c) {
+                                                        if(tissue.c == "liver") {
+                                                          return(unlist(strsplit(colname.c, "_"))[[4]])
+                                                        } else {
+                                                          return(unlist(strsplit(colname.c, "_"))[[3]])
+                                                        }
+                                                      }), unique = TRUE)
+  
+  prot_tissue.eset <- Biobase::ExpressionSet(assayData = prot_tissue_exprs.mn)
+  Biobase::pData(prot_tissue.eset) <- data.frame(row.names = colnames(prot_tissue_exprs.mn),
+                                                 gene = sapply(substr(colnames(prot_tissue_exprs.mn), 1, 1),
+                                                               function(x)
+                                                                 switch(x,
+                                                                        X = "MX2",
+                                                                        L = "LAT",
+                                                                        W = "WT",
+                                                                        P = "Pool",
+                                                                        m = "Pool")),
+                                                 mouse_id = as.numeric(substr(colnames(prot_tissue_exprs.mn), 2, 4)),
+                                                 sex = sapply(substr(colnames(prot_tissue_exprs.mn), 5, 5),
+                                                               function(x)
+                                                                 if (x == "m") {
+                                                                   return("M")
+                                                                 } else if (x == "f") {
+                                                                   return("F")
+                                                                 } else
+                                                                 return(NA_character_)
+                                                 ))
+  
+  
+  p.mset <- MultiDataSet::add_eset(p.mset,
+                                   prot_tissue.eset,
+                                   dataset.type = paste0("proteomics_", tissue.c),
+                                   GRanges = NA,
+                                   overwrite = TRUE,
+                                   warnings = FALSE) 
+}
+
+p.mset <- p.mset[, c("ics", ProMetIS::sets.vc())]
+```
+
+### Processed data (with signal drift correction of metabolomics data): pm.mset
+Figure S5, S7-9
+
+```{r}
+pm.mset <- p.mset
+```
+
+Post-processing in the 'technical validation' mode (keeping standards, keeping pools, omitting the pool_CV <= 30% and pool_CV_over_sample_CV <= 1 filters)
+
+
+```{r metabosets_postprocessing_technical_validation}
+# pmetabo.mset <- ProMetIS:::.metabo_postprocessing(metabo.mset = pm.mset[, ProMetIS::metabo_sets.vc()],
+#                                                    drift_correct.c = "prometis",
+#                                                    .technical_validation.l = TRUE)
+# save(pmetabo.mset, file = "../supplementary/technical_validation/metabolomics/pmetabo_mset.rdata")
+```
+
+Updating the metabolomics datasets in the pm.mset
+
+```{r}
+load("../supplementary/technical_validation/metabolomics/pmetabo_mset.rdata")
+
+for (set.c in grep("metabolomics", names(pmetabo.mset), value = TRUE)) {
+  
+  pmetabo.eset <- pmetabo.mset[[set.c]]
+  # pmetabo_supp.ls <- metadata_supp.ls[[set.c]]
+  # pmetabo_supp_pda.df <- pmetabo_supp.ls[["pdata"]]
+  # identical(rownames(pmetabo_supp_pda.df), Biobase::sampleNames(pp.mset[[set.c]]))
+  # pmetabo_supp_pda.df <- cbind.data.frame(pmetabo_supp_pda.df,
+  #                                         Biobase::pData(pp.mset[[set.c]]))
+  # rownames(pmetabo_supp_pda.df) <- pmetabo_supp_pda.df[, "id"]
+  # stopifnot(all(rownames(pmetabo_supp_pda.df) %in% Biobase::sampleNames(pmetabo.eset)))
+  # 
+  # gene.vc <- rep(NA_character_, dim(pmetabo.eset)["Samples"])
+  # names(gene.vc) <- Biobase::sampleNames(pmetabo.eset)
+  # sex.vc <- gene.vc
+  # gene.vc[rownames(pmetabo_supp_pda.df)] <- pmetabo_supp_pda.df[, "gene"]
+  # sex.vc[rownames(pmetabo_supp_pda.df)] <- pmetabo_supp_pda.df[, "sex"]
+  # 
+  # Biobase::pData(pmetabo.eset)[, "gene"] <- gene.vc
+  # Biobase::pData(pmetabo.eset)[, "sex"] <- sex.vc
+  
+  pm.mset <- MultiDataSet::add_eset(pm.mset,
+                                    pmetabo.eset,
+                                    dataset.type = set.c,
+                                    GRanges = NA,
+                                    overwrite = TRUE,
+                                    warnings = FALSE)
+  
+}
+
+pm.mset <- pm.mset[, c("ics", ProMetIS::sets.vc())]
+```
+
+### Aggregated (aggreg_mset.ls)
+
+```{r loading}
+aggreg_mset.ls <- lapply(ProMetIS::genes.vc(),
+                         function(gene.c) {
+                           gene.mset <- phenomis::reading(file.path(ProMetIS::aggregated_dir.c(gene.c)),
+                                                          report.c = "none")
+                           gene.mset <- gene.mset[, ProMetIS::sets.vc()]
+                         })
+names(aggreg_mset.ls) <- ProMetIS::genes.vc()
 ```
 
 ## Number of samples and features for each dataset
@@ -106,17 +236,6 @@ If the datasets are loaded directly from the **5_aggregated** step, the number o
 
 * and for the proteomics datasets: imputation of less than 20% of the samples in at least one class 
 
-
-```{r loading}
-aggreg_mset.ls <- lapply(ProMetIS::genes.vc(),
-                         function(gene.c) {
-                           gene.mset <- phenomis::reading(file.path(ProMetIS::aggregated_dir.c(gene.c)),
-                                                          report.c = "none")
-                           gene.mset <- gene.mset[, ProMetIS::sets.vc()]
-                         })
-names(aggreg_mset.ls) <- ProMetIS::genes.vc()
-```
-
 ```{r dims, fig.width = 10}
 aggreg_dims.mn <- NULL
 for (gene.c in ProMetIS::genes.vc()) {
@@ -185,7 +304,7 @@ For each dataset, numerical and graphical quality controls are presented.
 
 ## Preclinical
 
-The objective is to check that the WT lines from the ProMetIS study have similar phenotyping values compared to all other WT lines generated by PHENOMIN ICS.
+The objective is to check that the WT lines from the ProMetIS study have similar phenotyping values compared to all other WT lines generated by Phenomin-ICS.
 
 ```{r}
 # intensities of the WT mice in ProMetIS
@@ -208,7 +327,7 @@ ppclin_mean.mn <- t(apply(ppclin_wt.mn, 1,
 ```
 
 ```{r}
-ics.eset <- phenomis::reading(file.path(ProMetIS::processed_dir.c(), "ics"), report.c = "none")
+ics.eset <- p.mset[["ics"]]
 
 # restricting to the WT (C57BL6/N) mice not included in the ProMetIS project
 ics_wt.eset <- ics.eset[, Biobase::pData(ics.eset)[, "gene"] == "WT" &
@@ -276,9 +395,6 @@ ppclin_unpass.mn <- cbind(F = ppclin_mean.mn[, "F"], ics_range.mn[, c("F_inf", "
 
 print(ppclin_unpass.mn)
 
-# 'Gross Pathology_Body Weight (g)' contains to few values to be checked by the reference range
-ppclin_pass.vl["Gross Pathology_Body Weight (g)"] <- TRUE
-
 # 'Eye morphology (OCT + slit lamp)_Left vitreous humor thickness (µm)' is kept although the mean in males (560.6667) is slightly higher than the 2 * SD (559.86062)
 ppclin_pass.vl["Eye morphology (OCT + slit lamp)_Left vitreous humor thickness (µm)"] <- TRUE
 
@@ -299,8 +415,8 @@ A total of `r as.numeric(dim(wt.eset)["Samples"])` WT lines and `r as.numeric(di
 ```{r}
 Biobase::pData(wt.eset)[, "prometis"] <- factor(ifelse(Biobase::pData(wt.eset)[, "impc_id"] %in%
                                                          Biobase::pData(ppclin.eset)[, "impc_id"],
-                                                       "ProMetIS", "Other PHENOMIN"),
-                                                levels = c("ProMetIS", "Other PHENOMIN"))
+                                                       "ProMetIS", "Other Phenomin-ICS"),
+                                                levels = c("ProMetIS", "Other Phenomin-ICS"))
 stopifnot(sum(Biobase::pData(wt.eset)[, "prometis"] == "ProMetIS") == 15)
 ```
 
@@ -417,13 +533,11 @@ for (feat.c in c("Open field test_Dist global (cm)")) {
 
 ## Proteomics
 
-```{r}
-p.mset <- phenomis::reading(ProMetIS::processed_dir.c(),
-                            report.c = "none")
-```
+### iRT
 
-```{r proteomics_files}
+```{r proteomics_irt_loading}
 techval_proteo_dir.c <- "../supplementary/technical_validation/proteomics"
+
 
 # liver
 prot_liver_file.c <- file.path(techval_proteo_dir.c,
@@ -432,11 +546,6 @@ prot_liver_file.c <- file.path(techval_proteo_dir.c,
 # plasma
 prot_plasma_file.c <- file.path(techval_proteo_dir.c,
                                 "figureQC_proteomique.xlsx")
-```
-
-### iRT
-
-```{r proteomics_irt_loading}
 # liver
 irt_liver.tb <- suppressMessages(readxl::read_excel(prot_liver_file.c,
                                                      sheet = 1))
@@ -466,6 +575,8 @@ pept_plasma.vc <- rownames(irt_plasma.mn)
 stopifnot(identical(pept_liver.vc, pept_plasma.vc))
 rownames(irt_plasma.mn) <- rownames(irt_liver.mn)
 ```
+
+Note: alternatively, the raw intensities may be found in the additional feature metadata from the proteomics datasets (by loading the 'metadata_supp.rdata' file from the 'extdata/2_post_processed' subfolder; see the next "CV" section) and by using the 11 peptide sequences indicated in the article
 
 ### CV
 
@@ -499,6 +610,31 @@ cv_plasma.df <- cbind.data.frame(type = factor(rep(c("WT", "MX2", "LAT", "Pool")
                                            cv_plasma.df[, 71], cv_plasma.df[, 72]))
 ```
 
+Note: alternatively, the raw intensities may be found in the additional feature metadata from the proteomics datasets (by loading the 'metadata_supp.rdata' file from the 'extdata/2_post_processed' subfolder; see the next "CV" section)
+
+```{r eval=FALSE}
+cv_tissue_df.ls <- lapply(ProMetIS::tissues.vc(),
+                          function(tissue.c) {
+                            p.eset <- p.mset[[paste0("proteomics_", tissue.c)]]
+                            p_exprs.mn <- Biobase::exprs(p.eset)
+                            p_pda.df <- Biobase::pData(p.eset)
+                            p_fda.df <- Biobase::fData(p.eset)
+                            p_cv.mn <- t(apply(p_exprs.mn, 1,
+                                               function(feat.vn) {
+                                                 tapply(feat.vn, p_pda.df[, "gene"],
+                                                        function(x) sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE) * 100)
+                                               }))[, c("Pool", "WT", "LAT", "MX2")]
+                            p_cv.df <- cbind.data.frame(type = factor(rep(colnames(p_cv.mn),
+                                                                          each = nrow(p_cv.mn)),
+                                                                      levels = colnames(p_cv.mn)),
+                                                        value = c(p_cv.mn))
+                          })
+names(cv_tissue_df.ls) <- ProMetIS::tissues.vc()
+cv_liver.df <- cv_tissue_df.ls[["liver"]]
+cv_plasma.df <- cv_tissue_df.ls[["plasma"]]
+
+```
+
 ### Plotting
 
 ```{r}
@@ -516,27 +652,12 @@ prot_qc_plot <- gridExtra::grid.arrange(irt_liver.gg,
                                         nrow = 2, ncol = 2,
                                         widths = c(4, 2),
                                         heights = c(3, 3))
-ggplot2::ggsave("figures/article_data/ImbertEtAl_Fig6_techval_proteo_irt_cv.pdf", prot_qc_plot, width = 12, height = 7)
+ggplot2::ggsave("figures/article_data/ImbertEtAl_Fig6_techval_proteo_irt_cv.pdf", prot_qc_plot,
+                width = 12, height = 7)
 ```
 
 
 ## Metabolomics
-
-Loading the processed datasets:
-
-```{r metabosets_loading}
-pmetabo.mset <- p.mset[, ProMetIS::metabo_sets.vc()]
-```
-
-Post-processing in the 'technical validation' mode (keeping standards, keeping pools, omitting the pool_CV <= 30% and pool_CV_over_sample_CV <= 1 filters)
-
-```{r metabosets_postprocessing_technical_validation}
-pmsmetabo.mset <- ProMetIS:::.metabo_postprocessing(metabo.mset = pmetabo.mset,
-                                                   drift_correct.c = "prometis",
-                                                   .technical_validation.l = TRUE)
-# save(pmsmetabo.mset, file = "../supplementary/technical_validation/metabolomics/pmsmetabo_mset.rdata")
-# load("../supplementary/technical_validation/metabolomics/pmsmetabo_mset.rdata")
-```
 
 ### Standards
 
@@ -574,39 +695,39 @@ names(palette.vc) <- standards_name.vc
 
 out_sample.ls <- standards_cv.ls <- list()
 
-for (set.c in grep("(c18hyper|hilic)", names(pmsmetabo.mset), value = TRUE)) {
+for (set.c in grep("(c18hypersil|hilic)", ProMetIS::metabo_sets.vc(), value = TRUE)) {
   
-  # set.c <- grep("(c18hyper|hilic)", names(pmsmetabo.mset), value = TRUE)[3]
+  # set.c <- grep("(c18hypersil|hilic)", ProMetIS::metabo_sets.vc(), value = TRUE)[3]
 
-  eset <- pmsmetabo.mset[[set.c]]
-  eset <- eset[Biobase::fData(eset)[, "standard"] != "",
-               Biobase::pData(eset)[, "sampleType"] %in% c("pool", "sample")]
+  pm.eset <- pm.mset[[set.c]]
+  pm.eset <- pm.eset[Biobase::fData(pm.eset)[, "standard"] != "",
+               Biobase::pData(pm.eset)[, "sampleType"] %in% c("pool", "sample")]
   
   #ggplot needs a dataframe
-  exprs.mn <- Biobase::exprs(eset)
+  pm_exprs.mn <- Biobase::exprs(pm.eset)
   
-  tlog2exprs.df <- as.data.frame(t(log2(1 + exprs.mn)))
-  colnames(tlog2exprs.df) <- Biobase::fData(eset)[, "standard"]
+  pm_tlog2exprs.df <- as.data.frame(t(log2(1 + pm_exprs.mn)))
+  colnames(pm_tlog2exprs.df) <- Biobase::fData(pm.eset)[, "standard"]
  
   # re-ordering
-  tlog2exprs.df <- tlog2exprs.df[, standards_type.vc[standards_type.vc %in% colnames(tlog2exprs.df)]]
+  pm_tlog2exprs.df <- pm_tlog2exprs.df[, standards_type.vc[standards_type.vc %in% colnames(pm_tlog2exprs.df)]]
 
   # computing CVs
-  standards_cv.ls[[set.c]] <- apply(as.matrix(tlog2exprs.df), 2, function(x) sd(x) / mean(x))
+  standards_cv.ls[[set.c]] <- apply(as.matrix(pm_tlog2exprs.df), 2, function(x) sd(x) / mean(x))
   
   #id variable for position in matrix 
-  tlog2exprs.df$id <- 1:nrow(tlog2exprs.df) 
+  pm_tlog2exprs.df$id <- 1:nrow(pm_tlog2exprs.df) 
   #reshape to long format
-  ggplot.df <- reshape2::melt(tlog2exprs.df, id.var = "id")
+  ggplot.df <- reshape2::melt(pm_tlog2exprs.df, id.var = "id")
   
   ggplot.df[, "sample"] <- factor(rep(gsub("pool1", "pool",
-                                           Biobase::pData(eset)[, "sampleType"]),
-                                      ncol(tlog2exprs.df) - 1),
+                                           Biobase::pData(pm.eset)[, "sampleType"]),
+                                      ncol(pm_tlog2exprs.df) - 1),
                                   levels = c("pool",
                                              "sample"))
   
-  ggplot.df[, "sample_name"] <- rep(Biobase::sampleNames(eset),
-                                    ncol(tlog2exprs.df) - 1)
+  ggplot.df[, "sample_name"] <- rep(Biobase::sampleNames(pm.eset),
+                                    ncol(pm_tlog2exprs.df) - 1)
   
   ggplot.df[, "compound_standard"] <- ggplot.df[, "variable"]
   ggplot.df[, "compound"] <- vapply(as.character(ggplot.df[, "compound_standard"]),
@@ -690,20 +811,20 @@ sapply(out_sample.ls, nrow)
 
 ```{r metabo_standards_outlier_pca}
 for (set.c in names(out_sample.ls)) {
-eset <- pmsmetabo.mset[[set.c]]
-eset.pca <- ropls::opls(eset, fig.pdfC = "none", info.txtC = "none", predI = 4)
-ropls::plot(eset.pca,
-            typeVc = "x-score",
-            parAsColFcVn = ifelse(Biobase::sampleNames(eset) %in% out_sample.ls[[set.c]][, "sample_name"], 1, 0),
-            parTitleL = FALSE)
-title(gsub("metabolomics_", "", set.c))
+  pm.eset <- pm.mset[[set.c]]
+  pm.pca <- ropls::opls(pm.eset, fig.pdfC = "none", info.txtC = "none", predI = 4)
+  ropls::plot(pm.pca,
+              typeVc = "x-score",
+              parAsColFcVn = ifelse(Biobase::sampleNames(pm.eset) %in% out_sample.ls[[set.c]][, "sample_name"], 1, 0),
+              parTitleL = FALSE)
+  title(gsub("metabolomics_", "", set.c))
 }
 ```
 
 ### Quality metrics
 
 ```{r metabosets_quality_metrics}
-quality_metrics.ls <- ProMetIS:::.metabo_quality_metrics(pmsmetabo.mset)
+quality_metrics.ls <- ProMetIS:::.metabo_quality_metrics(pm.mset[, ProMetIS::metabo_sets.vc()])
 
 # save(quality_metrics.ls, file = "../supplementary/technical_validation/metabolomics/quality_metrics_ls.rdata")
 # load("../supplementary/technical_validation/metabolomics/quality_metrics_ls.rdata")
@@ -823,22 +944,22 @@ for (method.c in setdiff(names(quality_ggradar.ls), "prometis")) {
 scoreplot.ls <- vector(mode = "list", length = length(ProMetIS::metabo_sets.vc()))
 names(scoreplot.ls) <- ProMetIS::metabo_sets.vc()
 
-for (set.c in names(pmsmetabo.mset)) {
+for (set.c in ProMetIS::metabo_sets.vc()) {
   
-  pmsmetabo.eset <- pmsmetabo.mset[[set.c]]
+  pm.eset <- pm.mset[[set.c]]
   
-  pmsmetabo.eset <- pmsmetabo.eset[, Biobase::pData(pmsmetabo.eset)[, "sampleType"] %in% c("pool", "sample")]
+  pm.eset <- pm.eset[, Biobase::pData(pm.eset)[, "sampleType"] %in% c("pool", "sample")]
   
-  pdata.df <- Biobase::pData(pmsmetabo.eset)
+  pdata.df <- Biobase::pData(pm.eset)
   pdata.df[, "order"] <- pdata.df[, "injectionOrder"]
   if (grepl("acqui", set.c))
     pdata.df[, "order"] <- pdata.df[, "order"] - min(pdata.df[, "order"]) + 1
   pdata.df[, "label"] <- ifelse(pdata.df[, "sampleType"] == "pool", "QC", "s")
-  Biobase::pData(pmsmetabo.eset) <- pdata.df
+  Biobase::pData(pm.eset) <- pdata.df
   
-  pmsmetabo.pca <- ropls::opls(pmsmetabo.eset, predI = 2, fig.pdfC = "none", info.txtC = "none")
+  pm.pca <- ropls::opls(pm.eset, predI = 2, fig.pdfC = "none", info.txtC = "none")
   
-  scoreplot.ls[[set.c]] <- ProMetIS:::score_plotly(pmsmetabo.pca,
+  scoreplot.ls[[set.c]] <- ProMetIS:::score_plotly(pm.pca,
                                                    label.c = "label",
                                                    color.c = "order",
                                                    title.c = gsub("metabolomics_", "", set.c),
@@ -869,22 +990,22 @@ ggplot2::ggsave(paste0("figures/article_data/ImbertEtAl_Fig7B_techval_metabo_pca
 ### CV
 
 ```{r metabo_cv}
-cv_ggplot.ls <- vector(mode = "list", length = length(names(pmsmetabo.mset)))
-names(cv_ggplot.ls) <- names(pmsmetabo.mset)
+cv_ggplot.ls <- vector(mode = "list", length = length(ProMetIS::metabo_sets.vc()))
+names(cv_ggplot.ls) <- ProMetIS::metabo_sets.vc()
 
-for (set.c in names(pmsmetabo.mset)) {
+for (set.c in ProMetIS::metabo_sets.vc()) {
   
-  # set.c <- names(pmsmetabo.mset)[2]
-  pmsmetabo.eset <- pmsmetabo.mset[[set.c]]
-  pmsmetabo.eset <- pmsmetabo.eset[, Biobase::pData(pmsmetabo.eset)[, "sampleType"] %in% c("pool", "sample")]
+  # set.c <- ProMetIS::metabo_sets.vc()[1]
+  pm.eset <- pm.mset[[set.c]]
+  pm.eset <- pm.eset[, Biobase::pData(pm.eset)[, "sampleType"] %in% c("pool", "sample")]
   
-  genotype.vc <- tolower(substr(Biobase::pData(pmsmetabo.eset)[,
+  genotype.vc <- tolower(substr(Biobase::pData(pm.eset)[,
                                                      ifelse(grepl("(hyper|hilic)", set.c),
                                                             "KO", "Type")], 1, 1))
   
-  type.vc <- vapply(seq_len(Biobase::dims(pmsmetabo.eset)["Samples", 1]),
+  type.vc <- vapply(seq_len(Biobase::dims(pm.eset)["Samples", 1]),
                     function(sample.i) {
-                      if (Biobase::pData(pmsmetabo.eset)[sample.i, "sampleType"] == "pool") {
+                      if (Biobase::pData(pm.eset)[sample.i, "sampleType"] == "pool") {
                         return("Pool")
                       } else if (genotype.vc[sample.i] == "l") {
                         return("LAT")
@@ -894,7 +1015,7 @@ for (set.c in names(pmsmetabo.mset)) {
                         return("WT")
                       }
                     }, FUN.VALUE = character(1))
-  cv.mn <- 100 * as.matrix(t(apply(Biobase::exprs(pmsmetabo.eset), 1,
+  cv.mn <- 100 * as.matrix(t(apply(Biobase::exprs(pm.eset), 1,
                                    function(feat.vn) {
                                      tapply(feat.vn, type.vc,
                                             function(x) sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE))
@@ -959,60 +1080,6 @@ print(ppstat.sex.mn)
 message("Range: ", paste(range(ppstat.sex.vn), collapse = ", "))
 ```
 
-```{r}
-load(file.path(ProMetIS::post_processed_dir.c(), "metadata_supp.rdata"))
-
-for (tissue.c in ProMetIS::tissues.vc()) {
-  prot_set.c <- paste0("proteomics_", tissue.c)
-  prot_tissue.eset <- pp.mset[[prot_set.c]]
-  prot_tissue.ls <- metadata_supp.ls[[prot_set.c]]
-  prot_tissue_pda.df <- prot_tissue.ls[["pdata"]]
-  prot_tissue_fda.df <- prot_tissue.ls[["fdata"]]
-  prot_tissue_exprs.mn <- as.matrix(prot_tissue_fda.df[, grep("raw_", colnames(prot_tissue_fda.df))])
-  colnames(prot_tissue_exprs.mn) <- make.names(sapply(colnames(prot_tissue_exprs.mn),
-                                                      function(colname.c) {
-                                                        if(tissue.c == "liver") {
-                                                          return(unlist(strsplit(colname.c, "_"))[[4]])
-                                                        } else {
-                                                          return(unlist(strsplit(colname.c, "_"))[[3]])
-                                                        }
-                                                      }), unique = TRUE)
-  prot_tissue_exprs.mn <- prot_tissue_exprs.mn[, !grepl("(mgf|Pool)", colnames(prot_tissue_exprs.mn))]
-  stopifnot(all(colnames(prot_tissue_exprs.mn) %in% Biobase::sampleNames(prot_tissue.eset)))
-  prot_tissue_exprs.mn <- prot_tissue_exprs.mn[, Biobase::sampleNames(prot_tissue.eset)]
-  Biobase::exprs(prot_tissue.eset) <- prot_tissue_exprs.mn
-  p.mset <- MultiDataSet::add_eset(p.mset,
-                                   prot_tissue.eset,
-                                   dataset.type = paste0("proteomics_", tissue.c),
-                                   GRanges = NA,
-                                   overwrite = TRUE,
-                                   warnings = FALSE) 
-}
-
-# load("../supplementary/technical_validation/metabolomics/pmsmetabo_mset.rdata")
-
-for (set.c in grep("metabolomics", names(pmsmetabo.mset), value = TRUE)) {
-  
-  pmsmetabo.eset <- pmsmetabo.mset[[set.c]]
-  pmetabo_supp.ls <- metadata_supp.ls[[set.c]]
-  pmetabo_supp_pda.df <- pmetabo_supp.ls[["pdata"]]
-  pmetabo_supp_fda.df <- pmetabo_supp.ls[["fdata"]]
-  stopifnot(all(pmetabo_supp_pda.df[, "id"] %in% Biobase::sampleNames(pmsmetabo.eset)))
-  pmsmetabo.eset <- pmsmetabo.eset[, pmetabo_supp_pda.df[, "id"]]
-  Biobase::sampleNames(pmsmetabo.eset) <- rownames(pmetabo_supp_pda.df)
-  Biobase::pData(pmsmetabo.eset) <- Biobase::pData(pp.mset[[set.c]])
-  
-  p.mset <- MultiDataSet::add_eset(p.mset,
-                                   pmsmetabo.eset,
-                                   dataset.type = set.c,
-                                   GRanges = NA,
-                                   overwrite = TRUE,
-                                   warnings = FALSE)
-  
-}
-
-p.mset <- p.mset[, c("ics", ProMetIS::sets.vc())]
-```
 
 ### on intensities
 
@@ -1021,23 +1088,23 @@ int_range_ggplot.ls <- list()
 
 for (set.c in setdiff(ProMetIS::sets.vc(), "preclinical")) {
   # set.c <- "proteomics_liver"
-  p.eset <- p.mset[[set.c]]
-  p.eset <- phenomis::transforming(p.eset, method.c = "log2")
-  p_exprs.mn <- Biobase::exprs(p.eset)
-  p_pdata.df <- Biobase::pData(p.eset)
+  pm.eset <- pm.mset[[set.c]]
+  pm.eset <- phenomis::transforming(pm.eset, method.c = "log2")
+  pm_exprs.mn <- Biobase::exprs(pm.eset)
+  pm_pdata.df <- Biobase::pData(pm.eset)
   
-  p_exprs.tb <- tidyr::as_tibble(p_exprs.mn)
-  int_range.df <- as.data.frame(tidyr::pivot_longer(p_exprs.tb,
-                                                    cols = 1:ncol(p_exprs.tb),
+  pm_exprs.tb <- tidyr::as_tibble(pm_exprs.mn)
+  int_range.df <- as.data.frame(tidyr::pivot_longer(pm_exprs.tb,
+                                                    cols = 1:ncol(pm_exprs.tb),
                                                     names_to = "sample",
                                                     values_to = "intensity"))
   
-  int_range.df[, "gene"] <- factor(p_pdata.df[int_range.df[, "sample"], "gene"],
+  int_range.df[, "gene"] <- factor(pm_pdata.df[int_range.df[, "sample"], "gene"],
                                    levels = c("WT", "LAT", "MX2"))
-  int_range.df[, "sex"] <- factor(p_pdata.df[int_range.df[, "sample"], "sex"],
+  int_range.df[, "sex"] <- factor(pm_pdata.df[int_range.df[, "sample"], "sex"],
                                   levels = c("M", "F"))
   
-  int_samp_order.vc <- rownames(p_pdata.df[order(factor(p_pdata.df[, "gene"], levels = c("WT", "LAT", "MX2"))), ])
+  int_samp_order.vc <- rownames(pm_pdata.df[order(factor(pm_pdata.df[, "gene"], levels = c("WT", "LAT", "MX2"))), ])
   int_range.df[, "sample"] <- factor(int_range.df[, "sample"],
                                      levels = int_samp_order.vc)
   
@@ -1077,16 +1144,16 @@ pcv_ggplot.ls <- list()
 
 for (set.c in setdiff(ProMetIS::sets.vc(), "preclinical")) {
   
-  p.eset <- p.mset[[set.c]]
+  pm.eset <- pm.mset[[set.c]]
   
-  pexprs.mn <- Biobase::exprs(p.eset)
+  pexprs.mn <- Biobase::exprs(pm.eset)
   
-  p_genesex.vc <- paste0(Biobase::pData(p.eset)[, "gene"], "_",
-                          Biobase::pData(p.eset)[, "sex"])
+  pm_genesex.vc <- paste0(Biobase::pData(pm.eset)[, "gene"], "_",
+                          Biobase::pData(pm.eset)[, "sex"])
   
   pcv.mn <- t(apply(pexprs.mn, 1,
                      function(feat.vn) {
-                       tapply(feat.vn, p_genesex.vc, function(x) sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE) * 100)
+                       tapply(feat.vn, pm_genesex.vc, function(x) sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE) * 100)
                      }))
   
   pcv.df <- as.data.frame(tidyr::pivot_longer(tidyr::as_tibble(pcv.mn),
@@ -1234,7 +1301,15 @@ for (set.c in names(pp.mset)) {
   pp.eset <- pp.mset[[set.c]]
   
   if (grepl("metabolomics", set.c))
-    pp.eset <- pp.eset[Biobase::fData(pp.eset)[, "name"] != "", ]
+    pp.eset <- pp.eset[Biobase::fData(pp.eset)[, "name"] != "", ] # annotated variables only
+  
+  if (set.c == "preclinical") {
+    pdata.df <- Biobase::pData(pp.eset)
+    pdata.df[, "id"] <- NULL
+    xlsx::write.xlsx(pdata.df,
+                     file = "figures/article_data/ImbertEtAl_2021_supp_table_part0.xlsx",
+                     sheet = "sampleMetadata")
+  }
   
   if (which(names(pp.mset) == set.c) < 3) {
     xlsx::write.xlsx(cbind.data.frame(Biobase::fData(pp.eset),
