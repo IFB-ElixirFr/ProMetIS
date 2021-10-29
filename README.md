@@ -1,5 +1,7 @@
 # The _**ProMetIS**_ R package: Multi-omics phenotyping of the LAT and MX2 knockout mice
 
+![image](https://user-images.githubusercontent.com/19306842/139421987-a7ab9267-a960-4bcd-a93e-1837d282b8f9.png)
+
 ## Description
 
 This package provides the data sets and analyzes from the preclinical, proteomics, and metabolomics study of the LAT and MX2 knockout mice.
