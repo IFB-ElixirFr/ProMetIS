@@ -10,7 +10,7 @@ This package provides the data sets and analyzes from the preclinical, proteomic
 
 The package can be installed from GitHub with `devtools::install_github("IFB-ElixirFr/ProMetIS")`.
 
-## Maintainer
+## Contact
 
 Etienne A. Thévenot (etienne.thevenot@cea.fr)
 
@@ -51,4 +51,4 @@ In particular, Alyssa Imbert is supported by a post-doctoral fellowship from IFB
 
 ## Citation
 
-**ProMetIS: deep phenotyping of mouse models by combined proteomics and metabolomics analysis.** Alyssa Imbert, Magali Rompais, Mohammed Selloum, Florence Castelli, Emmanuelle Mouton-Barbosa, Marion Brandolini-Bunlon, Emeline Chu-Van, Charlotte Joly, Aurélie Hirschler, Pierrick Roger, Thomas Burger, Sophie Leblanc, Tania Sorg, Sadia Ouzia, Yves Vandenbrouck, Claudine Médigue, Christophe Junot, Myriam Ferro, Estelle Pujos-Guillot, Anne Gonzalez de Peredo, François Fenaille, Christine Carapito, Yann Herault, and Etienne A. Thévenot (ProMetIS consortium), *submitted*, [https://github.com/IFB-ElixirFr/ProMetIS](https://github.com/IFB-ElixirFr/ProMetIS).
+**ProMetIS: deep phenotyping of mouse models by combined proteomics and metabolomics analysis.** Alyssa Imbert, Magali Rompais, Mohammed Selloum, Florence Castelli, Emmanuelle Mouton-Barbosa, Marion Brandolini-Bunlon, Emeline Chu-Van, Charlotte Joly, Aurélie Hirschler, Pierrick Roger, Thomas Burger, Sophie Leblanc, Tania Sorg, Sadia Ouzia, Yves Vandenbrouck, Claudine Médigue, Christophe Junot, Myriam Ferro, Estelle Pujos-Guillot, Anne Gonzalez de Peredo, François Fenaille, Christine Carapito, Yann Herault, and Etienne A. Thévenot. *Scientific Data*, 8. [doi:10.1038/s41597-021-01095-3](https://doi.org/10.1038/s41597-021-01095-3)
