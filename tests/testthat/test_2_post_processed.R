@@ -1,6 +1,9 @@
 testthat::context("Datasets after post-processing")
 
-post_proc.mset <- phenomis::reading(ProMetIS::post_processed_dir.c())
+post_proc.mset <- phenomis::reading(ProMetIS::post_processed_dir.c(), output.c = "set")
+
+
+## values ----
 
 testthat::test_that("values", {
   
@@ -13,6 +16,9 @@ testthat::test_that("values", {
                          32.4223086299966, tol = 1e-13)
   
 })
+
+
+## dimensions ----
 
 testthat::test_that("dimensions", {
   
@@ -42,3 +48,96 @@ testthat::test_that("dimensions", {
   
 })
 
+
+## impute_info ----
+
+testthat::test_that("impute_info", {
+  
+  set.c <- "proteomics_plasma"
+  
+  # SummarizedExperiment
+  proteo.mae <- phenomis::reading(ProMetIS::post_processed_dir.c(),
+                                  subsets.vc = set.c)
+  proteo.se <- proteo.mae[[set.c]]
+  imputed.mi <- ProMetIS:::imputation_info(proteo.se, set.c = set.c)
+  
+  genotype.fc <- factor(substr(colnames(imputed.mi), 1, 1), levels = c("L", "X", "W"))
+  geno_impute.mn <- t(apply(imputed.mi, 1, function(feat.vn) tapply(feat.vn, genotype.fc, sum)))
+  colnames(geno_impute.mn) <- c("LAT", "MX2", "WT")
+  
+  testthat::expect_equivalent(colSums(geno_impute.mn),
+                              c(225, 221, 351))
+  
+  # ExpressionSet
+  
+  proteo.mset <- phenomis::reading(ProMetIS::post_processed_dir.c(),
+                                   subsets.vc = set.c,
+                                   output.c = "set")
+  proteo.eset <- proteo.mset[[set.c]]
+  imputed.mi <- ProMetIS:::imputation_info(proteo.eset, set.c = set.c)
+  # computing the number of imputed values per feature and per genotype
+  genotype.fc <- factor(substr(colnames(imputed.mi), 1, 1), levels = c("L", "X", "W"))
+  geno_impute.mn <- t(apply(imputed.mi, 1, function(feat.vn) tapply(feat.vn, genotype.fc, sum)))
+  colnames(geno_impute.mn) <- c("LAT", "MX2", "WT")
+
+  testthat::expect_equivalent(colSums(geno_impute.mn),
+                              c(225, 221, 351))
+  
+})
+
+
+## filter_overimputed ----
+
+testthat::test_that("filter_overimputed", {
+  
+  set.c <- "proteomics_plasma"
+  
+  # SummarizedExperiment
+  
+  proteo.mae <- phenomis::reading(ProMetIS::post_processed_dir.c(),
+                                  subsets.vc = set.c)
+  proteo.se <- proteo.mae[[set.c]]
+  sample_meta.DF <- SummarizedExperiment::colData(proteo.mae)
+  SummarizedExperiment::colData(proteo.se)[, "gene"] <- sample_meta.DF[colnames(proteo.se), "gene"]
+  SummarizedExperiment::colData(proteo.se)[, "sex"] <- sample_meta.DF[colnames(proteo.se), "sex"]
+  feat_select.vl <- ProMetIS:::filter_overimputed(proteo.se, set.c = set.c, genes.vc = "LAT")
+  
+  testthat::expect_equal(sum(feat_select.vl),
+                         416, tol = 1e-10)
+
+  # ExpressionSet
+  
+  proteo.mset <- phenomis::reading(ProMetIS::post_processed_dir.c(),
+                                   subsets.vc = set.c,
+                                   output.c = "set")
+  proteo.eset <- proteo.mset[[set.c]]
+  feat_select.vl <- ProMetIS:::filter_overimputed(proteo.eset, set.c = set.c, genes.vc = "LAT")
+
+  testthat::expect_equal(sum(feat_select.vl),
+                         416, tol = 1e-10)
+})
+
+## subsetting ----
+
+testthat::test_that("subsetting", {
+  
+  # SummarizedExperiment
+  
+  set.c <- "proteomics_liver"
+  proteo.mae <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+                                  subsets.vc = set.c,
+                                  report.c = "none")
+  proteo.se <- proteo.mae[[set.c]]
+  ## adding (common) sample metadata to the summarized experiment
+  sample_meta.DF <- SummarizedExperiment::colData(proteo.mae)
+  SummarizedExperiment::colData(proteo.se)[, "gene"] <- sample_meta.DF[colnames(proteo.se), "gene"]
+  SummarizedExperiment::colData(proteo.se)[, "sex"] <- sample_meta.DF[colnames(proteo.se), "sex"]
+  proteo_lat.se <- ProMetIS::subsetting(proteo.se,
+                                        set.c = set.c,
+                                        genes.vc = c("WT", "LAT"))
+  
+  testthat::expect_equal(dim(proteo.se), c(2187, 42))
+  testthat::expect_equal(dim(proteo_lat.se), c(2098, 28))
+  
+  
+})

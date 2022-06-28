@@ -3,7 +3,7 @@ testthat::context("Final aggregated datasets")
 
 aggregated.ls <- sapply(ProMetIS::genes.vc(),
                         function(gene.c) {
-                          phenomis::reading(ProMetIS::aggregated_dir.c(gene.c))
+                          phenomis::reading(ProMetIS::aggregated_dir.c(gene.c), output.c = "set")
                         })
 
 

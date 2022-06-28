@@ -1,5 +1,162 @@
 ## All ----
 
+#### subsetting (MultiAssayExperiment) ####
+
+#' @rdname subsetting
+#' @export
+setMethod("subsetting", signature(x = "MultiAssayExperiment"),
+          function(x,
+                   set.c = NULL,
+                   genes.vc = "all",
+                   sex.vc = "all",
+                   tissues.vc = "all",
+                   common_samples.l = FALSE,
+                   na_thresh.n = 0.2,
+                   var_thresh.n = .Machine$double.eps,
+                   imputed_thresh.n = 0.2) {
+            
+            if (length(genes.vc) == 1 && genes.vc == "all")
+              genes.vc <- c("WT", ProMetIS::genes.vc())
+            stopifnot(all(genes.vc %in% c("WT", ProMetIS::genes.vc())))
+            
+            if (length(sex.vc) == 1 && sex.vc == "all")
+              sex.vc <- ProMetIS::sex.vc()
+            stopifnot(all(sex.vc %in% ProMetIS::sex.vc()))
+            
+            stopifnot(length(tissues.vc) == 1)
+            
+            if (tissues.vc != "all") {
+              
+              stopifnot(tissues.vc %in% ProMetIS::tissues.vc())
+              
+              x <- x[, , names(x)[names(x) %in% c("preclinical",
+                                                  grep(tissues.vc,
+                                                       ProMetIS::sets.vc(),
+                                                       value = TRUE))]]
+              
+            }
+            
+            if (common_samples.l) {
+              x <- MultiAssayExperiment::intersectColumns(x)
+            }
+            
+            samp.DF <- MultiAssayExperiment::colData(x)
+            samp_sel.vc <- rownames(samp.DF[samp.DF[, "gene"] %in% genes.vc &
+                                              samp.DF[, "sex"] %in% sex.vc, ])
+            
+            sub.mae <- x[, samp_sel.vc, ]
+            sub.DF <- MultiAssayExperiment::colData(sub.mae)
+            
+            sub_sets.vc <- names(sub.mae)
+            
+            for (set.c in sub_sets.vc) {
+              
+              se <- sub.mae[[set.c]]
+              
+              SummarizedExperiment::colData(se)[, "gene"] <- sub.DF[colnames(se), "gene"]
+              SummarizedExperiment::colData(se)[, "sex"] <- sub.DF[colnames(se), "sex"]
+              
+              se <- ProMetIS:::subsetting(x = se,
+                                          set.c = set.c,
+                                          genes.vc = genes.vc,
+                                          sex.vc = sex.vc,
+                                          tissues.vc = NULL,
+                                          common_samples.l = NULL,
+                                          na_thresh.n = na_thresh.n,
+                                          var_thresh.n = var_thresh.n,
+                                          imputed_thresh.n = imputed_thresh.n)
+              
+              SummarizedExperiment::colData(se)[, "gene"] <- NULL
+              SummarizedExperiment::colData(se)[, "sex"] <- NULL
+              
+              sub.mae[[set.c]] <- se
+              
+            }
+            
+            sub.mae <- sub.mae[, , sub_sets.vc]
+            
+            invisible(sub.mae)
+            
+          })
+
+
+#### subsetting (SummarizedExperiment) ####
+
+#' @rdname subsetting
+#' @export
+setMethod("subsetting", signature(x = "SummarizedExperiment"),
+          function(x,
+                   set.c,
+                   genes.vc = "all",
+                   sex.vc = "all",
+                   tissues.vc = NULL,
+                   common_samples.l = NULL,
+                   na_thresh.n = 0.2,
+                   var_thresh.n = .Machine$double.eps,
+                   imputed_thresh.n = 0.2) {
+            
+            if (length(genes.vc) == 1 && genes.vc == "all")
+              genes.vc <- ProMetIS::wtgenes.vc()
+            stopifnot(all(genes.vc %in% ProMetIS::wtgenes.vc()))
+            
+            if (length(sex.vc) == 1 && sex.vc == "all")
+              sex.vc <- ProMetIS::sex.vc()
+            stopifnot(all(sex.vc %in% ProMetIS::sex.vc()))
+            
+            samples.vc <- colnames(x)
+            
+            samples_sel.vl <- SummarizedExperiment::colData(x)[, "gene"] %in% genes.vc &
+              SummarizedExperiment::colData(x)[, "sex"] %in% sex.vc
+            
+            x <- x[, samples.vc[samples_sel.vl]]
+            
+            filter.vi <- c(nas_zerovar = NA_integer_,
+                           overimputed = NA_integer_)
+            
+            # NAs <= 20% and variance >= 1e-5
+            if (length(genes.vc) > 1) {
+              class.c <- "gene"
+            } else if (length(sex.vc) > 1) {
+              class.c <- "sex"
+            } else
+              stop("Only a single gene and sex selected.")
+            
+            filtered.se <- phenomis::filtering(x,
+                                               class.c = class.c,
+                                               max_na_prop.n = na_thresh.n,
+                                               min_variance.n = var_thresh.n)
+            na_zerovar_sel.vl <- rownames(x) %in% rownames(filtered.se)
+            
+            filter.vi["nas_zerovar"] <- sum(!na_zerovar_sel.vl)
+            
+            # proteomics: observations >= 80% in at least one condition
+            if (grepl("proteomics", set.c)) {
+              overimputed_sel.vl <- ProMetIS:::filter_overimputed(x = x,
+                                                                  set.c = set.c,
+                                                                  genes.vc = genes.vc,
+                                                                  sex.vc = sex.vc,
+                                                                  imputed_thresh.n = imputed_thresh.n)
+            } else
+              overimputed_sel.vl <- rep(TRUE, dim(x)[1])
+            
+            filter.vi["overimputed"] <- sum(!overimputed_sel.vl)
+            
+            # intersection of both conditions
+            feat_sel.vl <- na_zerovar_sel.vl & overimputed_sel.vl
+            
+            stopifnot(length(feat_sel.vl) == dim(x)[1] &&
+                        !any(is.na(feat_sel.vl)))
+            
+            x <- x[feat_sel.vl, ]
+            
+            # if (sum(!feat_sel.vl))
+            message("Nb of discard. feat. in '", set.c, "': ",
+                    paste(paste0(names(filter.vi), ": ", filter.vi), collapse = ", "))
+            
+            invisible(x)
+            
+          })
+
 #### subsetting (MultiDataSet) ####
 
 #' @rdname subsetting
@@ -128,6 +285,7 @@ setMethod("subsetting", signature(x = "ExpressionSet"),
               class.c <- "sex"
             } else
               stop("Only a single gene and sex selected.")
+            
             filtered.eset <- phenomis::filtering(x,
                                                  class.c = class.c,
                                                  max_na_prop.n = na_thresh.n,
@@ -142,11 +300,11 @@ setMethod("subsetting", signature(x = "ExpressionSet"),
             
             # proteomics: observations >= 80% in at least one condition
             if (grepl("proteomics", set.c)) {
-              overimputed_sel.vl <- ProMetIS:::.filter_overimputed(eset = x,
-                                                                   set.c = set.c,
-                                                                   genes.vc = genes.vc,
-                                                                   sex.vc = sex.vc,
-                                                                   imputed_thresh.n = imputed_thresh.n)
+              overimputed_sel.vl <- ProMetIS:::filter_overimputed(x = x,
+                                                                  set.c = set.c,
+                                                                  genes.vc = genes.vc,
+                                                                  sex.vc = sex.vc,
+                                                                  imputed_thresh.n = imputed_thresh.n)
             } else
               overimputed_sel.vl <- rep(TRUE, dim(x)["Features"])
             
@@ -168,133 +326,223 @@ setMethod("subsetting", signature(x = "ExpressionSet"),
             
           })
 
+#### filter_overimputed (SummarizedExperiment) ####
 
-# .filter_na_zerovar <- function(input.mn,
-#                                class.c = "",
-#                                na_thresh.n = 0.2,
-#                                var_thresh.n = .Machine$double.eps) {
-#   
-#   # removing variables with > 20% NA (including 100% NA in females)
-#   feat_na.vn <- apply(input.mn, 2, function(feat.vn)
-#     sum(is.na(feat.vn)) / length(feat.vn))
-#   feat_notna.vl <- feat_na.vn <= na_thresh.n
-#   # sum(feat_notna.vl)
-#   
-#   # removing variables with variance < 1e-5
-#   feat_var.vn <- apply(input.mn, 2, function(feat.vn)
-#     var(feat.vn, na.rm = TRUE))
-#   feat_notzerovar.vl <- !is.na(feat_var.vn) &
-#     (feat_var.vn >= var_thresh.n)
-#   # sum(feat_notzerovar.vl)
-#   
-#   feat_sel.vl <- feat_notna.vl & feat_notzerovar.vl
-#   
-#   stopifnot(length(feat_sel.vl) == ncol(input.mn) &&
-#               !any(is.na(feat_sel.vl)))
-#   
-#   feat_sel.vl
-#   
-# }
+#' @rdname filter_overimputed
+setMethod("filter_overimputed", signature(x = "SummarizedExperiment"),
+          function(x,
+                   set.c,
+                   genes.vc = "LAT",
+                   sex.vc = c("M", "F"),
+                   imputed_thresh.n = 0.2) {
+            
+            imputed.mi <- ProMetIS:::imputation_info(x = x, set.c = set.c)
+            
+            stopifnot(identical(colnames(x), colnames(imputed.mi)))
+            
+            if (length(genes.vc) >= 2) {
+              # general case: no restriction about sex
+              # or e.g. LAT vs WT on males (or females) only
+              
+              factor.fc <- factor(SummarizedExperiment::colData(x)[, "gene"],
+                                  levels = ProMetIS::wtgenes.vc()[ProMetIS::wtgenes.vc() %in% genes.vc])
+              
+            } else if (length(genes.vc) == 1 && length(sex.vc) == 2) {
+              # males vs females on LAT (or WT) only
+              
+              factor.fc <- factor(SummarizedExperiment::colData(x)[, "sex"],
+                                  levels = ProMetIS::sex.vc())
+              
+            } else
+              stop("The corresponding imputation metric for this combination of genotype(s) and gender(s) is not currently available.",
+                   call. = FALSE)
+            
+            imputed_factor.mi <- t(apply(imputed.mi, 1, function(var.vn) {
+              tapply(var.vn, factor.fc, sum)
+            }))
+            imputed_prop.mn <- sweep(imputed_factor.mi, 2, table(factor.fc), "/")
+            
+            imputed.ml <- imputed_prop.mn >= imputed_thresh.n
+            imputed.vn <- rowSums(imputed.ml, na.rm = TRUE)
+            
+            feat_sel.vl <- imputed.vn <= 1
+            
+            stopifnot(length(feat_sel.vl) == dim(x)[1] &&
+                        !any(is.na(feat_sel.vl)))
+            
+            return(invisible(feat_sel.vl))
+            
+          })
 
-.imputation_info <- function(eset,
-                             set.c) {
-  
-  prot_pda.df <- Biobase::pData(eset)
-  prot_fda.df <- Biobase::fData(eset)
-  
-  load(system.file("extdata/2_post_processed/metadata_supp.rdata", package = "ProMetIS"))
-  
-  supp_pda.df <- metadata_supp.ls[[set.c]][["pdata"]]
-  supp_fda.df <- metadata_supp.ls[[set.c]][["fdata"]]
-  
-  stopifnot(all(rownames(prot_pda.df) %in% rownames(supp_pda.df)))
-  stopifnot(all(rownames(prot_fda.df) %in% rownames(supp_fda.df)))
-  
-  prot_pda.df <- cbind.data.frame(prot_pda.df, supp_pda.df[rownames(prot_pda.df), , drop = FALSE])
-  prot_fda.df <- cbind.data.frame(prot_fda.df, supp_fda.df[rownames(prot_fda.df), , drop = FALSE])
-  
-  
-  ## checking that the sample names are ordered by increasing ID
-  prot_samp.vi <- as.integer(substr(rownames(prot_pda.df), 2, 4))
-  stopifnot(identical(prot_samp.vi, sort(prot_samp.vi)))
-  
-  ## getting imputation info
-  value_origin.vl <- vapply(colnames(prot_fda.df), function(colname.c) {
-    colname_split.vc <- unlist(strsplit(colname.c, split = "_"))
-    grepl("^OriginOfValueabundance", colname.c) &
-      colname_split.vc[length(colname_split.vc)] %in% rownames(prot_pda.df)
-  }, FUN.VALUE = logical(1))
-  value_origin.df <- prot_fda.df[, value_origin.vl]
-  colnames(value_origin.df) <- gsub("_run90methode30K",
-                                    "",
-                                    gsub("_mgf", "",
-                                         gsub("OriginOfValueabundance_", "",
-                                              colnames(value_origin.df))))
-  
-  ## re-ordering imputation info to match sample names
-  value_origin_samp.vc <- vapply(colnames(value_origin.df), function(colname.c) {
-    colname_split.vc <- unlist(strsplit(colname.c, split = "_"))
-    colname_split.vc[length(colname_split.vc)]}, FUN.VALUE = character(1))
-  temp <- value_origin_samp.vc
-  value_origin_samp.vc <- names(value_origin_samp.vc)
-  names(value_origin_samp.vc) <- temp
-  value_origin.df <- value_origin.df[, value_origin_samp.vc[rownames(prot_pda.df)]]
-  
-  stopifnot(identical(names(value_origin_samp.vc[rownames(prot_pda.df)]), Biobase::sampleNames(eset)))
-  colnames(value_origin.df) <- Biobase::sampleNames(eset)
-  
-  imputed.mi <- apply(value_origin.df, 2, DAPAR_is.MV)
-  mode(imputed.mi) <- "integer"
-  
-  stopifnot(!any(is.na(c(imputed.mi))))
-  
-  return(imputed.mi)
-  
-}
 
-.filter_overimputed <- function(eset,
-                                set.c,
-                                genes.vc,
-                                sex.vc,
-                                imputed_thresh.n) {
 
-  imputed.mi <- .imputation_info(eset = eset, set.c = set.c)
-  
-  stopifnot(identical(Biobase::sampleNames(eset), colnames(imputed.mi)))
-  
-  if (length(genes.vc) >= 2) {
-    # general case: no restriction about sex
-    # or e.g. LAT vs WT on males (or females) only
-    
-    factor.fc <- factor(Biobase::pData(eset)[, "gene"],
-                        levels = ProMetIS::wtgenes.vc()[ProMetIS::wtgenes.vc() %in% genes.vc])
-    
-  } else if (length(genes.vc) == 1 && length(sex.vc) == 2) {
-    # males vs females on LAT (or WT) only
-    
-    factor.fc <- factor(Biobase::pData(eset)[, "sex"],
-                        levels = ProMetIS::sex.vc())
-    
-  } else
-    stop("The corresponding imputation metric for this combination of genotype(s) and gender(s) is not currently available.",
-         call. = FALSE)
-  
-  imputed_factor.mi <- t(apply(imputed.mi, 1, function(var.vn) {
-    tapply(var.vn, factor.fc, sum)
-  }))
-  imputed_prop.mn <- sweep(imputed_factor.mi, 2, table(factor.fc), "/")
-  
-  imputed.ml <- imputed_prop.mn >= imputed_thresh.n
-  imputed.vn <- rowSums(imputed.ml, na.rm = TRUE)
-  
-  feat_sel.vl <- imputed.vn <= 1
-  
-  stopifnot(length(feat_sel.vl) == dim(eset)["Features"] &&
-              !any(is.na(feat_sel.vl)))
-  
-  feat_sel.vl
-  
-}
+#### filter_overimputed (ExpressionSet) ####
+
+#' @rdname filter_overimputed
+setMethod("filter_overimputed", signature(x = "ExpressionSet"),
+          function(x,
+                   set.c,
+                   genes.vc = "LAT",
+                   sex.vc = c("M", "F"),
+                   imputed_thresh.n = 0.2) {
+            
+            imputed.mi <- ProMetIS:::imputation_info(x = x, set.c = set.c)
+            
+            stopifnot(identical(Biobase::sampleNames(x), colnames(imputed.mi)))
+            
+            if (length(genes.vc) >= 2) {
+              # general case: no restriction about sex
+              # or e.g. LAT vs WT on males (or females) only
+              
+              factor.fc <- factor(Biobase::pData(x)[, "gene"],
+                                  levels = ProMetIS::wtgenes.vc()[ProMetIS::wtgenes.vc() %in% genes.vc])
+              
+            } else if (length(genes.vc) == 1 && length(sex.vc) == 2) {
+              # males vs females on LAT (or WT) only
+              
+              factor.fc <- factor(Biobase::pData(x)[, "sex"],
+                                  levels = ProMetIS::sex.vc())
+              
+            } else
+              stop("The corresponding imputation metric for this combination of genotype(s) and gender(s) is not currently available.",
+                   call. = FALSE)
+            
+            imputed_factor.mi <- t(apply(imputed.mi, 1, function(var.vn) {
+              tapply(var.vn, factor.fc, sum)
+            }))
+            imputed_prop.mn <- sweep(imputed_factor.mi, 2, table(factor.fc), "/")
+            
+            imputed.ml <- imputed_prop.mn >= imputed_thresh.n
+            imputed.vn <- rowSums(imputed.ml, na.rm = TRUE)
+            
+            feat_sel.vl <- imputed.vn <= 1
+            
+            stopifnot(length(feat_sel.vl) == dim(x)["Features"] &&
+                        !any(is.na(feat_sel.vl)))
+            
+            return(invisible(feat_sel.vl))
+            
+          })
+
+
+#### imputation_info (SummarizedExperiment) ####
+
+#' @rdname imputation_info
+setMethod("imputation_info", signature(x = "SummarizedExperiment"),
+          function(x,
+                   set.c) {
+            
+            prot_pda.df <- SummarizedExperiment::colData(x)
+            prot_fda.df <- SummarizedExperiment::rowData(x)
+            
+            load(system.file("extdata/2_post_processed/metadata_supp.rdata", package = "ProMetIS"))
+            
+            supp_pda.df <- metadata_supp.ls[[set.c]][["pdata"]]
+            supp_fda.df <- metadata_supp.ls[[set.c]][["fdata"]]
+            
+            stopifnot(all(rownames(prot_pda.df) %in% rownames(supp_pda.df)))
+            stopifnot(all(rownames(prot_fda.df) %in% rownames(supp_fda.df)))
+            
+            prot_pda.df <- cbind.data.frame(prot_pda.df, supp_pda.df[rownames(prot_pda.df), , drop = FALSE])
+            prot_fda.df <- cbind.data.frame(prot_fda.df, supp_fda.df[rownames(prot_fda.df), , drop = FALSE])
+            
+            ## checking that the sample names are ordered by increasing ID
+            # prot_samp.vi <- as.integer(substr(rownames(prot_pda.df), 2, 4))
+            # stopifnot(identical(prot_samp.vi, sort(prot_samp.vi)))
+            
+            ## getting imputation info
+            value_origin.vl <- vapply(colnames(prot_fda.df), function(colname.c) {
+              colname_split.vc <- unlist(strsplit(colname.c, split = "_"))
+              grepl("^OriginOfValueabundance", colname.c) &
+                colname_split.vc[length(colname_split.vc)] %in% rownames(prot_pda.df)
+            }, FUN.VALUE = logical(1))
+            value_origin.df <- prot_fda.df[, value_origin.vl]
+            colnames(value_origin.df) <- gsub("_run90methode30K",
+                                              "",
+                                              gsub("_mgf", "",
+                                                   gsub("OriginOfValueabundance_", "",
+                                                        colnames(value_origin.df))))
+            
+            ## re-ordering imputation info to match sample names
+            value_origin_samp.vc <- vapply(colnames(value_origin.df), function(colname.c) {
+              colname_split.vc <- unlist(strsplit(colname.c, split = "_"))
+              colname_split.vc[length(colname_split.vc)]}, FUN.VALUE = character(1))
+            temp <- value_origin_samp.vc
+            value_origin_samp.vc <- names(value_origin_samp.vc)
+            names(value_origin_samp.vc) <- temp
+            value_origin.df <- value_origin.df[, value_origin_samp.vc[rownames(prot_pda.df)]]
+            
+            stopifnot(identical(names(value_origin_samp.vc[rownames(prot_pda.df)]), colnames(x)))
+            colnames(value_origin.df) <- colnames(x)
+            
+            imputed.mi <- apply(value_origin.df, 2, DAPAR_is.MV)
+            mode(imputed.mi) <- "integer"
+            
+            stopifnot(!any(is.na(c(imputed.mi))))
+            
+            return(invisible(imputed.mi))
+            
+          })
+
+
+#### imputation_info (ExpressionSet) ####
+
+#' @rdname imputation_info
+setMethod("imputation_info", signature(x = "ExpressionSet"),
+          function(x,
+                   set.c) {
+            
+            prot_pda.df <- Biobase::pData(x)
+            prot_fda.df <- Biobase::fData(x)
+            
+            load(system.file("extdata/2_post_processed/metadata_supp.rdata", package = "ProMetIS"))
+            
+            supp_pda.df <- metadata_supp.ls[[set.c]][["pdata"]]
+            supp_fda.df <- metadata_supp.ls[[set.c]][["fdata"]]
+            
+            stopifnot(all(rownames(prot_pda.df) %in% rownames(supp_pda.df)))
+            stopifnot(all(rownames(prot_fda.df) %in% rownames(supp_fda.df)))
+            
+            prot_pda.df <- cbind.data.frame(prot_pda.df, supp_pda.df[rownames(prot_pda.df), , drop = FALSE])
+            prot_fda.df <- cbind.data.frame(prot_fda.df, supp_fda.df[rownames(prot_fda.df), , drop = FALSE])
+            
+            ## checking that the sample names are ordered by increasing ID
+            # prot_samp.vi <- as.integer(substr(rownames(prot_pda.df), 2, 4))
+            # stopifnot(identical(prot_samp.vi, sort(prot_samp.vi)))
+            
+            ## getting imputation info
+            value_origin.vl <- vapply(colnames(prot_fda.df), function(colname.c) {
+              colname_split.vc <- unlist(strsplit(colname.c, split = "_"))
+              grepl("^OriginOfValueabundance", colname.c) &
+                colname_split.vc[length(colname_split.vc)] %in% rownames(prot_pda.df)
+            }, FUN.VALUE = logical(1))
+            value_origin.df <- prot_fda.df[, value_origin.vl]
+            colnames(value_origin.df) <- gsub("_run90methode30K",
+                                              "",
+                                              gsub("_mgf", "",
+                                                   gsub("OriginOfValueabundance_", "",
+                                                        colnames(value_origin.df))))
+            
+            ## re-ordering imputation info to match sample names
+            value_origin_samp.vc <- vapply(colnames(value_origin.df), function(colname.c) {
+              colname_split.vc <- unlist(strsplit(colname.c, split = "_"))
+              colname_split.vc[length(colname_split.vc)]}, FUN.VALUE = character(1))
+            temp <- value_origin_samp.vc
+            value_origin_samp.vc <- names(value_origin_samp.vc)
+            names(value_origin_samp.vc) <- temp
+            value_origin.df <- value_origin.df[, value_origin_samp.vc[rownames(prot_pda.df)]]
+            
+            stopifnot(identical(names(value_origin_samp.vc[rownames(prot_pda.df)]), Biobase::sampleNames(x)))
+            colnames(value_origin.df) <- Biobase::sampleNames(x)
+            
+            imputed.mi <- apply(value_origin.df, 2, DAPAR_is.MV)
+            mode(imputed.mi) <- "integer"
+            
+            stopifnot(!any(is.na(c(imputed.mi))))
+            
+            return(invisible(imputed.mi))
+            
+          })
 
 
 metadata_select <- function(mset,

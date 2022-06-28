@@ -1,6 +1,8 @@
 testthat::context("Datasets after single omics statistics")
 
-stat_intra.mset <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c())
+stat_intra.mset <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(), output.c = "set")
+
+## dimensions ----
 
 testthat::test_that("dimensions", {
   
@@ -29,6 +31,8 @@ testthat::test_that("dimensions", {
                              test_dim.mn)
   
 })
+
+## significant ----
 
 testthat::test_that("significant", {
   
@@ -72,6 +76,8 @@ testthat::test_that("significant", {
   
 })
 
+## proteomics_liver ----
+
 testthat::test_that("proteomics_liver", {
   
   proteomics_liver.eset <- stat_intra.mset[["proteomics_liver"]]
@@ -109,3 +115,4 @@ testthat::test_that("proteomics_liver", {
                          2145)
   
 })
+

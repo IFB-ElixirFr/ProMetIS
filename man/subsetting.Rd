@@ -2,9 +2,11 @@
 % Please edit documentation in R/allGenerics.R, R/common.R
 \name{subsetting}
 \alias{subsetting}
+\alias{subsetting,MultiAssayExperiment-method}
+\alias{subsetting,SummarizedExperiment-method}
 \alias{subsetting,MultiDataSet-method}
 \alias{subsetting,ExpressionSet-method}
-\title{Subsetting a ProMetIS \code{ExpressionSet} or \code{MultiDataSet}}
+\title{Subsetting a ProMetIS \code{SummarizedExperiment}, \code{MultiAssayExperiment}, \code{ExpressionSet} or \code{MultiDataSet}}
 \usage{
 subsetting(
   x,
@@ -13,6 +15,30 @@ subsetting(
   sex.vc = "all",
   tissues.vc = "all",
   common_samples.l = FALSE,
+  na_thresh.n = 0.2,
+  var_thresh.n = .Machine$double.eps,
+  imputed_thresh.n = 0.2
+)
+
+\S4method{subsetting}{MultiAssayExperiment}(
+  x,
+  set.c = NULL,
+  genes.vc = "all",
+  sex.vc = "all",
+  tissues.vc = "all",
+  common_samples.l = FALSE,
+  na_thresh.n = 0.2,
+  var_thresh.n = .Machine$double.eps,
+  imputed_thresh.n = 0.2
+)
+
+\S4method{subsetting}{SummarizedExperiment}(
+  x,
+  set.c = NULL,
+  genes.vc = "all",
+  sex.vc = "all",
+  tissues.vc = NULL,
+  common_samples.l = NULL,
   na_thresh.n = 0.2,
   var_thresh.n = .Machine$double.eps,
   imputed_thresh.n = 0.2
@@ -43,9 +69,9 @@ subsetting(
 )
 }
 \arguments{
-\item{x}{An S4 object of class \code{ExpressionSet} or \code{MultiDataSet}}
+\item{x}{An S4 object of class \code{SummarizedExperiment}, \code{MultiAssayExperiment}, \code{ExpressionSet} or \code{MultiDataSet}}
 
-\item{set.c}{Character: name of the \code{ExpressionSet}}
+\item{set.c}{Character: name of the data set}
 
 \item{genes.vc}{Character vector: with elements in 'LAT', 'MX2', and 'WT'; when
 set to 'all', the 'c('WT', 'LAT', 'MX2')' vector will be used}
@@ -77,9 +103,42 @@ features with too many NAs, too low variance, or too many imputed values (proteo
 datasets only)
 }
 \examples{
-latmx2.mset <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+# MultiAssayExperiment
+latmx2.mae <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+                                report.c = "none")
+latmx2.mae <- latmx2.mae[, , ProMetIS::sets.vc()]
+plasma_lat.mae <- ProMetIS::subsetting(latmx2.mae,
+                                       genes.vc = c("WT", "LAT"),
+                                       tissues.vc = "plasma")
+# SummarizedExperiment
+set.c <- "proteomics_liver"
+proteo.mae <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+                                subsets.vc = set.c,
+                                report.c = "none")
+proteo.se <- proteo.mae[[set.c]]
+## adding (common) sample metadata to the summarized experiment
+sample_meta.DF <- SummarizedExperiment::colData(proteo.mae)
+SummarizedExperiment::colData(proteo.se)[, "gene"] <- sample_meta.DF[colnames(proteo.se), "gene"]
+SummarizedExperiment::colData(proteo.se)[, "sex"] <- sample_meta.DF[colnames(proteo.se), "sex"]
+proteo_lat.se <- ProMetIS::subsetting(proteo.se,
+                                      set.c = set.c,
+                                      genes.vc = c("WT", "LAT"))
+# MultiDataSet
+latmx2.mds <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+                                output.c = "set",
+                                report.c = "none")
+latmx2.mds <- latmx2.mds[, ProMetIS::sets.vc()]
+plasma_lat.mds <- ProMetIS::subsetting(latmx2.mds,
+                                       genes.vc = c("WT", "LAT"),
+                                       tissues.vc = "plasma")
+# ExpressionSet
+set.c <- "proteomics_liver"
+proteo.mset <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+                                 subsets.vc = set.c,
+                                 output.c = "set",
                                  report.c = "none")
-plasma_lat.mset <- ProMetIS::subsetting(latmx2.mset,
-                                        genes.vc = c("WT", "LAT"),
-                                        tissues.vc = "plasma")
+proteo.set <- proteo.mset[[set.c]]
+proteo_lat.set <- ProMetIS::subsetting(proteo.set,
+                                       set.c = set.c,
+                                       genes.vc = c("WT", "LAT"))
 }
