@@ -28,6 +28,8 @@ knitr::opts_chunk$set(fig.width = 8,
 
 ```
 
+**Note regarding the recent versions of the `phenomis` package (\>= 0.4.0):** please set the argument `output.c = "set"` when using the `phenomis::reading` method to obtain a `MultiDataSet` instance as described in this vignette (otherwise, the `output.c = "exp"` default setting will generate a `MutiAssayExperiment` instance).
+
 # Loading
 
 ```{r loading}
@@ -76,8 +78,7 @@ for (gene.c in ProMetIS::genes.vc()) {
                                        signif_maxprint.i = 10,
                                        title.c = gene.c,
                                        report.c = "none")
-     
-    
+ 
   } else if (gene.c == "LAT") {
     # 'proteomics_liver' set: performing the 'limma' testing for gene in the male and female subsets, and 'limma' testing for sex in the LAT and WT subsets
     # all other sets: performing 'limma' 2 ways testing for gene and sex

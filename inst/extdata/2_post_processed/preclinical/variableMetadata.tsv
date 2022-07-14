@@ -30,7 +30,7 @@ Clinical.chemistry_HDL.Chol...mmol.l.	Clinical chemistry	HDL Chol. (mmol/l)	Clin
 Clinical.chemistry_Non.HDL.Chol...mmol.l.	Clinical chemistry	Non HDL Chol. (mmol/l)	Clinical chemistry parameters	normal
 Clinical.chemistry_P..mmol.l.	Clinical chemistry	P (mmol/l)	Clinical chemistry parameters	normal
 Clinical.chemistry_T..Chol...mmol.l.	Clinical chemistry	T. Chol. (mmol/l)	Clinical chemistry parameters	normal
-Clinical.chemistry_T..bilirubin..µmol.l.	Clinical chemistry	T. bilirubin (µmol/l)	Clinical chemistry parameters	non parametric
+Clinical.chemistry_T..bilirubin..Âµmol.l.	Clinical chemistry	T. bilirubin (Âµmol/l)	Clinical chemistry parameters	non parametric
 Clinical.chemistry_TG..mmol.l.	Clinical chemistry	TG (mmol/l)	Clinical chemistry parameters	normal
 Clinical.chemistry_Urea..mmol.l.	Clinical chemistry	Urea (mmol/l)	Clinical chemistry parameters	log
 Dysmorphology_Body.weight..g.	Dysmorphology	Body weight (g)	Dysmorphology IMPC	normal
@@ -41,7 +41,7 @@ ECG_PR..ms.	ECG	PR (ms)	ECG in anaesthetized conditions	non parametric
 ECG_Pdur..ms.	ECG	Pdur (ms)	ECG in anaesthetized conditions	normal
 ECG_QRS..ms.	ECG	QRS (ms)	ECG in anaesthetized conditions	inverse
 ECG_QT..ms.	ECG	QT (ms)	ECG in anaesthetized conditions	non parametric
-ECG_QT.corrigé..ms.Corr.	ECG	QT corrigé (ms Corr)	ECG in anaesthetized conditions	non parametric
+ECG_QT.corrigÃ©..ms.Corr.	ECG	QT corrigÃ© (ms Corr)	ECG in anaesthetized conditions	non parametric
 ECG_RR..ms.	ECG	RR (ms)	ECG in anaesthetized conditions	normal
 ECG_Ramp..mv.	ECG	Ramp (mv)	ECG in anaesthetized conditions	non parametric
 ECG_ST..ms.	ECG	ST (ms)	ECG in anaesthetized conditions	log
@@ -61,21 +61,21 @@ Echocardiography_LVID_s..mm.	Echocardiography	LVID_s (mm)	Echocardiography using
 Echocardiography_LVPW_d..mm.	Echocardiography	LVPW_d (mm)	Echocardiography using the Vevo light	log
 Echocardiography_LVPW_s..mm.	Echocardiography	LVPW_s (mm)	Echocardiography using the Vevo light	log
 Eye_Body.weight..g.	Eye	Body weight (g)	Eye Morphology	normal
-Eye_Left.inner.plexiform.layer..µm.	Eye	Left inner plexiform layer (µm)	Eye Morphology	normal
-Eye_Left.segments..µm.	Eye	Left segments (µm)	Eye Morphology	normal
-Eye_Left.vitreous.humor.thickness..µm.	Eye	Left vitreous humor thickness (µm)	Eye Morphology	normal
+Eye_Left.inner.plexiform.layer..Âµm.	Eye	Left inner plexiform layer (Âµm)	Eye Morphology	normal
+Eye_Left.segments..Âµm.	Eye	Left segments (Âµm)	Eye Morphology	normal
+Eye_Left.vitreous.humor.thickness..Âµm.	Eye	Left vitreous humor thickness (Âµm)	Eye Morphology	normal
 Eye_OCT.left.anterior.chamber.depth	Eye	OCT left anterior chamber depth	Eye Morphology	normal
 Eye_OCT.left.corneal.thickness	Eye	OCT left corneal thickness	Eye Morphology	normal
-Eye_OCT.left.inner.nuclear.layer..µm.	Eye	OCT left inner nuclear layer (µm)	Eye Morphology	normal
-Eye_OCT.left.outer.nuclear.layer..µm.	Eye	OCT left outer nuclear layer (µm)	Eye Morphology	normal
-Eye_OCT.left.total.retinal.thickness..µm.	Eye	OCT left total retinal thickness (µm)	Eye Morphology	normal
+Eye_OCT.left.inner.nuclear.layer..Âµm.	Eye	OCT left inner nuclear layer (Âµm)	Eye Morphology	normal
+Eye_OCT.left.outer.nuclear.layer..Âµm.	Eye	OCT left outer nuclear layer (Âµm)	Eye Morphology	normal
+Eye_OCT.left.total.retinal.thickness..Âµm.	Eye	OCT left total retinal thickness (Âµm)	Eye Morphology	normal
 Eye_OCT.right.corneal.thickness	Eye	OCT right corneal thickness	Eye Morphology	normal
-Eye_OCT.right.inner.nuclear.layer..µm.	Eye	OCT right inner nuclear layer (µm)	Eye Morphology	normal
-Eye_OCT.right.outer.nuclear.layer..µm.	Eye	OCT right outer nuclear layer (µm)	Eye Morphology	normal
-Eye_OCT.right.total.retinal.thickness..µm.	Eye	OCT right total retinal thickness (µm)	Eye Morphology	normal
-Eye_Right.inner.plexiform.layer..µm.	Eye	Right inner plexiform layer (µm)	Eye Morphology	normal
-Eye_Right.segments..µm.	Eye	Right segments (µm)	Eye Morphology	normal
-Eye_Right.vitreous.humor.thickness..µm.	Eye	Right vitreous humor thickness (µm)	Eye Morphology	normal
+Eye_OCT.right.inner.nuclear.layer..Âµm.	Eye	OCT right inner nuclear layer (Âµm)	Eye Morphology	normal
+Eye_OCT.right.outer.nuclear.layer..Âµm.	Eye	OCT right outer nuclear layer (Âµm)	Eye Morphology	normal
+Eye_OCT.right.total.retinal.thickness..Âµm.	Eye	OCT right total retinal thickness (Âµm)	Eye Morphology	normal
+Eye_Right.inner.plexiform.layer..Âµm.	Eye	Right inner plexiform layer (Âµm)	Eye Morphology	normal
+Eye_Right.segments..Âµm.	Eye	Right segments (Âµm)	Eye Morphology	normal
+Eye_Right.vitreous.humor.thickness..Âµm.	Eye	Right vitreous humor thickness (Âµm)	Eye Morphology	normal
 Grip.test_Grip.mean..4paws...g.	Grip test	Grip mean (4paws) (g)	Grip test	normal
 Grip.test_Grip.mean..g.	Grip test	Grip mean (g)	Grip test	normal
 Grip.test_Grip.mean.ratio..g.g.	Grip test	Grip mean ratio (g/g)	Grip test	normal
@@ -96,31 +96,31 @@ Haematology_.MONO....	Haematology	%MONO (%)	Haematology - Complete blood count (
 Haematology_.NEUTRO....	Haematology	%NEUTRO (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_CHCM..g.dL.	Haematology	CHCM (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_CHDW..g.dL.	Haematology	CHDW (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	normal
-Haematology_EOSINO..x10E03.cells.µL.	Haematology	EOSINO (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_EOSINO.BRUT..x10E03.cells.µL.	Haematology	EOSINO BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_EOSINO..x10E03.cells.ÂµL.	Haematology	EOSINO (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_EOSINO.BRUT..x10E03.cells.ÂµL.	Haematology	EOSINO BRUT (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_HCT....	Haematology	HCT (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_HGB..g.dL.	Haematology	HGB (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_HGB.brut..g.dL.	Haematology	HGB brut (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_Hte.brut....	Haematology	Hte brut (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_LUC..x10E03.cells.µL.	Haematology	LUC (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_LUC.BRUT..x10E03.cells.µL.	Haematology	LUC BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_LYMPHO..x10E03.cells.µL.	Haematology	LYMPHO (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_LYMPHO.BRUT..x10E03.cells.µL.	Haematology	LYMPHO BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_LUC..x10E03.cells.ÂµL.	Haematology	LUC (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_LUC.BRUT..x10E03.cells.ÂµL.	Haematology	LUC BRUT (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_LYMPHO..x10E03.cells.ÂµL.	Haematology	LYMPHO (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_LYMPHO.BRUT..x10E03.cells.ÂµL.	Haematology	LYMPHO BRUT (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_MCH..pg.	Haematology	MCH (pg)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_MCHC..g.dL.	Haematology	MCHC (g/dL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_MCV..fL.	Haematology	MCV (fL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_MONO..x10E03.cells.µL.	Haematology	MONO (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_MONO.BRUT..x10E03.cells.µL.	Haematology	MONO BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_MONO..x10E03.cells.ÂµL.	Haematology	MONO (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_MONO.BRUT..x10E03.cells.ÂµL.	Haematology	MONO BRUT (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_MPV..fL.	Haematology	MPV (fL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_NEUTRO..x10E03.cells.µL.	Haematology	NEUTRO (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_NEUTRO.BRUT..x10E03.cells.µL.	Haematology	NEUTRO BRUT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_PLT..x10E03.cells.µL.	Haematology	PLT (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_PLT.brut..x10E03.cells.µL.	Haematology	PLT brut (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_RBC..x10E06.cells.µL.	Haematology	RBC (x10E06 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_RBC.brut..x10E06.cells.µL.	Haematology	RBC brut (x10E06 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_NEUTRO..x10E03.cells.ÂµL.	Haematology	NEUTRO (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_NEUTRO.BRUT..x10E03.cells.ÂµL.	Haematology	NEUTRO BRUT (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_PLT..x10E03.cells.ÂµL.	Haematology	PLT (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_PLT.brut..x10E03.cells.ÂµL.	Haematology	PLT brut (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_RBC..x10E06.cells.ÂµL.	Haematology	RBC (x10E06 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
+Haematology_RBC.brut..x10E06.cells.ÂµL.	Haematology	RBC brut (x10E06 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
 Haematology_RDW....	Haematology	RDW (%)	Haematology - Complete blood count (CBC)on the Advia 120	non parametric
-Haematology_WBC..x10E03.cells.µL.	Haematology	WBC (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	normal
-Haematology_WBC.brut..x10E03.cells.µL.	Haematology	WBC brut (x10E03 cells/µL)	Haematology - Complete blood count (CBC)on the Advia 120	normal
+Haematology_WBC..x10E03.cells.ÂµL.	Haematology	WBC (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	normal
+Haematology_WBC.brut..x10E03.cells.ÂµL.	Haematology	WBC brut (x10E03 cells/ÂµL)	Haematology - Complete blood count (CBC)on the Advia 120	normal
 Hot.plate_Body.weight..g.	Hot plate	Body weight (g)	Hot plate test	normal
 Hot.plate_Hot.plate.1..s.	Hot plate	Hot plate 1 (s)	Hot plate test	normal
 Open.field_..Time.Spent.in.the.Center.I1..cm.	Open field	% Time Spent in the Center I1 (cm)	Open field test	log
@@ -179,23 +179,23 @@ Rotarod_Trial.1..s.	Rotarod	Trial 1 (s)	Rotarod test	normal
 Rotarod_Trial.2..s.	Rotarod	Trial 2 (s)	Rotarod test	normal
 Rotarod_Trial.3..s.	Rotarod	Trial 3 (s)	Rotarod test	normal
 Shock.threshold_Vocalization	Shock threshold	Vocalization	Shock threshold test	non parametric
-Glucose.tolerance.test_Body.weight..g.	Glucose tolerance test	Body weight (g)	Test de Tolérance au Glucose (GTT)	normal
-Glucose.tolerance.test_Glucose.T0..mmol.l.	Glucose tolerance test	Glucose T0 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
-Glucose.tolerance.test_Glucose.T120..mmol.l.	Glucose tolerance test	Glucose T120 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
-Glucose.tolerance.test_Glucose.T15..mmol.l.	Glucose tolerance test	Glucose T15 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
-Glucose.tolerance.test_Glucose.T30..mmol.l.	Glucose tolerance test	Glucose T30 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
-Glucose.tolerance.test_Glucose.T60..mmol.l.	Glucose tolerance test	Glucose T60 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal
-Glucose.tolerance.test_Glucose.auc.positive..0.120...min.mmol.l.	Glucose tolerance test	Glucose auc positive (0-120) (min*mmol/l)	Test de Tolérance au Glucose (GTT)	normal
-Glucose.tolerance.test_Glucose.auc.0.120...min.mmol.l.	Glucose tolerance test	Glucose auc(0-120) (min*mmol/l)	Test de Tolérance au Glucose (GTT)	normal
-Body.composition_BMC..g.	Body composition	BMC (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	log
-Body.composition_BMD..g.cm2.	Body composition	BMD (g/cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_Body.length..cm.	Body composition	Body length (cm)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_body.weight..g.	Body composition	body weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_bone.area..cm2.	Body composition	bone area (cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_fat.percent....	Body composition	fat percent (%)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_fat.weight..g.	Body composition	fat weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_lean.percent....	Body composition	lean percent (%)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_lean.weight..g.	Body composition	lean weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_sample.area..cm2.	Body composition	sample area (cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_soft.weight..g.	Body composition	soft weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
-Body.composition_total.weight..g.	Body composition	total weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal
+Glucose.tolerance.test_Body.weight..g.	Glucose tolerance test	Body weight (g)	Test de TolÃ©rance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T0..mmol.l.	Glucose tolerance test	Glucose T0 (mmol/l)	Test de TolÃ©rance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T120..mmol.l.	Glucose tolerance test	Glucose T120 (mmol/l)	Test de TolÃ©rance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T15..mmol.l.	Glucose tolerance test	Glucose T15 (mmol/l)	Test de TolÃ©rance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T30..mmol.l.	Glucose tolerance test	Glucose T30 (mmol/l)	Test de TolÃ©rance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.T60..mmol.l.	Glucose tolerance test	Glucose T60 (mmol/l)	Test de TolÃ©rance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.auc.positive..0.120...min.mmol.l.	Glucose tolerance test	Glucose auc positive (0-120) (min*mmol/l)	Test de TolÃ©rance au Glucose (GTT)	normal
+Glucose.tolerance.test_Glucose.auc.0.120...min.mmol.l.	Glucose tolerance test	Glucose auc(0-120) (min*mmol/l)	Test de TolÃ©rance au Glucose (GTT)	normal
+Body.composition_BMC..g.	Body composition	BMC (g)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	log
+Body.composition_BMD..g.cm2.	Body composition	BMD (g/cm2)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_Body.length..cm.	Body composition	Body length (cm)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_body.weight..g.	Body composition	body weight (g)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_bone.area..cm2.	Body composition	bone area (cm2)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_fat.percent....	Body composition	fat percent (%)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_fat.weight..g.	Body composition	fat weight (g)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_lean.percent....	Body composition	lean percent (%)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_lean.weight..g.	Body composition	lean weight (g)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_sample.area..cm2.	Body composition	sample area (cm2)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_soft.weight..g.	Body composition	soft weight (g)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal
+Body.composition_total.weight..g.	Body composition	total weight (g)	Ultrafocus - DensitomÃ©trie osseuse et composition corporelle	normal

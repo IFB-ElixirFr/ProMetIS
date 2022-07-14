@@ -10,6 +10,10 @@ This package provides the data sets and analyzes from the preclinical, proteomic
 
 The package can be installed from GitHub with `devtools::install_github("IFB-ElixirFr/ProMetIS")`.
 
+## Vignettes
+
+**Note regarding the recent versions of the `phenomis` package (\>= 0.4.0):** please set the argument `output.c = "set"` when using the `phenomis::reading` method to obtain a `MultiDataSet` instance as described in this vignette (otherwise, the `output.c = "exp"` default setting will generate a `MutiAssayExperiment` instance).
+
 ## Contact
 
 Etienne A. Thévenot (etienne.thevenot@cea.fr)

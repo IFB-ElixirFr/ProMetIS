@@ -26,6 +26,8 @@ knitr::opts_chunk$set(fig.width = 8,
                       warning = FALSE)
 ```
 
+**Note regarding the recent versions of the `phenomis` package (\>= 0.4.0):** please set the argument `output.c = "set"` when using the `phenomis::reading` method to obtain a `MultiDataSet` instance as described in this vignette (otherwise, the `output.c = "exp"` default setting will generate a `MutiAssayExperiment` instance).
+
 # Overview of the datasets
 
 ## Loading the LAT and MX2 data

@@ -105,6 +105,11 @@ setMethod("subsetting", signature(x = "SummarizedExperiment"),
             
             samples.vc <- colnames(x)
             
+            if (!("gene" %in% colnames(SummarizedExperiment::colData(x))))
+              stop("No 'gene' column found in the colData of the SummarizedExperiment")
+            if (!("sex" %in% colnames(SummarizedExperiment::colData(x))))
+              stop("No 'sex' column found in the colData of the SummarizedExperiment")
+            
             samples_sel.vl <- SummarizedExperiment::colData(x)[, "gene"] %in% genes.vc &
               SummarizedExperiment::colData(x)[, "sex"] %in% sex.vc
             

@@ -1,3 +1,12 @@
+CHANGES IN VERSION 1.0.4
+------------------------------
+
+MINOR MODIFICATION
+
+    o note added in the vignettes to explain that the output.c = "set" argument must be 
+    specified in the most recent versions of the phenomis::reading function (>= 0.4.0) to
+    get a MultiDataSet instance (defaults is now set to MultiAssayExperiment)
+
 CHANGES IN VERSION 1.0.2
 ------------------------------
 

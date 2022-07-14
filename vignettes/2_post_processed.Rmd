@@ -25,6 +25,8 @@ knitr::opts_chunk$set(fig.width = 8,
                       warning = FALSE)
 ```
 
+**Note regarding the recent versions of the `phenomis` package (\>= 0.4.0):** please set the argument `output.c = "set"` when using the `phenomis::reading` method to obtain a `MultiDataSet` instance as described in this vignette (otherwise, the `output.c = "exp"` default setting will generate a `MutiAssayExperiment` instance).
+
 # Mice IDs
 
 ```{r message=FALSE, warning=FALSE}
@@ -281,12 +283,11 @@ for (set.c in ProMetIS::proteo_sets.vc()) {
 }
 ```
 
-## Re-ordering metadata ('supp_' columns at the end)
+## Re-ordering metadata ('supp\_' columns at the end)
 
 ```{r proteo_reordering_supp}
 proteo.mset <- ProMetIS:::metadata_select(proteo.mset, step.c = "2_post_processed")
 ```
-
 
 ## Saving (not run)
 
@@ -325,16 +326,16 @@ metabo.mset <- phenomis::reading(ProMetIS::processed_dir.c(),
 
 The workflow consists of the following steps:
 
-|step                |liver_c18hypersil_pos |liver_hilic_neg    |plasma_c18hypersil_pos|plasma_hilic_neg   |plasma_c18acquity_pos|plasma_c18acquity_neg|
-|--------------------|----------------------|-------------------|----------------------|-------------------|---------------------|---------------------|
-|0.4 <= RT <= 22     |                      |                   |                      |                   |          X          |           X         |
-|blank/samp   <= 0.33|           X          |         X         |           X          |         X         |          X          |           X         |
-|poolDil: cor >= 0.7 |           X          |         X         |           X          |         X         |                     |                     |
-|drift loess, span=1 |          none        |        none       |          pool        |        pool       |        sample       |         sample      |
-|NA <= 20% & var > 0 |           X          |         X         |           X          |         X         |          X          |           X         |
-|pool CV       <= 0.3|           X          |         X         |           X          |         X         |          X          |           X         |
-|poolCV/sampCV <= 1  |           X          |         X         |           X          |         X         |          X          |           X         |
-|corr, dRT, dmz      |           X          |         X         |           X          |         X         |          X          |           X         |
+| step                  | liver_c18hypersil_pos | liver_hilic_neg | plasma_c18hypersil_pos | plasma_hilic_neg | plasma_c18acquity_pos | plasma_c18acquity_neg |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| 0.4 \<= RT \<= 22     |                       |                 |                        |                  | X                     | X                     |
+| blank/samp \<= 0.33   | X                     | X               | X                      | X                | X                     | X                     |
+| poolDil: cor \>= 0.7  | X                     | X               | X                      | X                |                       |                       |
+| drift loess, span=1   | none                  | none            | pool                   | pool             | sample                | sample                |
+| NA \<= 20% & var \> 0 | X                     | X               | X                      | X                | X                     | X                     |
+| pool CV \<= 0.3       | X                     | X               | X                      | X                | X                     | X                     |
+| poolCV/sampCV \<= 1   | X                     | X               | X                      | X                | X                     | X                     |
+| corr, dRT, dmz        | X                     | X               | X                      | X                | X                     | X                     |
 
 ```{r metabolomics_dataMatrix, message=FALSE, warning=FALSE}
 metabo.mset <- ProMetIS:::.metabo_postprocessing(metabo.mset = metabo.mset,
@@ -354,13 +355,12 @@ metabo.mset <- ProMetIS:::.format_metabonames(metabo.mset = metabo.mset,
 metabo.mset <- phenomis::transforming(metabo.mset, report.c = "none")
 ```
 
-## Re-ordering metadata ('supp_' columns at the end)
+## Re-ordering metadata ('supp\_' columns at the end)
 
 ```{r metabo_reordering}
 metabo.mset <- ProMetIS:::metadata_select(metabo.mset,
                                           step.c = "2_post_processed")
 ```
-
 
 ## Saving (not run)
 
@@ -384,4 +384,3 @@ for (set.c in ProMetIS::metabo_sets.vc()) {
   
 }
 ```
-
