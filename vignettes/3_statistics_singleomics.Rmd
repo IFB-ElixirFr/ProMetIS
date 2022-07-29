@@ -34,7 +34,8 @@ knitr::opts_chunk$set(fig.width = 8,
 
 ```{r loading}
 latmx2.mset <- phenomis::reading(ProMetIS::post_processed_dir.c(),
-                                   report.c = "none")
+                                 output.c = "set",
+                                 report.c = "none")
 latmx2.mset <- latmx2.mset[, ProMetIS::sets.vc()]
 ```
 
@@ -213,12 +214,21 @@ for (gene.c in ProMetIS::genes.vc()) {
   gene.mset <- gene_mset.ls[[gene.c]]
   
   gene_mset.pca <- ropls::opls(gene.mset, fig.pdfC = "none")
+  gene_pca.ls <- gene_mset.pca@oplsLs
   
-  ropls::plot(gene_mset.pca, plotPhenoDataC = "gene", typeVc = "x-score",
-              parPaletteVc = ProMetIS::palette.vc()[rev(c("WT", gene.c))])
+  for (set.c in names(gene.mset)) {
+    ropls::plot(gene_pca.ls[[set.c]],
+                parAsColFcVn = Biobase::pData(gene.mset[[set.c]])[, "gene"],
+                typeVc = "x-score",
+                parPaletteVc = ProMetIS::palette.vc()[rev(c("WT", gene.c))])
+  }
   
-  ropls::plot(gene_mset.pca, plotPhenoDataC = "sex", typeVc = "x-score",
-              parPaletteVc = ProMetIS::palette.vc()[rev(ProMetIS::sex.vc())])
+  for (set.c in names(gene.mset)) {
+    ropls::plot(gene_pca.ls[[set.c]],
+                parAsColFcVn = Biobase::pData(gene.mset[[set.c]])[, "sex"],
+                typeVc = "x-score",
+                parPaletteVc = ProMetIS::palette.vc()[rev(ProMetIS::sex.vc())])
+  }
   
   gene.mset <- ropls::getMset(gene_mset.pca)
   
@@ -236,12 +246,22 @@ for (gene.c in ProMetIS::genes.vc()) {
   
   gene.mset <- gene_mset.ls[[gene.c]]
   
-  gene_mset.oplsda <- ropls::opls(gene.mset, "gene", predI = 1, orthoI = 1,
+  gene_mset.oplsda <- ropls::opls(gene.mset, "gene",
+                                  predI = 1, orthoI = 1,
                                   fig.pdfC = "none")
   
-  ropls::plot(gene_mset.oplsda, typeVc = "permutation")
-  ropls::plot(gene_mset.oplsda, typeVc = "x-score",
-              parPaletteVc = ProMetIS::palette.vc()[rev(c("WT", gene.c))])
+  gene_oplsda.ls <- gene_mset.oplsda@oplsLs
+  
+  for (set.c in names(gene.mset)) {
+    ropls::plot(gene_oplsda.ls[[set.c]],
+                typeVc = "permutation")
+  }
+  
+  for (set.c in names(gene.mset)) {
+    ropls::plot(gene_oplsda.ls[[set.c]],
+                typeVc = "x-score",
+                parPaletteVc = ProMetIS::palette.vc()[rev(c("WT", gene.c))])
+  }
   
   gene.mset <- ropls::getMset(gene_mset.oplsda)
   
@@ -252,7 +272,7 @@ for (gene.c in ProMetIS::genes.vc()) {
 
 # Feature selection
 
-```{r feature_selection}
+```{r feature_selection, eval = FALSE}
 for (gene.c in ProMetIS::genes.vc()) {
   
   message(gene.c)
@@ -261,8 +281,7 @@ for (gene.c in ProMetIS::genes.vc()) {
   
   gene_mset.biosign <- biosigner::biosign(gene.mset,
                                           "gene",
-                                          seedI = 123,
-                                          plotTierMaxC = "A")
+                                          seedI = 123)
   
   gene.mset <- biosigner::getMset(gene_mset.biosign)
   

@@ -30,7 +30,9 @@ knitr::opts_chunk$set(fig.width = 8,
 # Mice IDs
 
 ```{r message=FALSE, warning=FALSE}
-processed.mset <- phenomis::reading(ProMetIS::processed_dir.c(), report.c = "none")
+processed.mset <- phenomis::reading(ProMetIS::processed_dir.c(),
+                                    output.c = "set",
+                                    report.c = "none")
 preclin.eset <- processed.mset[["preclinical"]]
 mice_id.df <- Biobase::pData(preclin.eset)
 mice_id.df[, "id"] <- NULL
@@ -95,10 +97,11 @@ for (set.c in ProMetIS::proteo_sets.vc()) {
   if (set.c == "proteomics_liver") {
     stopifnot(identical(sort(rownames(proteo_pda.df)),
                         sort(sample_names.vc)))
-    proteo_pda.df <- proteo_pda.df[sample_names.vc, ]
+    # proteo_pda.df <- proteo_pda.df[sample_names.vc, ]
   }
-  stopifnot(identical(rownames(proteo_pda.df),
-                      sample_names.vc))
+  proteo_pda.df <- proteo_pda.df[sample_names.vc, ]
+  # stopifnot(identical(rownames(proteo_pda.df),
+  #                     sample_names.vc))
   
   Biobase::pData(eset) <- proteo_pda.df
   stopifnot(methods::validObject(eset))
@@ -189,7 +192,7 @@ for (set.c in ProMetIS::proteo_sets.vc()) {
                                                         function(cond.c)
                                                           switch(cond.c,
                                                                  mx2 = "X",
-                                                                 ctrl = "W",
+                                                                 wt = "W",
                                                                  lat = "L")),
                                                  Biobase::pData(eset)[, "sample name"])
   } else {
@@ -234,7 +237,8 @@ for (set.c in ProMetIS::proteo_sets.vc()) {
   eset <- proteo.mset[[set.c]]
   
   Biobase::pData(eset) <- cbind.data.frame(mice_id.df[Biobase::sampleNames(eset), ],
-                                           Biobase::pData(eset),
+                                           Biobase::pData(eset)[, setdiff(Biobase::varLabels(eset),
+                                                                          colnames(mice_id.df))],
                                            stringsAsFactors = FALSE)
   stopifnot(methods::validObject(eset))
   
@@ -319,6 +323,7 @@ for (set.c in ProMetIS::proteo_sets.vc()) {
 ```{r metabo_loading}
 metabo.mset <- phenomis::reading(ProMetIS::processed_dir.c(),
                                  subsets.vc = ProMetIS::metabo_sets.vc(),
+                                 output.c = "set",
                                  report.c = "none")
 ```
 

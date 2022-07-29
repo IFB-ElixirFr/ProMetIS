@@ -52,9 +52,9 @@
       select_sample_specific.vl <- select_sample_specific.vl |
         Biobase::fData(eset)[, "standard"] != ""
     }
-
+    
     eset <- eset[which(select_sample_specific.vl), ]
-
+    
     # Pool dilution (MTH Paris)
     
     if (grepl("(hyper|hilic)", set.c)) {
@@ -104,21 +104,24 @@
     if (drift_correct.c == "prometis") {
       if (grepl("plasma.+(hyper|hilic)", set.c)) {
         eset <- phenomis::correcting(eset,
-                                     reference.c = "pool",
+                                     method.vc = "loess",
+                                     reference.vc = "pool",
                                      title.c = gsub("metabolomics_", "", set.c),
-                                     span.n = span.n,
+                                     loess_span.vn = span.n,
                                      figure.c = ifelse(.technical_validation.l, "interactive", "none"))
       } else if (grepl("acqui", set.c))
         eset <- phenomis::correcting(eset,
-                                     reference.c = "sample",
+                                     method.vc = "loess",
+                                     reference.vc = "sample",
                                      title.c = gsub("metabolomics_", "", set.c),
-                                     span.n = span.n,
+                                     loess_span.vn = span.n,
                                      figure.c = ifelse(.technical_validation.l, "interactive", "none"))
     } else if (drift_correct.c != "none")
       eset <- phenomis::correcting(eset,
-                                   reference.c = drift_correct.c,
+                                   method.vc = "loess",
+                                   reference.vc = drift_correct.c,
                                    title.c = gsub("metabolomics_", "", set.c),
-                                   span.n = span.n,
+                                   loess_span.vn = span.n,
                                    figure.c = ifelse(.technical_validation.l, "interactive", "none"))
     
     # NAs and variances
@@ -212,9 +215,9 @@
     Biobase::sampleNames(eset) <- rownames(mice_id.df)
     
     # variable metadata: adding the name of the chromatographic column
-
+    
     fdata.df <- Biobase::fData(eset)
-
+    
     fdata.df[, "chromato"] <- rep(unlist(strsplit(set.c, split = "_"))[3],
                                   nrow(fdata.df))
     
@@ -226,9 +229,75 @@
         }
       }
     }
-
+    
     Biobase::fData(eset) <- fdata.df
-
+    
+    if (grepl("(hyper|hilic)", set.c)) {
+      
+      # The names of the features from the MTH-Paris metabolomics datasets
+      # contain non standard characters.
+      # The names of the datasets are modified by using the name from
+      # the (first) chebi identifier (instead of the one from the 'chimiotheque').
+      
+      reformat <- function(feat.vc,
+                           feat.df) {
+        
+        stopifnot("chebi_id" %in% colnames(feat.df))
+        
+        mybiodb <- biodb::newInst()
+        
+        chebi <- mybiodb$getFactory()$createConn('chebi')
+        
+        for (feat.i in seq_along(feat.vc)) {
+          
+          feat.c <- feat.vc[feat.i]
+          
+          if (grepl("_", feat.c)) {
+            
+            chebi.c <- feat.df[feat.i, "chebi_id"]
+            
+            if (!is.na(chebi.c) && chebi.c != "") {
+              
+              if (grepl("|", chebi.c, fixed = TRUE))
+                chebi.c <- unlist(strsplit(chebi.c, split = "|", fixed = TRUE))[1]
+              
+              entry.biodb <- chebi$getEntry(as.numeric(gsub("CHEBI:", "", chebi.c)))
+              
+              if (!is.null(entry.biodb)) {
+                
+                feat.vc[feat.i] <- paste0(unlist(strsplit(feat.c, split = "_"))[1],
+                                          "_",
+                                          make.names(entry.biodb$getFieldValue('name')[1]))
+                
+              } else
+                feat.vc[feat.i] <- paste0(unlist(strsplit(feat.c, split = "_"))[1], "_")
+              
+            } else
+              feat.vc[feat.i] <- paste0(unlist(strsplit(feat.c, split = "_"))[1])
+            
+          }
+          
+        }
+        
+        feat.vc <- make.names(feat.vc, unique = TRUE)
+        
+        mybiodb$terminate()
+        
+        return(feat.vc)
+        
+      }
+      
+      feat.vc <- rownames(fdata.df)
+      
+      feat_format.vc <- reformat(feat.vc = feat.vc,
+                                 feat.df = fdata.df)
+      
+      stopifnot(length(feat_format.vc) == length(feat.vc))
+      
+      Biobase::featureNames(eset) <- feat_format.vc
+      
+    }
+    
     stopifnot(methods::validObject(eset))
     
     metabo.mset <- MultiDataSet::add_eset(metabo.mset,
