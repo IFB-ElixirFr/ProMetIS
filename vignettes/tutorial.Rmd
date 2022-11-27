@@ -39,7 +39,7 @@ lat_mset_dir.c <- ProMetIS::aggregated_dir.c("LAT")
 lat_mset_dir.c
 ```
 
-The multi-omics dataset is imported as a **MultiDataSet** object (generalization of ExpressionSet for multi-datasets (see the see the [**Appendix**](#appendix)); [[@HernandezFerrer_MultidatasetRPackage_2017]](https://doi.org/10.1186/s12859-016-1455-1)) with the `reading` function from the `phenomis` package:
+The multi-omics dataset is imported as a **MultiDataSet** object (generalization of ExpressionSet for multi-datasets (see the see the [**Appendix**](#appendix)); [[\@HernandezFerrer_MultidatasetRPackage_2017](https://doi.org/10.1186/s12859-016-1455-1)]) with the `reading` function from the `phenomis` package:
 
 ```{r reading}
 lat.mset <- phenomis::reading(lat_mset_dir.c, report.c = "none")
@@ -50,7 +50,6 @@ In the rest of the vignette, we will focus on the analysis of the **liver** (1 p
 ```{r liver}
 latliv.mset <- lat.mset[, grep("liver", names(lat.mset), value = TRUE)]
 ```
-
 
 The multi-omics dataset may be explored with the `inspecting` method from the `phenomis` package:
 
@@ -91,11 +90,11 @@ latliv.mset <- ropls::getMset(latliv.oplsda)
 
 # Multi-omics integration
 
-Many statistical approaches are available for integrative analysis of multi-omics datasets [[@PierreJean_ClusteringVariableSelection_2019]](https://doi.org/10.1093/bib/bbz138). Here we provide two examples: multiple co-inertia analysis [[@Meng_MultivariateApproachIntegration_2014]](https://doi.org/10.1186/1471-2105-15-162) and integrative clustering [[@Mo_PatternDiscoveryCancer_2013]](https://doi.org/10.1073/pnas.1208949110).
+Many statistical approaches are available for integrative analysis of multi-omics datasets [[\@PierreJean_ClusteringVariableSelection_2019](https://doi.org/10.1093/bib/bbz138)]. Here we provide two examples: multiple co-inertia analysis [[\@Meng_MultivariateApproachIntegration_2014](https://doi.org/10.1186/1471-2105-15-162)] and integrative clustering [[\@Mo_PatternDiscoveryCancer_2013](https://doi.org/10.1073/pnas.1208949110)].
 
 ## Multiple co-intertia analysis (**omicade4** package)
 
-The following analysis is adapted from the [**omicade4** vignette](https://bioconductor.org/packages/release/bioc/vignettes/omicade4/inst/doc/omicade4.pdf) and the **Using MultiDataSet with third party R packages** additional file 2 [[@HernandezFerrer_MultidatasetRPackage_2017]](https://doi.org/10.1186/s12859-016-1455-1).
+The following analysis is adapted from the [**omicade4** vignette](https://bioconductor.org/packages/release/bioc/vignettes/omicade4/inst/doc/omicade4.pdf) and the **Using MultiDataSet with third party R packages** additional file 2 [[\@HernandezFerrer_MultidatasetRPackage_2017](https://doi.org/10.1186/s12859-016-1455-1)].
 
 Restricting the datasets to common samples:
 
@@ -109,7 +108,7 @@ Exporting the data matrices:
 latliv_mn.ls <- MultiDataSet::as.list(latliv.mset)
 ```
 
-Replacing the "." by "_" in the metabolomics feature names (otherwise the names will be truncated during the call to mcia):
+Replacing the "." by "\_" in the metabolomics feature names (otherwise the names will be truncated during the call to mcia):
 
 ```{r mcia_feature_names}
 latliv_mn.ls <- lapply(latliv_mn.ls, function(latliv.mn) {
@@ -139,6 +138,7 @@ Variables most contributing to axis 2 are metabolites:
 ```{r selectVar2}
 omicade4::selectVar(latliv.mcia, a1.lim = c(-Inf, Inf), a2.lim = c(2, Inf))
 ```
+
 Contribution to axis 1 also includes proteins:
 
 ```{r selectVar1}
@@ -147,7 +147,7 @@ omicade4::selectVar(latliv.mcia, a1.lim = c(2.5, Inf), a2.lim = c(-Inf, Inf))
 
 ## Integrative clustering (**iClusterPlus** package)
 
-The following analysis is adapted from the [**iClusterPlus** iManual](https://www.bioconductor.org/packages/release/bioc/vignettes/iClusterPlus/inst/doc/iManual.pdf) and the **Using MultiDataSet with third party R packages** additional file 2 [[@HernandezFerrer_MultidatasetRPackage_2017]](https://doi.org/10.1186/s12859-016-1455-1).
+The following analysis is adapted from the [**iClusterPlus** iManual](https://www.bioconductor.org/packages/release/bioc/vignettes/iClusterPlus/inst/doc/iManual.pdf) and the **Using MultiDataSet with third party R packages** additional file 2 [[\@HernandezFerrer_MultidatasetRPackage_2017](https://doi.org/10.1186/s12859-016-1455-1)].
 
 Restricting to the common samples:
 
@@ -193,17 +193,17 @@ iClusterPlus::plotHeatmap(fit = latliv.iclusterplus,
 
 ```
 
-# Appendix
+# Appendix {#appendix}
 
 ## 3 tabular file format used for import/export
 
 Each dataset consists of:
 
-1. a numeric matrix of intensities (**dataMatrix**)
+1.  a numeric matrix of intensities (**dataMatrix**)
 
-2. a data frame of sample metadata (**sampleMetadata**)
+2.  a data frame of sample metadata (**sampleMetadata**)
 
-3. a data frame of variable metadata (**variableMetadata**)
+3.  a data frame of variable metadata (**variableMetadata**)
 
 Theses 3 tables can be conveniently imported to/exported from R as tabular files:
 
@@ -211,18 +211,18 @@ Theses 3 tables can be conveniently imported to/exported from R as tabular files
 
 ### **ExpressionSet** class for a single dataset
 
-The following table describes useful Biobase methods for the handling of ExpressionSet objects (see the ['An introduction to Biobase and ExpressionSets'](https://bioconductor.org/packages/release/bioc/vignettes/Biobase/inst/doc/ExpressionSetIntroduction.pdf) documentation from the [**Biobase**](https://doi.org/doi:10.18129/B9.bioc.Biobase) package): 
+The following table describes useful Biobase methods for the handling of ExpressionSet objects (see the ['An introduction to Biobase and ExpressionSets'](https://bioconductor.org/packages/release/bioc/vignettes/Biobase/inst/doc/ExpressionSetIntroduction.pdf) documentation from the [**Biobase**](https://doi.org/doi:10.18129/B9.bioc.Biobase) package):
 
-| Biobase methods | Description |
-|---|---|
-| **dims(eset)** | 2-row numeric matrix of 'Features' and 'Samples' dimensions|
-| **exprs(eset)** | 'variable times samples' numeric matrix - dataMatrix |
-| **pData(eset)** | sample metadata data frame - sampleMetadata |
-| **fData(eset)** | variable metadata data frame - variableMetadata |
-| **sampleNames(eset)** | sample names |
-| **featureNames(eset)** | variable names |
-| **varLabels(eset)** | Column names of the sampleMetadata, pData(eset) |
-| **fvarLabels(eset)** | Column names of the variableMetadata, fData(eset) |
+| Biobase methods        | Description                                                 |
+|------------------------------------|------------------------------------|
+| **dims(eset)**         | 2-row numeric matrix of 'Features' and 'Samples' dimensions |
+| **exprs(eset)**        | 'variable times samples' numeric matrix - dataMatrix        |
+| **pData(eset)**        | sample metadata data frame - sampleMetadata                 |
+| **fData(eset)**        | variable metadata data frame - variableMetadata             |
+| **sampleNames(eset)**  | sample names                                                |
+| **featureNames(eset)** | variable names                                              |
+| **varLabels(eset)**    | Column names of the sampleMetadata, pData(eset)             |
+| **fvarLabels(eset)**   | Column names of the variableMetadata, fData(eset)           |
 
 Creating an ExpressionSet with `Biobase::ExpressionSet`:
 
@@ -274,21 +274,20 @@ Exporting the ExpressionSet in the 3 table format:
 phenomis::writing(latlivprot.eset, dir.c = "your_prefered_directory")
 ```
 
-
 ### **MultiDataSet** class for multiple datasets
 
-The following table describes useful MultiDataSet (and Biobase) methods for the handling of MultiDataSet objects [[@HernandezFerrer_MultidatasetRPackage_2017]](https://doi.org/10.1186/s12859-016-1455-1):
+The following table describes useful MultiDataSet (and Biobase) methods for the handling of MultiDataSet objects [[\@HernandezFerrer_MultidatasetRPackage_2017](https://doi.org/10.1186/s12859-016-1455-1)]:
 
-| MultiDataSet and Biobase methods | Description |
-|---|---|
-| **MultiDataSet::length(mset)** | number of datasets |
-| **MultiDataSet::names(eset)** | names of the datasets |
-| **Biobase::dims(mset)** | list of 2-element numeric named ('Features' and 'Samples') vectors of data set dimensions |
-| **MultiDataSet::commonSamples(mset)** | multi-dataset restricted to the common samples |
-| **MultiDataSet::as.list(mset)** | list of data matrices |
-| **Biobase::pData(mset)** | list of sample metadata data frames |
-| **Biobase::fData(mset)** | list of variable metadata data frames |
-| **BiocGenerics::subset(mset)** | subsetting on common columns from the sampleMetadata and/or variableMetadata |
+| MultiDataSet and Biobase methods      | Description                                                                               |
+|------------------------------------|------------------------------------|
+| **MultiDataSet::length(mset)**        | number of datasets                                                                        |
+| **MultiDataSet::names(eset)**         | names of the datasets                                                                     |
+| **Biobase::dims(mset)**               | list of 2-element numeric named ('Features' and 'Samples') vectors of data set dimensions |
+| **MultiDataSet::commonSamples(mset)** | multi-dataset restricted to the common samples                                            |
+| **MultiDataSet::as.list(mset)**       | list of data matrices                                                                     |
+| **Biobase::pData(mset)**              | list of sample metadata data frames                                                       |
+| **Biobase::fData(mset)**              | list of variable metadata data frames                                                     |
+| **BiocGenerics::subset(mset)**        | subsetting on common columns from the sampleMetadata and/or variableMetadata              |
 
 Creating a MultiDataSet with `MultiDataSet::createMultiDataSet`:
 
@@ -360,4 +359,3 @@ sessionInfo()
 ```
 
 # References
-

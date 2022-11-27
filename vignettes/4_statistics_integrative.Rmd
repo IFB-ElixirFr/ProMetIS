@@ -44,7 +44,7 @@ knitr::opts_chunk$set(fig.width = 8,
 selvar.i <- 20 # number of features to select
 
 latmx2.mset <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
-                                 report.c = "none")
+                                 report.c = "none", output.c = "set")
 
 sgccda.ls <- list()
 
@@ -202,11 +202,13 @@ circos_plot <- lapply(names(sgccda.ls),
 ### Heatmap
 
 ```{r cimDiablo, eval=FALSE, include=FALSE}
-cim_diablo <- lapply(sgccda.ls,
-                     function(data_model.ls)
-                       mixOmics::cimDiablo(data_model.ls[["block_splsda"]],
-                                           comp = 1,
-                                           color.Y = ProMetIS::palette.vc()[c("WT", "LAT")]))
+for (model.c in names(sgccda.ls))
+  mixOmics::cimDiablo(sgccda.ls[[model.c]][["block_splsda"]],
+                      comp = 1,
+                      color.Y = ProMetIS::palette.vc()[c("WT", unlist(strsplit(model.c, split = "_"))[1])],
+                      margin=c(14,22),
+                      legend.position = "right",
+                      size.legend = 0.7)
 ```
 
 
