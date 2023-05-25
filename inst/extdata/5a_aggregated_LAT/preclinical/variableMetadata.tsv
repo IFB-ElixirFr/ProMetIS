@@ -1,168 +1,168 @@
 variableMetadata	set	gene	category	measurement	category_full	transformation	WT.KO_fold	WT.KO_BH	WT.KO_signif	M.F_fold	M.F_BH	M.F_signif	oplsda_vip	biosigner	mixomics
-Eye_Left.vitreous.humor.thickness..µm.	preclinical	LAT	Eye	Left vitreous humor thickness (µm)	Eye Morphology	normal	-36.1025641025641	0.0314894402950456	1	-7.74444444444441	0.476272487746291	0	2.99754386022536		0
-Eye_Right.vitreous.humor.thickness..µm.	preclinical	LAT	Eye	Right vitreous humor thickness (µm)	Eye Morphology	normal	-32.2948717948718	0.0314894402950456	1	-16.3888888888889	0.0668756847279466	0	2.98072291028802		0
-Eye_OCT.right.outer.nuclear.layer..µm.	preclinical	LAT	Eye	OCT right outer nuclear layer (µm)	Eye Morphology	normal	-3.19230769230769	0.130888302691694	0	-0.388888888888886	0.739718537827419	0	2.76618414417791		0
-Eye_OCT.left.inner.nuclear.layer..µm.	preclinical	LAT	Eye	OCT left inner nuclear layer (µm)	Eye Morphology	normal	-3.2051282051282	0.24289263957633	0	0.577777777777779	0.768784745228316	0	2.88315567476528		0
-Dysmorphology_Loc..activity	preclinical	LAT	Dysmorphology	Loc. activity	Dysmorphology IMPC	normal	-7.42051282051282	0.278246252993913	0	-1.07142857142857	0.73202317262079	0	1.984977333747		0
-Clinical.chemistry_T..bilirubin..µmol.l.	preclinical	LAT	Clinical chemistry	T. bilirubin (µmol/l)	Clinical chemistry parameters	non parametric	1.72115384615385	0.278246252993913	0	0.698717948717949	0.464823793955645	0	2.37090483581618		0
-Glucose.tolerance.test_Glucose.T60..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T60 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	-1.1489010989011	0.290496980489898	0	-2.67857142857143	0.000177744753895089	1	1.29166275922689		0
-Clinical.chemistry_ALP..U.l.	preclinical	LAT	Clinical chemistry	ALP (U/l)	Clinical chemistry parameters	normal	-14.5384615384615	0.540040940360209	0	39.1538461538462	9.54843982544838e-07	1	1.37819123634762		0
-Echocardiography_EF....	preclinical	LAT	Echocardiography	EF (%)	Echocardiography using the Vevo light	normal	3.20958974358975	0.681400557286737	0	1.68214285714286	0.470919358066675	0	1.57839904425456		0
-Open.field_..distance.in.the.Center.I1..cm.	preclinical	LAT	Open field	% distance in the Center I1 (cm)	Open field test	log	-3.15948717948718	0.681400557286737	0	-1.77857142857143	0.428786777864616	0	1.62784468488305		0
-Open.field_..distance.in.the.Center.glob...cm.	preclinical	LAT	Open field	% distance in the Center glob. (cm)	Open field test	log	-2.66410256410256	0.681400557286737	0	0.892857142857142	0.739718537827419	0	1.90412412484065		0
-Echocardiography_FS....	preclinical	LAT	Echocardiography	FS (%)	Echocardiography using the Vevo light	normal	2.0568717948718	0.681400557286737	0	1.10071428571429	0.461415918672458	0	1.61209250832496		0
-Open.field_Distance.periphery..cm.	preclinical	LAT	Open field	Distance periphery (cm)	Open field test	normal	329.782564102564	0.959070678759224	0	401.757142857143	0.428786777864616	0	1.71859049377245		0
-Open.field_Distance.center..cm.	preclinical	LAT	Open field	Distance center (cm)	Open field test	normal	-194.041538461538	0.959070678759224	0	150.221428571429	0.639780838030657	0	0.946500221359927		0
-Glucose.tolerance.test_Glucose.auc.0.120...min.mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose auc(0-120) (min*mmol/l)	Test de Tolérance au Glucose (GTT)	normal	-34.7142857142857	0.959070678759224	0	-236.472527472528	0.00068257174477627	1	0.582064712655962		0
-Rotarod_Trial.2..s.	preclinical	LAT	Rotarod	Trial 2 (s)	Rotarod test	normal	23.7589743589743	0.959070678759224	0	51.3571428571429	0.0581301489573907	0	0.852150093790184		0
-Open.field_Resting.Time.whole.arena..s.	preclinical	LAT	Open field	Resting Time whole arena (s)	Open field test	normal	-22.72	0.959070678759224	0	-6.37142857142862	0.837629105121074	0	1.27221620285061		0
-Open.field_Permanence.Time.periphery..s.	preclinical	LAT	Open field	Permanence Time periphery (s)	Open field test	normal	21.7979487179489	0.959070678759224	0	-7.07142857142844	0.790192227496547	0	1.54657035924158		0
-Open.field_Permanence.Time.center..s.	preclinical	LAT	Open field	Permanence Time center (s)	Open field test	normal	-21.7979487179487	0.959070678759224	0	7.07142857142856	0.790192227496547	0	1.54657035924158		0
-Rotarod_Mean.latency	preclinical	LAT	Rotarod	Mean latency	Rotarod test	normal	14.8522564102564	0.959070678759224	0	53.5492857142857	0.0162816383629783	1	0.745155374701522		0
-Grip.test_Trial2..4paws...g.	preclinical	LAT	Grip test	Trial2 (4paws) (g)	Grip test	normal	14.3538461538461	0.959070678759224	0	-8.21428571428572	0.706154749552683	0	0.816350180387758		0
-Grip.test_Trial1..4paws...g.	preclinical	LAT	Grip test	Trial1 (4paws) (g)	Grip test	normal	13.0051282051282	0.959070678759224	0	-5	0.828971277789189	0	0.723181421812617		0
-Pavlovian.fear.cond._context.freezing.con.1	preclinical	LAT	Pavlovian fear cond.	context freezing con-1	Pavlovian fear conditioning	non parametric	-12.4820512820513	0.959070678759224	0	-6.14285714285715	0.706154749552683	0	1.32413153236429		0
-Grip.test_Grip.mean..4paws...g.	preclinical	LAT	Grip test	Grip mean (4paws) (g)	Grip test	normal	12.2026666666667	0.959070678759224	0	-5.66571428571427	0.774882914146096	0	0.812359078764494		0
-Echocardiography_HR..bpm.	preclinical	LAT	Echocardiography	HR (bpm)	Echocardiography using the Vevo light	sqrt	11.9230769230769	0.959070678759224	0	38.0714285714286	0.022575111930026	1	0.547618673492798		0
-Pavlovian.fear.cond._Freezing.Cue.1	preclinical	LAT	Pavlovian fear cond.	Freezing Cue 1	Pavlovian fear conditioning	non parametric	10.5128205128205	0.959070678759224	0	25.5714285714286	0.0647740189494175	0	0.482868830895956		0
-Pavlovian.fear.cond._Freezing.....Con.1	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Con-1	Pavlovian fear conditioning	non parametric	-10.4007179487179	0.959070678759224	0	-5.11857142857143	0.706154749552683	0	1.32406395822639		0
-Pavlovian.fear.cond._Freezing.conditioning.post.us1	preclinical	LAT	Pavlovian fear cond.	Freezing conditioning post-us1	Pavlovian fear conditioning	non parametric	-10.0717948717949	0.959070678759224	0	19.4285714285714	0.110982775583646	0	1.23892913027529		0
-Grip.test_Trial3..4paws...g.	preclinical	LAT	Grip test	Trial3 (4paws) (g)	Grip test	normal	9.24615384615385	0.959070678759224	0	-3.78571428571428	0.837629105121074	0	0.796897756170003		0
-Eye_OCT.left.anterior.chamber.depth	preclinical	LAT	Eye	OCT left anterior chamber depth	Eye Morphology	normal	9.07272727272726	0.959070678759224	0	-5.875	0.706154749552683	0	1.2936444579417		0
-Pavlovian.fear.cond._Freezing.....Cue.1	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Cue-1	Pavlovian fear conditioning	non parametric	8.76215384615384	0.959070678759224	0	21.3085714285714	0.0647740189494175	0	0.48291837967176		0
-Open.field_Latency.center..s.	preclinical	LAT	Open field	Latency center (s)	Open field test	log	7.44615384615384	0.959070678759224	0	4.02857142857143	0.706154749552683	0	0.605857276574243		0
-Eye_OCT.right.corneal.thickness	preclinical	LAT	Eye	OCT right corneal thickness	Eye Morphology	normal	7.41666666666667	0.959070678759224	0	3.55555555555556	0.706154749552683	0	1.72017602246942		0
-Pavlovian.fear.cond._Freezing.Cue.2	preclinical	LAT	Pavlovian fear cond.	Freezing Cue 2	Pavlovian fear conditioning	non parametric	6.85128205128206	0.959070678759224	0	45.7142857142857	0.000527193227198764	1	0.0672931253395796		0
-Eye_OCT.right.total.retinal.thickness..µm.	preclinical	LAT	Eye	OCT right total retinal thickness (µm)	Eye Morphology	normal	-6.71794871794873	0.959070678759224	0	-0.97777777777776	0.837629105121074	0	1.92085571354956		0
-Echocardiography_LV.Mass.AW..mg.	preclinical	LAT	Echocardiography	LV Mass AW (mg)	Echocardiography using the Vevo light	log	-6.1723076923077	0.959070678759224	0	-10.3142857142857	0.428786777864616	0	0.904687789696733		0
-Pavlovian.fear.cond._Freezing.....Cue.2	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Cue-2	Pavlovian fear conditioning	non parametric	5.70994871794871	0.959070678759224	0	38.0957142857143	0.000527193227198764	1	0.0673427920897877		0
-Pavlovian.fear.cond._Freezing.Pre.cue.2	preclinical	LAT	Pavlovian fear cond.	Freezing Pre-cue 2	Pavlovian fear conditioning	non parametric	5.17948717948718	0.959070678759224	0	8.14285714285714	0.428786777864616	0	0.281994002041758		0
-Auditory.and.PPI_..PP90	preclinical	LAT	Auditory and PPI	% PP90	Auditory startle reflex reactivity and PPI - P1	non parametric	4.94615384615385	0.959070678759224	0	-4.47285714285714	0.513074312954528	0	0.977322128092375		0
-Echocardiography_LV.Mass.AW..Corrected...mg.	preclinical	LAT	Echocardiography	LV Mass AW (Corrected) (mg)	Echocardiography using the Vevo light	log	-4.93902564102564	0.959070678759224	0	-8.25071428571428	0.428786777864616	0	0.904763291071332		0
-Eye_OCT.left.total.retinal.thickness..µm.	preclinical	LAT	Eye	OCT left total retinal thickness (µm)	Eye Morphology	normal	-4.75641025641028	0.959070678759224	0	-0.677777777777777	0.867971395940056	0	1.77750374423991		0
-ECG_QT.corrigé..ms.Corr.	preclinical	LAT	ECG	QT corrigé (ms Corr)	ECG in anaesthetized conditions	non parametric	4.60215384615384	0.959070678759224	0	-1.91571428571429	0.837629105121074	0	0.914315443127124		0
-Open.field_Number.of.Rearings.I4	preclinical	LAT	Open field	Number of Rearings I4	Open field test	normal	4.34871794871795	0.959070678759224	0	-3	0.706154749552683	0	0.972041476071921		0
-Open.field_Number.of.Rearings.I2	preclinical	LAT	Open field	Number of Rearings I2	Open field test	normal	-3.52820512820513	0.959070678759224	0	-4.85714285714285	0.470919358066675	0	0.120347461741848		0
-Pavlovian.fear.cond._Freezing.conditioning.Hab.1	preclinical	LAT	Pavlovian fear cond.	Freezing conditioning Hab-1	Pavlovian fear conditioning	non parametric	3.48717948717949	0.959070678759224	0	-0.571428571428571	0.919691375406474	0	0.8602200639874		0
-Open.field_..distance.in.the.Center.I2..cm.	preclinical	LAT	Open field	% distance in the Center I2 (cm)	Open field test	log	-2.86615384615385	0.959070678759224	0	1.29285714285714	0.739718537827419	0	1.78297728593766		0
-Open.field_Resting.Time.center..s.	preclinical	LAT	Open field	Resting Time center (s)	Open field test	normal	-2.30358974358974	0.959070678759224	0	-3.02857142857143	0.378650874607508	0	1.42965562098205		0
-ECG_QT..ms.	preclinical	LAT	ECG	QT (ms)	ECG in anaesthetized conditions	non parametric	2.28784615384615	0.959070678759224	0	-3.12214285714285	0.428786777864616	0	0.978886219944996		0
-Open.field_..Time.Spent.in.the.Center.I1..cm.	preclinical	LAT	Open field	% Time Spent in the Center I1 (cm)	Open field test	log	-2.22307692307692	0.959070678759224	0	-1.76428571428571	0.428786777864616	0	1.45065596866385		0
-Open.field_..distance.in.the.Center.I4..cm.	preclinical	LAT	Open field	% distance in the Center I4 (cm)	Open field test	log	-2.14410256410256	0.959070678759224	0	2.15	0.537377773654676	0	1.02979038318822		0
-Open.field_..Time.Spent.in.the.Center.I2..cm.	preclinical	LAT	Open field	% Time Spent in the Center I2 (cm)	Open field test	log	-2.03897435897436	0.959070678759224	0	1.51428571428571	0.586607079457786	0	1.70218504135097		0
-Auditory.and.PPI_P70	preclinical	LAT	Auditory and PPI	P70	Auditory startle reflex reactivity and PPI - P1	log	-1.97538461538462	0.959070678759224	0	1.77142857142857	0.706154749552683	0	0.866460639262019		0
-Eye_OCT.left.outer.nuclear.layer..µm.	preclinical	LAT	Eye	OCT left outer nuclear layer (µm)	Eye Morphology	normal	-1.83333333333334	0.959070678759224	0	0.166666666666664	0.943652247649329	0	2.31616060590023		0
-Open.field_.Time.Spent.in.the.Center.glob	preclinical	LAT	Open field	%Time Spent in the Center glob	Open field test	log	-1.79076923076923	0.959070678759224	0	0.585714285714285	0.790192227496547	0	1.53769748774145		0
-Auditory.and.PPI_BN..65.	preclinical	LAT	Auditory and PPI	BN (65)	Auditory startle reflex reactivity and PPI - P1	log	1.67692307692308	0.959070678759224	0	0.828571428571429	0.724578959614314	0	1.03987859848266		0
-Clinical.chemistry_Glucose..mmol.l.	preclinical	LAT	Clinical chemistry	Glucose (mmol/l)	Clinical chemistry parameters	normal	-1.66503496503496	0.959070678759224	0	1.91678321678322	0.242328552112344	0	1.60413061402327		0
-Body.composition_fat.percent....	preclinical	LAT	Body composition	fat percent (%)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	1.36594871794872	0.959070678759224	0	-5.68285714285714	0.000193538654502275	1	0.773223811854113		0
-Body.composition_lean.percent....	preclinical	LAT	Body composition	lean percent (%)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	-1.36594871794871	0.959070678759224	0	5.68285714285715	0.000193538654502275	1	0.773205129927472		0
-ECG_Pdur..ms.	preclinical	LAT	ECG	Pdur (ms)	ECG in anaesthetized conditions	normal	-1.23179487179488	0.959070678759224	0	1.34285714285715	0.433466925817729	0	0.947649404992874		0
-Hot.plate_Hot.plate.1..s.	preclinical	LAT	Hot plate	Hot plate 1 (s)	Hot plate test	normal	1.18635897435897	0.959070678759224	0	0.0428571428571427	0.947537927760803	0	0.716656350590312		0
-Glucose.tolerance.test_Body.weight..g.	preclinical	LAT	Glucose tolerance test	Body weight (g)	Test de Tolérance au Glucose (GTT)	normal	1.1576923076923	0.959070678759224	0	-4.46593406593407	6.07063615435575e-07	1	1.24214544128337		0
-Eye_OCT.right.inner.nuclear.layer..µm.	preclinical	LAT	Eye	OCT right inner nuclear layer (µm)	Eye Morphology	normal	-1.06410256410256	0.959070678759224	0	0.0111111111111093	0.99547099279135	0	1.72029464188119		0
-Clinical.chemistry_Albumin..g.l.	preclinical	LAT	Clinical chemistry	Albumin (g/l)	Clinical chemistry parameters	non parametric	0.76923076923077	0.959070678759224	0	0.923076923076923	0.465153744590796	0	0.842411965446704		0
-Body.composition_fat.weight..g.	preclinical	LAT	Body composition	fat weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.444871794871795	0.959070678759224	0	-1.96357142857143	1.01646947962737e-05	1	0.74668558598072		0
-Grip.test_Grip.mean.ratio.4paws...g.g.	preclinical	LAT	Grip test	Grip mean ratio(4paws) (g/g)	Grip test	normal	0.289282051282051	0.959070678759224	0	1.865	0.00166225908898538	1	0.353425210727426		0
-Eye_Body.weight..g.	preclinical	LAT	Eye	Body weight (g)	Eye Morphology	normal	-0.242051282051282	0.959070678759224	0	-4.8	3.55551794024239e-07	1	0.526857115599895		0
-Hot.plate_Body.weight..g.	preclinical	LAT	Hot plate	Body weight (g)	Hot plate test	normal	-0.242051282051282	0.959070678759224	0	-4.8	3.55551794024239e-07	1	0.526857115599895		0
-Clinical.chemistry_HDL.Chol...mmol.l.	preclinical	LAT	Clinical chemistry	HDL Chol. (mmol/l)	Clinical chemistry parameters	non parametric	-0.151748251748252	0.959070678759224	0	-0.291328671328671	0.0793133341195051	0	1.34380511871992		0
-Body.composition_Body.length..cm.	preclinical	LAT	Body composition	Body length (cm)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.123589743589744	0.959070678759224	0	-0.15	0.428786777864616	0	1.34706738333182		0
-ECG_Ramp..mv.	preclinical	LAT	ECG	Ramp (mv)	ECG in anaesthetized conditions	non parametric	-0.0935897435897436	0.959070678759224	0	0.0750000000000001	0.706154749552683	0	1.17348667251957		0
-Glucose.tolerance.test_Glucose.T120..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T120 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	0.326923076923077	0.97716593449192	0	-1.17252747252747	0.000527193227198764	1	1.3323891816811		0
-Open.field_..Time.Spent.in.the.Center.I4..cm.	preclinical	LAT	Open field	% Time Spent in the Center I4 (cm)	Open field test	log	-1.32051282051282	0.977341976746588	0	0.607142857142856	0.837629105121074	0	0.767065058711872		0
-Open.field_Dist.global..cm.	preclinical	LAT	Open field	Dist global (cm)	Open field test	normal	135.793846153845	0.981339142474418	0	552	0.428786777864616	0	0.940973290774671		0
-Open.field_Distance.whole.arena..cm.	preclinical	LAT	Open field	Distance whole arena (cm)	Open field test	normal	135.793846153845	0.981339142474418	0	552	0.428786777864616	0	0.940973290774671		0
-Auditory.and.PPI_ST110	preclinical	LAT	Auditory and PPI	ST110	Auditory startle reflex reactivity and PPI - P1	log	82.1620512820513	0.981339142474418	0	-371.871428571429	0.0338085682525247	1	0.390886438570124		0
-Auditory.and.PPI_PP70	preclinical	LAT	Auditory and PPI	PP70	Auditory startle reflex reactivity and PPI - P1	non parametric	77.0641025641027	0.981339142474418	0	-336.264285714286	0.0450927160563742	1	0.293394849260741		0
-Open.field_Dist.I1..cm.	preclinical	LAT	Open field	Dist I1 (cm)	Open field test	normal	60.2948717948721	0.981339142474418	0	111.478571428571	0.635222496897665	0	0.694958656500627		0
-Auditory.and.PPI_PP75	preclinical	LAT	Auditory and PPI	PP75	Auditory startle reflex reactivity and PPI - P1	non parametric	57.4948717948718	0.981339142474418	0	-227.035714285714	0.0693314337596308	0	0.208423875667752		0
-Open.field_Dist.I2..cm.	preclinical	LAT	Open field	Dist I2 (cm)	Open field test	normal	50.8425641025642	0.981339142474418	0	84.1499999999996	0.586607079457786	0	1.22285310724771		0
-Glucose.tolerance.test_Glucose.auc.positive..0.120...min.mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose auc positive (0-120) (min*mmol/l)	Test de Tolérance au Glucose (GTT)	normal	43.5769230769231	0.981339142474418	0	-294.291208791209	0.000177744753895089	1	0.477762941440808		0
-Open.field_Dist.I3..cm.	preclinical	LAT	Open field	Dist I3 (cm)	Open field test	normal	23.6594871794871	0.981339142474418	0	127.057142857143	0.593061430525328	0	0.645840239205244		0
-Auditory.and.PPI_PP85	preclinical	LAT	Auditory and PPI	PP85	Auditory startle reflex reactivity and PPI - P1	non parametric	22.214358974359	0.981339142474418	0	-105.571428571429	0.428786777864616	0	0.245183824579655		0
-Open.field_Resting.Time.periphery..s.	preclinical	LAT	Open field	Resting Time periphery (s)	Open field test	normal	-20.4451282051282	0.981339142474418	0	-3.34285714285716	0.908546857212262	0	1.14885229092466		0
-ECG_HR..bpm.	preclinical	LAT	ECG	HR (bpm)	ECG in anaesthetized conditions	normal	-13.8871794871795	0.981339142474418	0	46.5714285714286	0.0450927160563742	1	0.600562262728765		0
-Pavlovian.fear.cond._freezing.total.context	preclinical	LAT	Pavlovian fear cond.	freezing total context	Pavlovian fear conditioning	non parametric	-13.8461538461538	0.981339142474418	0	30.5714285714286	0.476272487746291	0	0.778845151245704		0
-Rotarod_Trial.3..s.	preclinical	LAT	Rotarod	Trial 3 (s)	Rotarod test	normal	10.425641025641	0.981339142474418	0	57.2142857142857	0.0421735492005579	1	0.289598551993992		0
-Rotarod_Trial.1..s.	preclinical	LAT	Rotarod	Trial 1 (s)	Rotarod test	normal	10.374358974359	0.981339142474418	0	52.0714285714286	0.068147997390896	0	0.758725947877756		0
-Auditory.and.PPI_P85	preclinical	LAT	Auditory and PPI	P85	Auditory startle reflex reactivity and PPI - P1	log	-9.23897435897436	0.981339142474418	0	-11.3428571428571	0.707899152067605	0	0.0494401040892433		0
-ECG_Number.of.signals	preclinical	LAT	ECG	Number of signals	ECG in anaesthetized conditions	non parametric	-6.73846153846152	0.981339142474418	0	-28.1428571428571	0.428786777864616	0	0.80345717331214		0
-Auditory.and.PPI_..PP70	preclinical	LAT	Auditory and PPI	% PP70	Auditory startle reflex reactivity and PPI - P1	non parametric	-4.40230769230769	0.981339142474418	0	8.27928571428571	0.513074312954528	0	0.274525569100817		0
-Auditory.and.PPI_..PP75	preclinical	LAT	Auditory and PPI	% PP75	Auditory startle reflex reactivity and PPI - P1	non parametric	-4.26205128205128	0.981339142474418	0	5.82428571428571	0.586607079457786	0	0.186453087525754		0
-Pavlovian.fear.cond._Freezing.....total	preclinical	LAT	Pavlovian fear cond.	Freezing (%) total	Pavlovian fear conditioning	non parametric	-3.84497435897436	0.981339142474418	0	8.49071428571429	0.476272487746291	0	0.778760516354137		0
-Pavlovian.fear.cond._context.freezing.con.2	preclinical	LAT	Pavlovian fear cond.	context freezing con-2	Pavlovian fear conditioning	non parametric	-3.58974358974358	0.981339142474418	0	12.5714285714286	0.461415918672458	0	0.552615975783578		0
-Grip.test_Trial.1..g.	preclinical	LAT	Grip test	Trial 1 (g)	Grip test	normal	-3.35384615384616	0.981339142474418	0	-18	0.0575801535275976	0	0.711168535022362		0
-Clinical.chemistry_ALAT..U.l.	preclinical	LAT	Clinical chemistry	ALAT (U/l)	Clinical chemistry parameters	non parametric	-3.30769230769231	0.981339142474418	0	-12.5	0.379843027307777	0	0.337186561060039		0
-Open.field_NEntries.center	preclinical	LAT	Open field	NEntries center	Open field test	sqrt	-3.30256410256411	0.981339142474418	0	13	0.153393608262935	0	0.342594233286449		0
-Grip.test_Trial.3..g.	preclinical	LAT	Grip test	Trial 3 (g)	Grip test	normal	3.27179487179487	0.981339142474418	0	-19.5714285714286	0.0397515128662038	1	0.0829226725009011		0
-Pavlovian.fear.cond._Freezing.....Con.2	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Con-2	Pavlovian fear conditioning	non parametric	-2.99071794871795	0.981339142474418	0	10.475	0.461415918672458	0	0.552537045365376		0
-Anapath_A2.heart..mg...mg.	preclinical	LAT	Anapath	A2 heart (mg) (mg)	Anapath	inverse	-2.96923076923076	0.981339142474418	0	-22.0714285714286	0.0227063893319131	1	0.560939618518748		0
-ECG_RR..ms.	preclinical	LAT	ECG	RR (ms)	ECG in anaesthetized conditions	normal	2.69333333333333	0.981339142474418	0	-14.9257142857143	0.0450927160563742	1	0.408094379705133		0
-Pavlovian.fear.cond._context.freezing.con.3	preclinical	LAT	Pavlovian fear cond.	context freezing con-3	Pavlovian fear conditioning	non parametric	2.22564102564102	0.981339142474418	0	24.1428571428571	0.0581301489573907	0	0.0882446309273379		0
-Auditory.and.PPI_..PP85	preclinical	LAT	Auditory and PPI	% PP85	Auditory startle reflex reactivity and PPI - P1	non parametric	2.14564102564103	0.981339142474418	0	-3.77571428571429	0.706154749552683	0	0.187943011642377		0
-Pavlovian.fear.cond._Freezing.....Con.3	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Con-3	Pavlovian fear conditioning	non parametric	1.85364102564102	0.981339142474418	0	20.12	0.0581301489573907	0	0.0883606623524483		0
-Open.field_..distance.in.the.Center.I3..cm.	preclinical	LAT	Open field	% distance in the Center I3 (cm)	Open field test	log	-1.82717948717949	0.981339142474418	0	2.92142857142857	0.478573164983033	0	0.662287158879547		0
-ECG_ST..ms.	preclinical	LAT	ECG	ST (ms)	ECG in anaesthetized conditions	log	1.77466666666667	0.981339142474418	0	-2.92857142857143	0.439747186981854	0	0.843233771331491		0
-Open.field_..Time.Spent.in.the.Center.I3..cm.	preclinical	LAT	Open field	% Time Spent in the Center I3 (cm)	Open field test	log	-1.65846153846154	0.981339142474418	0	2	0.593061430525328	0	0.432681848469671		0
-Echocardiography_LV.Vol_s..uL.	preclinical	LAT	Echocardiography	LV Vol_s (uL)	Echocardiography using the Vevo light	normal	-1.63328205128205	0.981339142474418	0	-2.47928571428572	0.728441838244561	0	0.329432788070176		0
-Open.field_Number.of.Rearings.I1	preclinical	LAT	Open field	Number of Rearings I1	Open field test	normal	-1.2974358974359	0.981339142474418	0	0.0714285714285694	0.99547099279135	0	0.0479855504912595		0
-Open.field_Number.of.Rearings.global	preclinical	LAT	Open field	Number of Rearings global	Open field test	normal	-1.17948717948718	0.981339142474418	0	-11.5714285714286	0.689735822439723	0	0.1509897504104		0
-Eye_OCT.left.corneal.thickness	preclinical	LAT	Eye	OCT left corneal thickness	Eye Morphology	normal	1.07272727272726	0.981339142474418	0	5.875	0.586607079457786	0	0.058895073781532		0
-Pavlovian.fear.cond._Freezing.Pre.cue.1	preclinical	LAT	Pavlovian fear cond.	Freezing Pre-cue 1	Pavlovian fear conditioning	non parametric	-1.05641025641026	0.981339142474418	0	3	0.739718537827419	0	0.503102813676137		0
-ECG_PR..ms.	preclinical	LAT	ECG	PR (ms)	ECG in anaesthetized conditions	non parametric	-1.04358974358974	0.981339142474418	0	3.26428571428571	0.0914897086143988	0	0.651451331029714		0
-Open.field_Dist.I4..cm.	preclinical	LAT	Open field	Dist I4 (cm)	Open field test	normal	0.974871794871888	0.981339142474418	0	229.335714285714	0.194104722071301	0	0.848586157778256		0
-Eye_Left.inner.plexiform.layer..µm.	preclinical	LAT	Eye	Left inner plexiform layer (µm)	Eye Morphology	normal	-0.910256410256409	0.981339142474418	0	-2.3	0.428786777864616	0	0.871923759722243		0
-Clinical.chemistry_Blood.Urea.Nitrogen.mg.dl..mg.dl.	preclinical	LAT	Clinical chemistry	Blood Urea Nitrogen mg/dl (mg/dl)	Clinical chemistry parameters	log	-0.851958041958046	0.981339142474418	0	-0.604825174825173	0.766834326666242	0	1.02468235068517		0
-Eye_Right.inner.plexiform.layer..µm.	preclinical	LAT	Eye	Right inner plexiform layer (µm)	Eye Morphology	normal	-0.846153846153847	0.981339142474418	0	0.466666666666661	0.885712487222661	0	0.745575781156944		0
-Grip.test_Trial.2..g.	preclinical	LAT	Grip test	Trial 2 (g)	Grip test	normal	-0.841025641025638	0.981339142474418	0	-16.2857142857143	0.0798317263588056	0	0.524993082339675		0
-Auditory.and.PPI_P75	preclinical	LAT	Auditory and PPI	P75	Auditory startle reflex reactivity and PPI - P1	log	0.756410256410263	0.981339142474418	0	3.73571428571429	0.726159488563879	0	0.19035981775731		0
-Open.field_Number.of.Rearings.I3	preclinical	LAT	Open field	Number of Rearings I3	Open field test	normal	-0.702564102564097	0.981339142474418	0	-3.78571428571428	0.706154749552683	0	0.180707922956915		0
-Body_body.weight.w7..g.	preclinical	LAT	Body	body weight w7 (g)	Body Weight	normal	0.645641025641027	0.981339142474418	0	-4.30714285714286	4.13966510043761e-07	1	0.306908129941322		0
-Auditory.and.PPI_Body.weight..g.	preclinical	LAT	Auditory and PPI	Body weight (g)	Auditory startle reflex reactivity and PPI - P1	normal	0.631282051282053	0.981339142474418	0	-4.75	3.55551794024239e-07	1	0.38270026290811		0
-ECG_QRS..ms.	preclinical	LAT	ECG	QRS (ms)	ECG in anaesthetized conditions	inverse	-0.570769230769232	0.981339142474418	0	-0.335714285714285	0.770187784657249	0	0.603372830516358		0
-Echocardiography_Body.mass..g.	preclinical	LAT	Echocardiography	Body mass (g)	Echocardiography using the Vevo light	normal	0.563076923076924	0.981339142474418	0	-4.78571428571428	1.20054639312781e-06	1	0.331448807381519		0
-Grip.test_Weight..g.	preclinical	LAT	Grip test	Weight (g)	Grip test	normal	0.51794871794872	0.981339142474418	0	-5.11428571428571	1.16811182240797e-07	1	0.298774553775255		0
-Rotarod_Body.weight..g.	preclinical	LAT	Rotarod	Body weight (g)	Rotarod test	normal	0.51794871794872	0.981339142474418	0	-5.11428571428571	1.16811182240797e-07	1	0.298774553775255		0
-Auditory.and.PPI_P90	preclinical	LAT	Auditory and PPI	P90	Auditory startle reflex reactivity and PPI - P1	log	-0.470256410256411	0.981339142474418	0	-59.8785714285714	0.153393608262935	0	0.0362312226077179		0
-Dysmorphology_Body.weight..g.	preclinical	LAT	Dysmorphology	Body weight (g)	Dysmorphology IMPC	normal	0.434358974358975	0.981339142474418	0	-4.57857142857143	1.16811182240797e-07	1	0.280401915436236		0
-Body.composition_sample.area..cm2.	preclinical	LAT	Body composition	sample area (cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.368974358974359	0.981339142474418	0	-2.84928571428571	2.02445637539655e-05	1	0.312650221960513		0
-Grip.test_Grip.mean..g.	preclinical	LAT	Grip test	Grip mean (g)	Grip test	normal	-0.307692307692307	0.981339142474418	0	-17.9528571428571	0.0450927160563742	1	0.400942401028395		0
-Clinical.chemistry_Urea..mmol.l.	preclinical	LAT	Clinical chemistry	Urea (mmol/l)	Clinical chemistry parameters	log	-0.304195804195805	0.981339142474418	0	-0.216083916083917	0.768267801679906	0	1.02533392819578		0
-Eye_Left.segments..µm.	preclinical	LAT	Eye	Left segments (µm)	Eye Morphology	normal	0.294871794871796	0.981339142474418	0	-0.911111111111111	0.706154749552683	0	0.0927794556983842		0
-Eye_Right.segments..µm.	preclinical	LAT	Eye	Right segments (µm)	Eye Morphology	normal	-0.243589743589745	0.981339142474418	0	0.211111111111116	0.919691375406474	0	0.106215451049663		0
-Glucose.tolerance.test_Glucose.T15..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T15 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	-0.218681318681316	0.981339142474418	0	0.0406593406593387	0.99547099279135	0	0.236318868296266		0
-Body.composition_body.weight..g.	preclinical	LAT	Body composition	body weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.216923076923077	0.981339142474418	0	-4.49285714285714	2.65894496421778e-06	1	0.155688444394085		0
-Grip.test_Grip.mean.ratio..g.g.	preclinical	LAT	Grip test	Grip mean ratio (g/g)	Grip test	normal	-0.140000000000001	0.981339142474418	0	0.332857142857144	0.470919358066675	0	0.800749292914184		0
-Open.field_av..speed.center..cm.s.	preclinical	LAT	Open field	av. speed center (cm/s)	Open field test	normal	0.121948717948719	0.981339142474418	0	0.347142857142856	0.643378138005005	0	0.767826670562397		0
-Open.field_av..speed.whole.arena..cm.s.	preclinical	LAT	Open field	av. speed whole arena (cm/s)	Open field test	normal	-0.102923076923076	0.981339142474418	0	0.535	0.125263432497494	0	0.327500638094295		0
-Echocardiography_LVID_s..mm.	preclinical	LAT	Echocardiography	LVID_s (mm)	Echocardiography using the Vevo light	normal	-0.092051282051282	0.981339142474418	0	-0.0549999999999997	0.814563018703456	0	0.563763165853322		0
-Open.field_av..speed.periphery..cm.s.	preclinical	LAT	Open field	av. speed periphery (cm/s)	Open field test	normal	-0.0758974358974367	0.981339142474418	0	0.545714285714286	0.0798317263588056	0	0.471196321576536		0
-Clinical.chemistry_T..Chol...mmol.l.	preclinical	LAT	Clinical chemistry	T. Chol. (mmol/l)	Clinical chemistry parameters	normal	-0.069294871794872	0.981339142474418	0	-0.191923076923077	0.433466925817729	0	0.480348291961797		0
-Clinical.chemistry_P..mmol.l.	preclinical	LAT	Clinical chemistry	P (mmol/l)	Clinical chemistry parameters	normal	-0.0574125874125875	0.981339142474418	0	0.698531468531469	0.00281567224333125	1	0.731551825292843		0
-Clinical.chemistry_TG..mmol.l.	preclinical	LAT	Clinical chemistry	TG (mmol/l)	Clinical chemistry parameters	normal	-0.0560839160839162	0.981339142474418	0	-0.0983216783216785	0.739718537827419	0	0.75086230506668		0
-Body.composition_lean.weight..g.	preclinical	LAT	Body composition	lean weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	-0.0483076923076915	0.981339142474418	0	-2.76	0.0036369595069628	1	0.160038142591559		0
-Clinical.chemistry_Non.HDL.Chol...mmol.l.	preclinical	LAT	Clinical chemistry	Non HDL Chol. (mmol/l)	Clinical chemistry parameters	normal	0.0378321678321679	0.981339142474418	0	0.131678321678322	0.430931233884518	0	0.41934055924049		0
-Echocardiography_LVPW_d..mm.	preclinical	LAT	Echocardiography	LVPW_d (mm)	Echocardiography using the Vevo light	log	-0.0338461538461539	0.981339142474418	0	-0.04	0.739718537827419	0	1.22531000269127		0
-Echocardiography_LVAW_s..mm.	preclinical	LAT	Echocardiography	LVAW_s (mm)	Echocardiography using the Vevo light	normal	-0.0311282051282051	0.981339142474418	0	-0.0249999999999999	0.837629105121074	0	0.982584480479652		0
-Echocardiography_LVID_d..mm.	preclinical	LAT	Echocardiography	LVID_d (mm)	Echocardiography using the Vevo light	normal	-0.024974358974359	0.981339142474418	0	-0.00785714285714256	0.980997855350713	0	0.118912751276855		0
-ECG_STE..mv.	preclinical	LAT	ECG	STE (mv)	ECG in anaesthetized conditions	non parametric	0.0233333333333333	0.981339142474418	0	0.0221428571428571	0.837629105121074	0	1.52412452989278		0
-Shock.threshold_Vocalization	preclinical	LAT	Shock threshold	Vocalization	Shock threshold test	non parametric	0.0213333333333333	0.981339142474418	0	0.00857142857142859	0.932653125866187	0	0.654030318489404		0
-Anapath_..A2.heart	preclinical	LAT	Anapath	% A2 heart	Anapath	inverse	-0.0177435897435898	0.981339142474418	0	0.0157142857142858	0.908546857212262	0	0.975186047795572		0
-Echocardiography_LVAW_d..mm.	preclinical	LAT	Echocardiography	LVAW_d (mm)	Echocardiography using the Vevo light	normal	-0.0115384615384615	0.981339142474418	0	-0.0621428571428572	0.682118852857935	0	0.848656258816774		0
-Echocardiography_LVPW_s..mm.	preclinical	LAT	Echocardiography	LVPW_s (mm)	Echocardiography using the Vevo light	log	-0.0068717948717949	0.981339142474418	0	-0.0557142857142856	0.706154749552683	0	0.325060784760794		0
-Clinical.chemistry_ASAT..U.l.	preclinical	LAT	Clinical chemistry	ASAT (U/l)	Clinical chemistry parameters	non parametric	-4.74038461538461	0.987277509725913	0	14.8727272727273	0.706154749552683	0	0.4292929840123		0
-Body.composition_total.weight..g.	preclinical	LAT	Body composition	total weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.398410256410255	0.987277509725913	0	-4.76214285714286	1.54782314901381e-05	1	0.177227292555566		0
-Body.composition_soft.weight..g.	preclinical	LAT	Body composition	soft weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.395794871794873	0.987277509725913	0	-4.72285714285714	1.34285572845624e-05	1	0.185988997556247		0
-Auditory.and.PPI_Glb	preclinical	LAT	Auditory and PPI	Glb	Auditory startle reflex reactivity and PPI - P1	normal	-0.392717948717952	0.987277509725913	0	1.46428571428572	0.837629105121074	0	0.0895462743392485		0
-Pavlovian.fear.cond._Freezing.conditioning.Hab.2	preclinical	LAT	Pavlovian fear cond.	Freezing conditioning Hab-2	Pavlovian fear conditioning	non parametric	-0.266666666666667	0.987277509725913	0	-1.42857142857143	0.784324629028724	0	0.402326345012805		0
-Gross_Body.Weight..g.	preclinical	LAT	Gross	Body Weight (g)	Gross Pathology	normal	0.254205128205129	0.987277509725913	0	-4.21928571428571	2.4395392795551e-06	1	0.17613614040665		0
-Anapath_body.weight..g.	preclinical	LAT	Anapath	body weight (g)	Anapath	normal	0.253892307692308	0.987277509725913	0	-4.22092857142857	2.4395392795551e-06	1	0.176039230658241		0
-Body.composition_bone.area..cm2.	preclinical	LAT	Body composition	bone area (cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.0501538461538455	0.987277509725913	0	-0.527142857142858	0.0503280521972554	0	0.122385652263051		0
-Anapath_A2.heart..g.	preclinical	LAT	Anapath	A2 heart (g)	Anapath	inverse	-0.00287179487179487	0.987277509725913	0	-0.0228571428571429	0.837629105121074	0	0.568258569606476		0
-Auditory.and.PPI_PP90	preclinical	LAT	Auditory and PPI	PP90	Auditory startle reflex reactivity and PPI - P1	non parametric	3.63538461538462	0.996806400617635	0	-67.4642857142857	0.428786777864616	0	0.0436648969478853		0
-Glucose.tolerance.test_Glucose.T30..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T30 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	0.279670329670331	0.996806400617635	0	-2.37142857142857	0.0869689045750027	0	0.0776114092291916		0
-Echocardiography_LV.Vol_d..uL.	preclinical	LAT	Echocardiography	LV Vol_d (uL)	Echocardiography using the Vevo light	normal	-0.120717948717953	0.996806400617635	0	-1.81	0.872830197231479	0	0.0185878687962933		0
-Glucose.tolerance.test_Glucose.T0..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T0 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	-0.0362637362637361	0.996806400617635	0	0.258791208791209	0.61355388032849	0	0.231616749101366		0
-Body.composition_BMC..g.	preclinical	LAT	Body composition	BMC (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	log	0.00292307692307692	1	0	-0.0407142857142857	0.751288457623089	0	0.290347729562802		0
-Body.composition_BMD..g.cm2.	preclinical	LAT	Body composition	BMD (g/cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	-0.00041897435897436	1	0	-0.000907142857142856	0.99547099279135	0	0.601861492693935		0
+Eye_Left.vitreous.humor.thickness..µm.	preclinical	LAT	Eye	Left vitreous humor thickness (µm)	Eye Morphology	normal	-36.1025641	0.03148944	1	-7.744444444	0.476272488	0	2.99754386		0
+Eye_Right.vitreous.humor.thickness..µm.	preclinical	LAT	Eye	Right vitreous humor thickness (µm)	Eye Morphology	normal	-32.29487179	0.03148944	1	-16.38888889	0.066875685	0	2.98072291		0
+Eye_OCT.right.outer.nuclear.layer..µm.	preclinical	LAT	Eye	OCT right outer nuclear layer (µm)	Eye Morphology	normal	-3.192307692	0.130888303	0	-0.388888889	0.739718538	0	2.766184144		0
+Eye_OCT.left.inner.nuclear.layer..µm.	preclinical	LAT	Eye	OCT left inner nuclear layer (µm)	Eye Morphology	normal	-3.205128205	0.24289264	0	0.577777778	0.768784745	0	2.883155675		0
+Dysmorphology_Loc..activity	preclinical	LAT	Dysmorphology	Loc. activity	Dysmorphology IMPC	normal	-7.420512821	0.278246253	0	-1.071428571	0.732023173	0	1.984977334		0
+Clinical.chemistry_T..bilirubin..µmol.l.	preclinical	LAT	Clinical chemistry	T. bilirubin (µmol/l)	Clinical chemistry parameters	non parametric	1.721153846	0.278246253	0	0.698717949	0.464823794	0	2.370904836		0
+Glucose.tolerance.test_Glucose.T60..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T60 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	-1.148901099	0.29049698	0	-2.678571429	0.000177745	1	1.291662759		0
+Clinical.chemistry_ALP..U.l.	preclinical	LAT	Clinical chemistry	ALP (U/l)	Clinical chemistry parameters	normal	-14.53846154	0.54004094	0	39.15384615	9.55E-07	1	1.378191236		0
+Echocardiography_EF....	preclinical	LAT	Echocardiography	EF (%)	Echocardiography using the Vevo light	normal	3.209589744	0.681400557	0	1.682142857	0.470919358	0	1.578399044		0
+Open.field_..distance.in.the.Center.I1..cm.	preclinical	LAT	Open field	% distance in the Center I1 (cm)	Open field test	log	-3.159487179	0.681400557	0	-1.778571429	0.428786778	0	1.627844685		0
+Open.field_..distance.in.the.Center.glob...cm.	preclinical	LAT	Open field	% distance in the Center glob. (cm)	Open field test	log	-2.664102564	0.681400557	0	0.892857143	0.739718538	0	1.904124125		0
+Echocardiography_FS....	preclinical	LAT	Echocardiography	FS (%)	Echocardiography using the Vevo light	normal	2.056871795	0.681400557	0	1.100714286	0.461415919	0	1.612092508		0
+Open.field_Distance.periphery..cm.	preclinical	LAT	Open field	Distance periphery (cm)	Open field test	normal	329.7825641	0.959070679	0	401.7571429	0.428786778	0	1.718590494		0
+Open.field_Distance.center..cm.	preclinical	LAT	Open field	Distance center (cm)	Open field test	normal	-194.0415385	0.959070679	0	150.2214286	0.639780838	0	0.946500221		0
+Glucose.tolerance.test_Glucose.auc.0.120...min.mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose auc(0-120) (min*mmol/l)	Test de Tolérance au Glucose (GTT)	normal	-34.71428571	0.959070679	0	-236.4725275	0.000682572	1	0.582064713		0
+Rotarod_Trial.2..s.	preclinical	LAT	Rotarod	Trial 2 (s)	Rotarod test	normal	23.75897436	0.959070679	0	51.35714286	0.058130149	0	0.852150094		0
+Open.field_Resting.Time.whole.arena..s.	preclinical	LAT	Open field	Resting Time whole arena (s)	Open field test	normal	-22.72	0.959070679	0	-6.371428571	0.837629105	0	1.272216203		0
+Open.field_Permanence.Time.periphery..s.	preclinical	LAT	Open field	Permanence Time periphery (s)	Open field test	normal	21.79794872	0.959070679	0	-7.071428571	0.790192227	0	1.546570359		0
+Open.field_Permanence.Time.center..s.	preclinical	LAT	Open field	Permanence Time center (s)	Open field test	normal	-21.79794872	0.959070679	0	7.071428571	0.790192227	0	1.546570359		0
+Rotarod_Mean.latency	preclinical	LAT	Rotarod	Mean latency	Rotarod test	normal	14.85225641	0.959070679	0	53.54928571	0.016281638	1	0.745155375		0
+Grip.test_Trial2..4paws...g.	preclinical	LAT	Grip test	Trial2 (4paws) (g)	Grip test	normal	14.35384615	0.959070679	0	-8.214285714	0.70615475	0	0.81635018		0
+Grip.test_Trial1..4paws...g.	preclinical	LAT	Grip test	Trial1 (4paws) (g)	Grip test	normal	13.00512821	0.959070679	0	-5	0.828971278	0	0.723181422		0
+Pavlovian.fear.cond._context.freezing.con.1	preclinical	LAT	Pavlovian fear cond.	context freezing con-1	Pavlovian fear conditioning	non parametric	-12.48205128	0.959070679	0	-6.142857143	0.70615475	0	1.324131532		0
+Grip.test_Grip.mean..4paws...g.	preclinical	LAT	Grip test	Grip mean (4paws) (g)	Grip test	normal	12.20266667	0.959070679	0	-5.665714286	0.774882914	0	0.812359079		0
+Echocardiography_HR..bpm.	preclinical	LAT	Echocardiography	HR (bpm)	Echocardiography using the Vevo light	sqrt	11.92307692	0.959070679	0	38.07142857	0.022575112	1	0.547618673		0
+Pavlovian.fear.cond._Freezing.Cue.1	preclinical	LAT	Pavlovian fear cond.	Freezing Cue 1	Pavlovian fear conditioning	non parametric	10.51282051	0.959070679	0	25.57142857	0.064774019	0	0.482868831		0
+Pavlovian.fear.cond._Freezing.....Con.1	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Con-1	Pavlovian fear conditioning	non parametric	-10.40071795	0.959070679	0	-5.118571429	0.70615475	0	1.324063958		0
+Pavlovian.fear.cond._Freezing.conditioning.post.us1	preclinical	LAT	Pavlovian fear cond.	Freezing conditioning post-us1	Pavlovian fear conditioning	non parametric	-10.07179487	0.959070679	0	19.42857143	0.110982776	0	1.23892913		0
+Grip.test_Trial3..4paws...g.	preclinical	LAT	Grip test	Trial3 (4paws) (g)	Grip test	normal	9.246153846	0.959070679	0	-3.785714286	0.837629105	0	0.796897756		0
+Eye_OCT.left.anterior.chamber.depth	preclinical	LAT	Eye	OCT left anterior chamber depth	Eye Morphology	normal	9.072727273	0.959070679	0	-5.875	0.70615475	0	1.293644458		0
+Pavlovian.fear.cond._Freezing.....Cue.1	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Cue-1	Pavlovian fear conditioning	non parametric	8.762153846	0.959070679	0	21.30857143	0.064774019	0	0.48291838		0
+Open.field_Latency.center..s.	preclinical	LAT	Open field	Latency center (s)	Open field test	log	7.446153846	0.959070679	0	4.028571429	0.70615475	0	0.605857277		0
+Eye_OCT.right.corneal.thickness	preclinical	LAT	Eye	OCT right corneal thickness	Eye Morphology	normal	7.416666667	0.959070679	0	3.555555556	0.70615475	0	1.720176022		0
+Pavlovian.fear.cond._Freezing.Cue.2	preclinical	LAT	Pavlovian fear cond.	Freezing Cue 2	Pavlovian fear conditioning	non parametric	6.851282051	0.959070679	0	45.71428571	0.000527193	1	0.067293125		0
+Eye_OCT.right.total.retinal.thickness..µm.	preclinical	LAT	Eye	OCT right total retinal thickness (µm)	Eye Morphology	normal	-6.717948718	0.959070679	0	-0.977777778	0.837629105	0	1.920855714		0
+Echocardiography_LV.Mass.AW..mg.	preclinical	LAT	Echocardiography	LV Mass AW (mg)	Echocardiography using the Vevo light	log	-6.172307692	0.959070679	0	-10.31428571	0.428786778	0	0.90468779		0
+Pavlovian.fear.cond._Freezing.....Cue.2	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Cue-2	Pavlovian fear conditioning	non parametric	5.709948718	0.959070679	0	38.09571429	0.000527193	1	0.067342792		0
+Pavlovian.fear.cond._Freezing.Pre.cue.2	preclinical	LAT	Pavlovian fear cond.	Freezing Pre-cue 2	Pavlovian fear conditioning	non parametric	5.179487179	0.959070679	0	8.142857143	0.428786778	0	0.281994002		0
+Auditory.and.PPI_..PP90	preclinical	LAT	Auditory and PPI	% PP90	Auditory startle reflex reactivity and PPI - P1	non parametric	4.946153846	0.959070679	0	-4.472857143	0.513074313	0	0.977322128		0
+Echocardiography_LV.Mass.AW..Corrected...mg.	preclinical	LAT	Echocardiography	LV Mass AW (Corrected) (mg)	Echocardiography using the Vevo light	log	-4.939025641	0.959070679	0	-8.250714286	0.428786778	0	0.904763291		0
+Eye_OCT.left.total.retinal.thickness..µm.	preclinical	LAT	Eye	OCT left total retinal thickness (µm)	Eye Morphology	normal	-4.756410256	0.959070679	0	-0.677777778	0.867971396	0	1.777503744		0
+ECG_QT.corrige..ms.Corr.	preclinical	LAT	ECG	QT corrigé (ms Corr)	ECG in anaesthetized conditions	non parametric	4.602153846	0.959070679	0	-1.915714286	0.837629105	0	0.914315443		0
+Open.field_Number.of.Rearings.I4	preclinical	LAT	Open field	Number of Rearings I4	Open field test	normal	4.348717949	0.959070679	0	-3	0.70615475	0	0.972041476		0
+Open.field_Number.of.Rearings.I2	preclinical	LAT	Open field	Number of Rearings I2	Open field test	normal	-3.528205128	0.959070679	0	-4.857142857	0.470919358	0	0.120347462		0
+Pavlovian.fear.cond._Freezing.conditioning.Hab.1	preclinical	LAT	Pavlovian fear cond.	Freezing conditioning Hab-1	Pavlovian fear conditioning	non parametric	3.487179487	0.959070679	0	-0.571428571	0.919691375	0	0.860220064		0
+Open.field_..distance.in.the.Center.I2..cm.	preclinical	LAT	Open field	% distance in the Center I2 (cm)	Open field test	log	-2.866153846	0.959070679	0	1.292857143	0.739718538	0	1.782977286		0
+Open.field_Resting.Time.center..s.	preclinical	LAT	Open field	Resting Time center (s)	Open field test	normal	-2.303589744	0.959070679	0	-3.028571429	0.378650875	0	1.429655621		0
+ECG_QT..ms.	preclinical	LAT	ECG	QT (ms)	ECG in anaesthetized conditions	non parametric	2.287846154	0.959070679	0	-3.122142857	0.428786778	0	0.97888622		0
+Open.field_..Time.Spent.in.the.Center.I1..cm.	preclinical	LAT	Open field	% Time Spent in the Center I1 (cm)	Open field test	log	-2.223076923	0.959070679	0	-1.764285714	0.428786778	0	1.450655969		0
+Open.field_..distance.in.the.Center.I4..cm.	preclinical	LAT	Open field	% distance in the Center I4 (cm)	Open field test	log	-2.144102564	0.959070679	0	2.15	0.537377774	0	1.029790383		0
+Open.field_..Time.Spent.in.the.Center.I2..cm.	preclinical	LAT	Open field	% Time Spent in the Center I2 (cm)	Open field test	log	-2.038974359	0.959070679	0	1.514285714	0.586607079	0	1.702185041		0
+Auditory.and.PPI_P70	preclinical	LAT	Auditory and PPI	P70	Auditory startle reflex reactivity and PPI - P1	log	-1.975384615	0.959070679	0	1.771428571	0.70615475	0	0.866460639		0
+Eye_OCT.left.outer.nuclear.layer..µm.	preclinical	LAT	Eye	OCT left outer nuclear layer (µm)	Eye Morphology	normal	-1.833333333	0.959070679	0	0.166666667	0.943652248	0	2.316160606		0
+Open.field_.Time.Spent.in.the.Center.glob	preclinical	LAT	Open field	%Time Spent in the Center glob	Open field test	log	-1.790769231	0.959070679	0	0.585714286	0.790192227	0	1.537697488		0
+Auditory.and.PPI_BN..65.	preclinical	LAT	Auditory and PPI	BN (65)	Auditory startle reflex reactivity and PPI - P1	log	1.676923077	0.959070679	0	0.828571429	0.72457896	0	1.039878598		0
+Clinical.chemistry_Glucose..mmol.l.	preclinical	LAT	Clinical chemistry	Glucose (mmol/l)	Clinical chemistry parameters	normal	-1.665034965	0.959070679	0	1.916783217	0.242328552	0	1.604130614		0
+Body.composition_fat.percent....	preclinical	LAT	Body composition	fat percent (%)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	1.365948718	0.959070679	0	-5.682857143	0.000193539	1	0.773223812		0
+Body.composition_lean.percent....	preclinical	LAT	Body composition	lean percent (%)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	-1.365948718	0.959070679	0	5.682857143	0.000193539	1	0.77320513		0
+ECG_Pdur..ms.	preclinical	LAT	ECG	Pdur (ms)	ECG in anaesthetized conditions	normal	-1.231794872	0.959070679	0	1.342857143	0.433466926	0	0.947649405		0
+Hot.plate_Hot.plate.1..s.	preclinical	LAT	Hot plate	Hot plate 1 (s)	Hot plate test	normal	1.186358974	0.959070679	0	0.042857143	0.947537928	0	0.716656351		0
+Glucose.tolerance.test_Body.weight..g.	preclinical	LAT	Glucose tolerance test	Body weight (g)	Test de Tolérance au Glucose (GTT)	normal	1.157692308	0.959070679	0	-4.465934066	6.07E-07	1	1.242145441		0
+Eye_OCT.right.inner.nuclear.layer..µm.	preclinical	LAT	Eye	OCT right inner nuclear layer (µm)	Eye Morphology	normal	-1.064102564	0.959070679	0	0.011111111	0.995470993	0	1.720294642		0
+Clinical.chemistry_Albumin..g.l.	preclinical	LAT	Clinical chemistry	Albumin (g/l)	Clinical chemistry parameters	non parametric	0.769230769	0.959070679	0	0.923076923	0.465153745	0	0.842411965		0
+Body.composition_fat.weight..g.	preclinical	LAT	Body composition	fat weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.444871795	0.959070679	0	-1.963571429	1.02E-05	1	0.746685586		0
+Grip.test_Grip.mean.ratio.4paws...g.g.	preclinical	LAT	Grip test	Grip mean ratio(4paws) (g/g)	Grip test	normal	0.289282051	0.959070679	0	1.865	0.001662259	1	0.353425211		0
+Eye_Body.weight..g.	preclinical	LAT	Eye	Body weight (g)	Eye Morphology	normal	-0.242051282	0.959070679	0	-4.8	3.56E-07	1	0.526857116		0
+Hot.plate_Body.weight..g.	preclinical	LAT	Hot plate	Body weight (g)	Hot plate test	normal	-0.242051282	0.959070679	0	-4.8	3.56E-07	1	0.526857116		0
+Clinical.chemistry_HDL.Chol...mmol.l.	preclinical	LAT	Clinical chemistry	HDL Chol. (mmol/l)	Clinical chemistry parameters	non parametric	-0.151748252	0.959070679	0	-0.291328671	0.079313334	0	1.343805119		0
+Body.composition_Body.length..cm.	preclinical	LAT	Body composition	Body length (cm)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.123589744	0.959070679	0	-0.15	0.428786778	0	1.347067383		0
+ECG_Ramp..mv.	preclinical	LAT	ECG	Ramp (mv)	ECG in anaesthetized conditions	non parametric	-0.093589744	0.959070679	0	0.075	0.70615475	0	1.173486673		0
+Glucose.tolerance.test_Glucose.T120..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T120 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	0.326923077	0.977165934	0	-1.172527473	0.000527193	1	1.332389182		0
+Open.field_..Time.Spent.in.the.Center.I4..cm.	preclinical	LAT	Open field	% Time Spent in the Center I4 (cm)	Open field test	log	-1.320512821	0.977341977	0	0.607142857	0.837629105	0	0.767065059		0
+Open.field_Dist.global..cm.	preclinical	LAT	Open field	Dist global (cm)	Open field test	normal	135.7938462	0.981339142	0	552	0.428786778	0	0.940973291		0
+Open.field_Distance.whole.arena..cm.	preclinical	LAT	Open field	Distance whole arena (cm)	Open field test	normal	135.7938462	0.981339142	0	552	0.428786778	0	0.940973291		0
+Auditory.and.PPI_ST110	preclinical	LAT	Auditory and PPI	ST110	Auditory startle reflex reactivity and PPI - P1	log	82.16205128	0.981339142	0	-371.8714286	0.033808568	1	0.390886439		0
+Auditory.and.PPI_PP70	preclinical	LAT	Auditory and PPI	PP70	Auditory startle reflex reactivity and PPI - P1	non parametric	77.06410256	0.981339142	0	-336.2642857	0.045092716	1	0.293394849		0
+Open.field_Dist.I1..cm.	preclinical	LAT	Open field	Dist I1 (cm)	Open field test	normal	60.29487179	0.981339142	0	111.4785714	0.635222497	0	0.694958657		0
+Auditory.and.PPI_PP75	preclinical	LAT	Auditory and PPI	PP75	Auditory startle reflex reactivity and PPI - P1	non parametric	57.49487179	0.981339142	0	-227.0357143	0.069331434	0	0.208423876		0
+Open.field_Dist.I2..cm.	preclinical	LAT	Open field	Dist I2 (cm)	Open field test	normal	50.8425641	0.981339142	0	84.15	0.586607079	0	1.222853107		0
+Glucose.tolerance.test_Glucose.auc.positive..0.120...min.mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose auc positive (0-120) (min*mmol/l)	Test de Tolérance au Glucose (GTT)	normal	43.57692308	0.981339142	0	-294.2912088	0.000177745	1	0.477762941		0
+Open.field_Dist.I3..cm.	preclinical	LAT	Open field	Dist I3 (cm)	Open field test	normal	23.65948718	0.981339142	0	127.0571429	0.593061431	0	0.645840239		0
+Auditory.and.PPI_PP85	preclinical	LAT	Auditory and PPI	PP85	Auditory startle reflex reactivity and PPI - P1	non parametric	22.21435897	0.981339142	0	-105.5714286	0.428786778	0	0.245183825		0
+Open.field_Resting.Time.periphery..s.	preclinical	LAT	Open field	Resting Time periphery (s)	Open field test	normal	-20.44512821	0.981339142	0	-3.342857143	0.908546857	0	1.148852291		0
+ECG_HR..bpm.	preclinical	LAT	ECG	HR (bpm)	ECG in anaesthetized conditions	normal	-13.88717949	0.981339142	0	46.57142857	0.045092716	1	0.600562263		0
+Pavlovian.fear.cond._freezing.total.context	preclinical	LAT	Pavlovian fear cond.	freezing total context	Pavlovian fear conditioning	non parametric	-13.84615385	0.981339142	0	30.57142857	0.476272488	0	0.778845151		0
+Rotarod_Trial.3..s.	preclinical	LAT	Rotarod	Trial 3 (s)	Rotarod test	normal	10.42564103	0.981339142	0	57.21428571	0.042173549	1	0.289598552		0
+Rotarod_Trial.1..s.	preclinical	LAT	Rotarod	Trial 1 (s)	Rotarod test	normal	10.37435897	0.981339142	0	52.07142857	0.068147997	0	0.758725948		0
+Auditory.and.PPI_P85	preclinical	LAT	Auditory and PPI	P85	Auditory startle reflex reactivity and PPI - P1	log	-9.238974359	0.981339142	0	-11.34285714	0.707899152	0	0.049440104		0
+ECG_Number.of.signals	preclinical	LAT	ECG	Number of signals	ECG in anaesthetized conditions	non parametric	-6.738461538	0.981339142	0	-28.14285714	0.428786778	0	0.803457173		0
+Auditory.and.PPI_..PP70	preclinical	LAT	Auditory and PPI	% PP70	Auditory startle reflex reactivity and PPI - P1	non parametric	-4.402307692	0.981339142	0	8.279285714	0.513074313	0	0.274525569		0
+Auditory.and.PPI_..PP75	preclinical	LAT	Auditory and PPI	% PP75	Auditory startle reflex reactivity and PPI - P1	non parametric	-4.262051282	0.981339142	0	5.824285714	0.586607079	0	0.186453088		0
+Pavlovian.fear.cond._Freezing.....total	preclinical	LAT	Pavlovian fear cond.	Freezing (%) total	Pavlovian fear conditioning	non parametric	-3.844974359	0.981339142	0	8.490714286	0.476272488	0	0.778760516		0
+Pavlovian.fear.cond._context.freezing.con.2	preclinical	LAT	Pavlovian fear cond.	context freezing con-2	Pavlovian fear conditioning	non parametric	-3.58974359	0.981339142	0	12.57142857	0.461415919	0	0.552615976		0
+Grip.test_Trial.1..g.	preclinical	LAT	Grip test	Trial 1 (g)	Grip test	normal	-3.353846154	0.981339142	0	-18	0.057580154	0	0.711168535		0
+Clinical.chemistry_ALAT..U.l.	preclinical	LAT	Clinical chemistry	ALAT (U/l)	Clinical chemistry parameters	non parametric	-3.307692308	0.981339142	0	-12.5	0.379843027	0	0.337186561		0
+Open.field_NEntries.center	preclinical	LAT	Open field	NEntries center	Open field test	sqrt	-3.302564103	0.981339142	0	13	0.153393608	0	0.342594233		0
+Grip.test_Trial.3..g.	preclinical	LAT	Grip test	Trial 3 (g)	Grip test	normal	3.271794872	0.981339142	0	-19.57142857	0.039751513	1	0.082922673		0
+Pavlovian.fear.cond._Freezing.....Con.2	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Con-2	Pavlovian fear conditioning	non parametric	-2.990717949	0.981339142	0	10.475	0.461415919	0	0.552537045		0
+Anapath_A2.heart..mg...mg.	preclinical	LAT	Anapath	A2 heart (mg) (mg)	Anapath	inverse	-2.969230769	0.981339142	0	-22.07142857	0.022706389	1	0.560939619		0
+ECG_RR..ms.	preclinical	LAT	ECG	RR (ms)	ECG in anaesthetized conditions	normal	2.693333333	0.981339142	0	-14.92571429	0.045092716	1	0.40809438		0
+Pavlovian.fear.cond._context.freezing.con.3	preclinical	LAT	Pavlovian fear cond.	context freezing con-3	Pavlovian fear conditioning	non parametric	2.225641026	0.981339142	0	24.14285714	0.058130149	0	0.088244631		0
+Auditory.and.PPI_..PP85	preclinical	LAT	Auditory and PPI	% PP85	Auditory startle reflex reactivity and PPI - P1	non parametric	2.145641026	0.981339142	0	-3.775714286	0.70615475	0	0.187943012		0
+Pavlovian.fear.cond._Freezing.....Con.3	preclinical	LAT	Pavlovian fear cond.	Freezing (%) Con-3	Pavlovian fear conditioning	non parametric	1.853641026	0.981339142	0	20.12	0.058130149	0	0.088360662		0
+Open.field_..distance.in.the.Center.I3..cm.	preclinical	LAT	Open field	% distance in the Center I3 (cm)	Open field test	log	-1.827179487	0.981339142	0	2.921428571	0.478573165	0	0.662287159		0
+ECG_ST..ms.	preclinical	LAT	ECG	ST (ms)	ECG in anaesthetized conditions	log	1.774666667	0.981339142	0	-2.928571429	0.439747187	0	0.843233771		0
+Open.field_..Time.Spent.in.the.Center.I3..cm.	preclinical	LAT	Open field	% Time Spent in the Center I3 (cm)	Open field test	log	-1.658461538	0.981339142	0	2	0.593061431	0	0.432681848		0
+Echocardiography_LV.Vol_s..uL.	preclinical	LAT	Echocardiography	LV Vol_s (uL)	Echocardiography using the Vevo light	normal	-1.633282051	0.981339142	0	-2.479285714	0.728441838	0	0.329432788		0
+Open.field_Number.of.Rearings.I1	preclinical	LAT	Open field	Number of Rearings I1	Open field test	normal	-1.297435897	0.981339142	0	0.071428571	0.995470993	0	0.04798555		0
+Open.field_Number.of.Rearings.global	preclinical	LAT	Open field	Number of Rearings global	Open field test	normal	-1.179487179	0.981339142	0	-11.57142857	0.689735822	0	0.15098975		0
+Eye_OCT.left.corneal.thickness	preclinical	LAT	Eye	OCT left corneal thickness	Eye Morphology	normal	1.072727273	0.981339142	0	5.875	0.586607079	0	0.058895074		0
+Pavlovian.fear.cond._Freezing.Pre.cue.1	preclinical	LAT	Pavlovian fear cond.	Freezing Pre-cue 1	Pavlovian fear conditioning	non parametric	-1.056410256	0.981339142	0	3	0.739718538	0	0.503102814		0
+ECG_PR..ms.	preclinical	LAT	ECG	PR (ms)	ECG in anaesthetized conditions	non parametric	-1.043589744	0.981339142	0	3.264285714	0.091489709	0	0.651451331		0
+Open.field_Dist.I4..cm.	preclinical	LAT	Open field	Dist I4 (cm)	Open field test	normal	0.974871795	0.981339142	0	229.3357143	0.194104722	0	0.848586158		0
+Eye_Left.inner.plexiform.layer..µm.	preclinical	LAT	Eye	Left inner plexiform layer (µm)	Eye Morphology	normal	-0.91025641	0.981339142	0	-2.3	0.428786778	0	0.87192376		0
+Clinical.chemistry_Blood.Urea.Nitrogen.mg.dl..mg.dl.	preclinical	LAT	Clinical chemistry	Blood Urea Nitrogen mg/dl (mg/dl)	Clinical chemistry parameters	log	-0.851958042	0.981339142	0	-0.604825175	0.766834327	0	1.024682351		0
+Eye_Right.inner.plexiform.layer..µm.	preclinical	LAT	Eye	Right inner plexiform layer (µm)	Eye Morphology	normal	-0.846153846	0.981339142	0	0.466666667	0.885712487	0	0.745575781		0
+Grip.test_Trial.2..g.	preclinical	LAT	Grip test	Trial 2 (g)	Grip test	normal	-0.841025641	0.981339142	0	-16.28571429	0.079831726	0	0.524993082		0
+Auditory.and.PPI_P75	preclinical	LAT	Auditory and PPI	P75	Auditory startle reflex reactivity and PPI - P1	log	0.756410256	0.981339142	0	3.735714286	0.726159489	0	0.190359818		0
+Open.field_Number.of.Rearings.I3	preclinical	LAT	Open field	Number of Rearings I3	Open field test	normal	-0.702564103	0.981339142	0	-3.785714286	0.70615475	0	0.180707923		0
+Body_body.weight.w7..g.	preclinical	LAT	Body	body weight w7 (g)	Body Weight	normal	0.645641026	0.981339142	0	-4.307142857	4.14E-07	1	0.30690813		0
+Auditory.and.PPI_Body.weight..g.	preclinical	LAT	Auditory and PPI	Body weight (g)	Auditory startle reflex reactivity and PPI - P1	normal	0.631282051	0.981339142	0	-4.75	3.56E-07	1	0.382700263		0
+ECG_QRS..ms.	preclinical	LAT	ECG	QRS (ms)	ECG in anaesthetized conditions	inverse	-0.570769231	0.981339142	0	-0.335714286	0.770187785	0	0.603372831		0
+Echocardiography_Body.mass..g.	preclinical	LAT	Echocardiography	Body mass (g)	Echocardiography using the Vevo light	normal	0.563076923	0.981339142	0	-4.785714286	1.20E-06	1	0.331448807		0
+Grip.test_Weight..g.	preclinical	LAT	Grip test	Weight (g)	Grip test	normal	0.517948718	0.981339142	0	-5.114285714	1.17E-07	1	0.298774554		0
+Rotarod_Body.weight..g.	preclinical	LAT	Rotarod	Body weight (g)	Rotarod test	normal	0.517948718	0.981339142	0	-5.114285714	1.17E-07	1	0.298774554		0
+Auditory.and.PPI_P90	preclinical	LAT	Auditory and PPI	P90	Auditory startle reflex reactivity and PPI - P1	log	-0.47025641	0.981339142	0	-59.87857143	0.153393608	0	0.036231223		0
+Dysmorphology_Body.weight..g.	preclinical	LAT	Dysmorphology	Body weight (g)	Dysmorphology IMPC	normal	0.434358974	0.981339142	0	-4.578571429	1.17E-07	1	0.280401915		0
+Body.composition_sample.area..cm2.	preclinical	LAT	Body composition	sample area (cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.368974359	0.981339142	0	-2.849285714	2.02E-05	1	0.312650222		0
+Grip.test_Grip.mean..g.	preclinical	LAT	Grip test	Grip mean (g)	Grip test	normal	-0.307692308	0.981339142	0	-17.95285714	0.045092716	1	0.400942401		0
+Clinical.chemistry_Urea..mmol.l.	preclinical	LAT	Clinical chemistry	Urea (mmol/l)	Clinical chemistry parameters	log	-0.304195804	0.981339142	0	-0.216083916	0.768267802	0	1.025333928		0
+Eye_Left.segments..µm.	preclinical	LAT	Eye	Left segments (µm)	Eye Morphology	normal	0.294871795	0.981339142	0	-0.911111111	0.70615475	0	0.092779456		0
+Eye_Right.segments..µm.	preclinical	LAT	Eye	Right segments (µm)	Eye Morphology	normal	-0.243589744	0.981339142	0	0.211111111	0.919691375	0	0.106215451		0
+Glucose.tolerance.test_Glucose.T15..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T15 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	-0.218681319	0.981339142	0	0.040659341	0.995470993	0	0.236318868		0
+Body.composition_body.weight..g.	preclinical	LAT	Body composition	body weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.216923077	0.981339142	0	-4.492857143	2.66E-06	1	0.155688444		0
+Grip.test_Grip.mean.ratio..g.g.	preclinical	LAT	Grip test	Grip mean ratio (g/g)	Grip test	normal	-0.14	0.981339142	0	0.332857143	0.470919358	0	0.800749293		0
+Open.field_av..speed.center..cm.s.	preclinical	LAT	Open field	av. speed center (cm/s)	Open field test	normal	0.121948718	0.981339142	0	0.347142857	0.643378138	0	0.767826671		0
+Open.field_av..speed.whole.arena..cm.s.	preclinical	LAT	Open field	av. speed whole arena (cm/s)	Open field test	normal	-0.102923077	0.981339142	0	0.535	0.125263432	0	0.327500638		0
+Echocardiography_LVID_s..mm.	preclinical	LAT	Echocardiography	LVID_s (mm)	Echocardiography using the Vevo light	normal	-0.092051282	0.981339142	0	-0.055	0.814563019	0	0.563763166		0
+Open.field_av..speed.periphery..cm.s.	preclinical	LAT	Open field	av. speed periphery (cm/s)	Open field test	normal	-0.075897436	0.981339142	0	0.545714286	0.079831726	0	0.471196322		0
+Clinical.chemistry_T..Chol...mmol.l.	preclinical	LAT	Clinical chemistry	T. Chol. (mmol/l)	Clinical chemistry parameters	normal	-0.069294872	0.981339142	0	-0.191923077	0.433466926	0	0.480348292		0
+Clinical.chemistry_P..mmol.l.	preclinical	LAT	Clinical chemistry	P (mmol/l)	Clinical chemistry parameters	normal	-0.057412587	0.981339142	0	0.698531469	0.002815672	1	0.731551825		0
+Clinical.chemistry_TG..mmol.l.	preclinical	LAT	Clinical chemistry	TG (mmol/l)	Clinical chemistry parameters	normal	-0.056083916	0.981339142	0	-0.098321678	0.739718538	0	0.750862305		0
+Body.composition_lean.weight..g.	preclinical	LAT	Body composition	lean weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	-0.048307692	0.981339142	0	-2.76	0.00363696	1	0.160038143		0
+Clinical.chemistry_Non.HDL.Chol...mmol.l.	preclinical	LAT	Clinical chemistry	Non HDL Chol. (mmol/l)	Clinical chemistry parameters	normal	0.037832168	0.981339142	0	0.131678322	0.430931234	0	0.419340559		0
+Echocardiography_LVPW_d..mm.	preclinical	LAT	Echocardiography	LVPW_d (mm)	Echocardiography using the Vevo light	log	-0.033846154	0.981339142	0	-0.04	0.739718538	0	1.225310003		0
+Echocardiography_LVAW_s..mm.	preclinical	LAT	Echocardiography	LVAW_s (mm)	Echocardiography using the Vevo light	normal	-0.031128205	0.981339142	0	-0.025	0.837629105	0	0.98258448		0
+Echocardiography_LVID_d..mm.	preclinical	LAT	Echocardiography	LVID_d (mm)	Echocardiography using the Vevo light	normal	-0.024974359	0.981339142	0	-0.007857143	0.980997855	0	0.118912751		0
+ECG_STE..mv.	preclinical	LAT	ECG	STE (mv)	ECG in anaesthetized conditions	non parametric	0.023333333	0.981339142	0	0.022142857	0.837629105	0	1.52412453		0
+Shock.threshold_Vocalization	preclinical	LAT	Shock threshold	Vocalization	Shock threshold test	non parametric	0.021333333	0.981339142	0	0.008571429	0.932653126	0	0.654030318		0
+Anapath_..A2.heart	preclinical	LAT	Anapath	% A2 heart	Anapath	inverse	-0.01774359	0.981339142	0	0.015714286	0.908546857	0	0.975186048		0
+Echocardiography_LVAW_d..mm.	preclinical	LAT	Echocardiography	LVAW_d (mm)	Echocardiography using the Vevo light	normal	-0.011538462	0.981339142	0	-0.062142857	0.682118853	0	0.848656259		0
+Echocardiography_LVPW_s..mm.	preclinical	LAT	Echocardiography	LVPW_s (mm)	Echocardiography using the Vevo light	log	-0.006871795	0.981339142	0	-0.055714286	0.70615475	0	0.325060785		0
+Clinical.chemistry_ASAT..U.l.	preclinical	LAT	Clinical chemistry	ASAT (U/l)	Clinical chemistry parameters	non parametric	-4.740384615	0.98727751	0	14.87272727	0.70615475	0	0.429292984		0
+Body.composition_total.weight..g.	preclinical	LAT	Body composition	total weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.398410256	0.98727751	0	-4.762142857	1.55E-05	1	0.177227293		0
+Body.composition_soft.weight..g.	preclinical	LAT	Body composition	soft weight (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.395794872	0.98727751	0	-4.722857143	1.34E-05	1	0.185988998		0
+Auditory.and.PPI_Glb	preclinical	LAT	Auditory and PPI	Glb	Auditory startle reflex reactivity and PPI - P1	normal	-0.392717949	0.98727751	0	1.464285714	0.837629105	0	0.089546274		0
+Pavlovian.fear.cond._Freezing.conditioning.Hab.2	preclinical	LAT	Pavlovian fear cond.	Freezing conditioning Hab-2	Pavlovian fear conditioning	non parametric	-0.266666667	0.98727751	0	-1.428571429	0.784324629	0	0.402326345		0
+Gross_Body.Weight..g.	preclinical	LAT	Gross	Body Weight (g)	Gross Pathology	normal	0.254205128	0.98727751	0	-4.219285714	2.44E-06	1	0.17613614		0
+Anapath_body.weight..g.	preclinical	LAT	Anapath	body weight (g)	Anapath	normal	0.253892308	0.98727751	0	-4.220928571	2.44E-06	1	0.176039231		0
+Body.composition_bone.area..cm2.	preclinical	LAT	Body composition	bone area (cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	0.050153846	0.98727751	0	-0.527142857	0.050328052	0	0.122385652		0
+Anapath_A2.heart..g.	preclinical	LAT	Anapath	A2 heart (g)	Anapath	inverse	-0.002871795	0.98727751	0	-0.022857143	0.837629105	0	0.56825857		0
+Auditory.and.PPI_PP90	preclinical	LAT	Auditory and PPI	PP90	Auditory startle reflex reactivity and PPI - P1	non parametric	3.635384615	0.996806401	0	-67.46428571	0.428786778	0	0.043664897		0
+Glucose.tolerance.test_Glucose.T30..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T30 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	0.27967033	0.996806401	0	-2.371428571	0.086968905	0	0.077611409		0
+Echocardiography_LV.Vol_d..uL.	preclinical	LAT	Echocardiography	LV Vol_d (uL)	Echocardiography using the Vevo light	normal	-0.120717949	0.996806401	0	-1.81	0.872830197	0	0.018587869		0
+Glucose.tolerance.test_Glucose.T0..mmol.l.	preclinical	LAT	Glucose tolerance test	Glucose T0 (mmol/l)	Test de Tolérance au Glucose (GTT)	normal	-0.036263736	0.996806401	0	0.258791209	0.61355388	0	0.231616749		0
+Body.composition_BMC..g.	preclinical	LAT	Body composition	BMC (g)	Ultrafocus - Densitométrie osseuse et composition corporelle	log	0.002923077	1	0	-0.040714286	0.751288458	0	0.29034773		0
+Body.composition_BMD..g.cm2.	preclinical	LAT	Body composition	BMD (g/cm2)	Ultrafocus - Densitométrie osseuse et composition corporelle	normal	-0.000418974	1	0	-0.000907143	0.995470993	0	0.601861493		0

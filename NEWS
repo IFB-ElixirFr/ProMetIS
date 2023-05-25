@@ -1,10 +1,16 @@
+CHANGES IN VERSION 1.0.14
+------------------------------
+
+MINOR MODIFICATION
+
+    o minor encoding correction of one preclinical feature name
+
 CHANGES IN VERSION 1.0.12
 ------------------------------
 
 MINOR MODIFICATION
 
     o tutorial update (phenomis package now available directly from Bioconductor)
-
 
 CHANGES IN VERSION 1.0.10
 ------------------------------
