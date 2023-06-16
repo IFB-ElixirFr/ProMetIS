@@ -1,0 +1,7 @@
+""	"Drift Spearman"	"Drift PCA"	"QC spread"	"QC CV"	"QC ICC"
+"liver_c18hypersil_pos"	95	90	91	79	71
+"liver_hilic_neg"	93	93	96	81	82
+"plasma_c18hypersil_pos"	99	94	99	85	84
+"plasma_hilic_neg"	100	92	99	89	89
+"plasma_c18acquity_pos"	100	99	81	81	58
+"plasma_c18acquity_neg"	100	100	88	88	65

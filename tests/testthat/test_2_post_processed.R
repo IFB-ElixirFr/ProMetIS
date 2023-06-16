@@ -124,7 +124,7 @@ testthat::test_that("subsetting", {
   # SummarizedExperiment
   
   set.c <- "proteomics_liver"
-  proteo.mae <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+  proteo.mae <- phenomis::reading(ProMetIS::post_processed_dir.c(),
                                   subsets.vc = set.c,
                                   report.c = "none")
   proteo.se <- proteo.mae[[set.c]]

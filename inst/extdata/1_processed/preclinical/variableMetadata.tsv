@@ -41,7 +41,7 @@ ECG_PR..ms.	ECG	PR (ms)	ECG in anaesthetized conditions	non parametric
 ECG_Pdur..ms.	ECG	Pdur (ms)	ECG in anaesthetized conditions	normal
 ECG_QRS..ms.	ECG	QRS (ms)	ECG in anaesthetized conditions	inverse
 ECG_QT..ms.	ECG	QT (ms)	ECG in anaesthetized conditions	non parametric
-ECG_QT.corrige..ms.Corr.	ECG	QT corrigé (ms Corr)	ECG in anaesthetized conditions	non parametric
+ECG_QT.corrigé..ms.Corr.	ECG	QT corrigé (ms Corr)	ECG in anaesthetized conditions	non parametric
 ECG_RR..ms.	ECG	RR (ms)	ECG in anaesthetized conditions	normal
 ECG_Ramp..mv.	ECG	Ramp (mv)	ECG in anaesthetized conditions	non parametric
 ECG_ST..ms.	ECG	ST (ms)	ECG in anaesthetized conditions	log

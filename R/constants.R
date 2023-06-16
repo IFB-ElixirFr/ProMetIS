@@ -105,24 +105,3 @@ processed_dir.c <- function() {
 post_processed_dir.c <- function() {
   file.path(ProMetIS::data_dir.c(), "2_post_processed")
 }
-
-#' @export
-statistics_singleomics_dir.c <- function() {
-  file.path(ProMetIS::data_dir.c(), "3_statistics_singleomics")
-}
-
-#' @export
-statistics_integrative_dir.c <- function() {
-  file.path(ProMetIS::data_dir.c(), "4_statistics_integrative")
-}
-
-#' @export
-aggregated_dir.c <- function(gene.c) {
-  stopifnot(gene.c %in% ProMetIS::genes.vc())
-  file.path(ProMetIS::data_dir.c(), paste0("5", ifelse(gene.c == "LAT", "a", "b"), "_aggregated_", gene.c))
-}
-
-#' @export
-supplementary_dir.c <- function(gene.c) {
-  file.path(ProMetIS::data_dir.c(), "6_supplementary")
-}

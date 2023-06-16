@@ -27,15 +27,15 @@
 #' @export
 #' @examples
 #' # MultiAssayExperiment
-#' latmx2.mae <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+#' prometis.mae <- phenomis::reading(ProMetIS::post_processed_dir.c(),
 #'                                 report.c = "none")
-#' latmx2.mae <- latmx2.mae[, , ProMetIS::sets.vc()]
-#' plasma_lat.mae <- ProMetIS::subsetting(latmx2.mae,
-#'                                        genes.vc = c("WT", "LAT"),
+#' prometis.mae <- prometis.mae[, , ProMetIS::sets.vc()]
+#' plasma_mx2.mae <- ProMetIS::subsetting(prometis.mae,
+#'                                        genes.vc = c("WT", "MX2"),
 #'                                        tissues.vc = "plasma")
 #' # SummarizedExperiment
 #' set.c <- "proteomics_liver"
-#' proteo.mae <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+#' proteo.mae <- phenomis::reading(ProMetIS::post_processed_dir.c(),
 #'                                 subsets.vc = set.c,
 #'                                 report.c = "none")
 #' proteo.se <- proteo.mae[[set.c]]
@@ -43,27 +43,27 @@
 #' sample_meta.DF <- SummarizedExperiment::colData(proteo.mae)
 #' SummarizedExperiment::colData(proteo.se)[, "gene"] <- sample_meta.DF[colnames(proteo.se), "gene"]
 #' SummarizedExperiment::colData(proteo.se)[, "sex"] <- sample_meta.DF[colnames(proteo.se), "sex"]
-#' proteo_lat.se <- ProMetIS::subsetting(proteo.se,
+#' proteo_mx2.se <- ProMetIS::subsetting(proteo.se,
 #'                                       set.c = set.c,
-#'                                       genes.vc = c("WT", "LAT"))
+#'                                       genes.vc = c("WT", "MX2"))
 #' # MultiDataSet
-#' latmx2.mds <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+#' prometis.mds <- phenomis::reading(ProMetIS::post_processed_dir.c(),
 #'                                 output.c = "set",
 #'                                 report.c = "none")
-#' latmx2.mds <- latmx2.mds[, ProMetIS::sets.vc()]
-#' plasma_lat.mds <- ProMetIS::subsetting(latmx2.mds,
-#'                                        genes.vc = c("WT", "LAT"),
+#' prometis.mds <- prometis.mds[, ProMetIS::sets.vc()]
+#' plasma_mx2.mds <- ProMetIS::subsetting(prometis.mds,
+#'                                        genes.vc = c("WT", "MX2"),
 #'                                        tissues.vc = "plasma")
 #' # ExpressionSet
 #' set.c <- "proteomics_liver"
-#' proteo.mset <- phenomis::reading(ProMetIS::statistics_singleomics_dir.c(),
+#' proteo.mset <- phenomis::reading(ProMetIS::post_processed_dir.c(),
 #'                                  subsets.vc = set.c,
 #'                                  output.c = "set",
 #'                                  report.c = "none")
 #' proteo.set <- proteo.mset[[set.c]]
-#' proteo_lat.set <- ProMetIS::subsetting(proteo.set,
+#' proteo_mx2.set <- ProMetIS::subsetting(proteo.set,
 #'                                        set.c = set.c,
-#'                                        genes.vc = c("WT", "LAT"))
+#'                                        genes.vc = c("WT", "MX2"))
 setGeneric("subsetting",
            function(x,
                     set.c = NULL,
@@ -104,7 +104,7 @@ setGeneric("subsetting",
 #' sample_meta.DF <- SummarizedExperiment::colData(proteo.mae)
 #' SummarizedExperiment::colData(proteo.se)[, "gene"] <- sample_meta.DF[colnames(proteo.se), "gene"]
 #' SummarizedExperiment::colData(proteo.se)[, "sex"] <- sample_meta.DF[colnames(proteo.se), "sex"]
-#' feat_select.vl <- ProMetIS:::filter_overimputed(proteo.se, set.c = set.c, genes.vc = "LAT")
+#' feat_select.vl <- ProMetIS:::filter_overimputed(proteo.se, set.c = set.c, genes.vc = "MX2")
 #' message(round(sum(feat_select.vl) / length(feat_select.vl) * 100), "% of selected features")
 #' 
 #' # ExpressionSet
@@ -113,7 +113,7 @@ setGeneric("subsetting",
 #'                                  subsets.vc = set.c,
 #'                                  output.c = "set")
 #' proteo.eset <- proteo.mset[[set.c]]
-#' feat_select.vl <- ProMetIS:::filter_overimputed(proteo.eset, set.c = set.c, genes.vc = "LAT")
+#' feat_select.vl <- ProMetIS:::filter_overimputed(proteo.eset, set.c = set.c, genes.vc = "MX2")
 setGeneric("filter_overimputed",
            function(x,
                     set.c,

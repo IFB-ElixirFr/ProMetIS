@@ -61,7 +61,7 @@ proteo.se <- proteo.mae[[set.c]]
 sample_meta.DF <- SummarizedExperiment::colData(proteo.mae)
 SummarizedExperiment::colData(proteo.se)[, "gene"] <- sample_meta.DF[colnames(proteo.se), "gene"]
 SummarizedExperiment::colData(proteo.se)[, "sex"] <- sample_meta.DF[colnames(proteo.se), "sex"]
-feat_select.vl <- ProMetIS:::filter_overimputed(proteo.se, set.c = set.c, genes.vc = "LAT")
+feat_select.vl <- ProMetIS:::filter_overimputed(proteo.se, set.c = set.c, genes.vc = "MX2")
 message(round(sum(feat_select.vl) / length(feat_select.vl) * 100), "\% of selected features")
 
 # ExpressionSet
@@ -70,5 +70,5 @@ proteo.mset <- phenomis::reading(ProMetIS::post_processed_dir.c(),
                                  subsets.vc = set.c,
                                  output.c = "set")
 proteo.eset <- proteo.mset[[set.c]]
-feat_select.vl <- ProMetIS:::filter_overimputed(proteo.eset, set.c = set.c, genes.vc = "LAT")
+feat_select.vl <- ProMetIS:::filter_overimputed(proteo.eset, set.c = set.c, genes.vc = "MX2")
 }

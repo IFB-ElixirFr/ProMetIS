@@ -500,7 +500,8 @@ setMethod("imputation_info", signature(x = "ExpressionSet"),
             prot_pda.df <- Biobase::pData(x)
             prot_fda.df <- Biobase::fData(x)
             
-            load(system.file("extdata/2_post_processed/metadata_supp.rdata", package = "ProMetIS"))
+            load(file.path(ProMetIS::post_processed_dir.c(),
+                           "metadata_supp.rdata"))
             
             supp_pda.df <- metadata_supp.ls[[set.c]][["pdata"]]
             supp_fda.df <- metadata_supp.ls[[set.c]][["fdata"]]
@@ -553,7 +554,7 @@ setMethod("imputation_info", signature(x = "ExpressionSet"),
 metadata_select <- function(mset,
                             step.c) { # e.g. step.c = "2_post_processed"
   
-  if(is.null(names(mset))) { # preclinical expression set
+  if (is.null(names(mset))) { # preclinical expression set
     preclinical.eset <- mset
     mset <- MultiDataSet::createMultiDataSet()
     mset <- MultiDataSet::add_eset(mset,
@@ -568,7 +569,7 @@ metadata_select <- function(mset,
   
   metadata_supp_file.c <- paste0("../inst/extdata/", step.c, "/metadata_supp.rdata")
   
-  if(file.exists(metadata_supp_file.c)) {
+  if (file.exists(metadata_supp_file.c)) {
     load(metadata_supp_file.c)
   } else {
     metadata_supp.ls <- vector(mode = "list", length = length(ProMetIS::sets.vc()))
@@ -589,7 +590,7 @@ metadata_select <- function(mset,
     
     samplemeta_supp.vc <- setdiff(colnames(pdata.df), samplemeta.vc)
     
-    if(length(samplemeta_supp.vc)) {
+    if (length(samplemeta_supp.vc)) {
       pdata_supp.df <- pdata.df[, samplemeta_supp.vc, drop = FALSE]
     } else
       pdata_supp.df <- data.frame()
@@ -606,7 +607,7 @@ metadata_select <- function(mset,
     
     variablemeta_supp.vc <- setdiff(colnames(fdata.df), variablemeta.vc)
     
-    if(length(variablemeta_supp.vc)) {
+    if (length(variablemeta_supp.vc)) {
       fdata_supp.df <- fdata.df[, variablemeta_supp.vc, drop = FALSE]
     } else
       fdata_supp.df <- data.frame()
@@ -619,7 +620,7 @@ metadata_select <- function(mset,
       fdata.df[, "annot_level"] <- annot_level.vc
       
       monoiso_col.c <- "monoisotopic_mass"
-      if(monoiso_col.c %in% colnames(fdata.df)) {
+      if (monoiso_col.c %in% colnames(fdata.df)) {
         fdata.df[, monoiso_col.c] <- as.character(fdata.df[, monoiso_col.c])
         fdata.df[is.na(fdata.df[, monoiso_col.c]), monoiso_col.c] <- ""
       }
@@ -658,7 +659,7 @@ metadata_select <- function(mset,
                 "mouse_id",
                 "sex")
   
-  if(set.c == "preclinical")
+  if (set.c == "preclinical")
     first.vc <- c(first.vc,
                   c("gene_name",
                     "mgi_id",
