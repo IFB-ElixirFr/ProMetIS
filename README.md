@@ -14,7 +14,7 @@ The package can be installed from GitHub with:
 
 ## Contact
 
-Etienne A. Thévenot ([etienne.thevenot\@cea.fr](mailto:etienne.thevenot@cea.fr){.email})
+Etienne A. Thévenot ([etienne.thevenot\@cea.fr](mailto:etienne.thevenot@cea.fr))
 
 ## Experimental design
 
@@ -36,7 +36,7 @@ The data are available in the extdata folder, which is organized into subfolders
 
 ## Data analysis
 
-Data analysis and biological interpretation are currently being finalized by the consortium and will be available soon. Feel free to contact us for any question ([etienne.thevenot\@cea.fr](mailto:etienne.thevenot@cea.fr){.email}).
+Data analysis and biological interpretation are currently being finalized by the consortium and will be available soon. Feel free to contact us for any question ([etienne.thevenot\@cea.fr](mailto:etienne.thevenot@cea.fr)).
 
 ## Funding
 

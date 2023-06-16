@@ -1,7 +1,7 @@
 Package: ProMetIS
 Type: Package
 Title: Multi-omics phenotyping of the LAT and MX2 knockout mice
-Version: 1.0.20
+Version: 1.0.22
 Date: 2023-06-16
 Author@R:
     c(
