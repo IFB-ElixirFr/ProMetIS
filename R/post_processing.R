@@ -232,71 +232,71 @@
     
     Biobase::fData(eset) <- fdata.df
     
-    if (grepl("(hyper|hilic)", set.c)) {
-      
-      # The names of the features from the MTH-Paris metabolomics datasets
-      # contain non standard characters.
-      # The names of the datasets are modified by using the name from
-      # the (first) chebi identifier (instead of the one from the 'chimiotheque').
-      
-      reformat <- function(feat.vc,
-                           feat.df) {
-        
-        stopifnot("chebi_id" %in% colnames(feat.df))
-        
-        mybiodb <- biodb::newInst()
-        
-        chebi <- mybiodb$getFactory()$createConn('chebi')
-        
-        for (feat.i in seq_along(feat.vc)) {
-          
-          feat.c <- feat.vc[feat.i]
-          
-          if (grepl("_", feat.c)) {
-            
-            chebi.c <- feat.df[feat.i, "chebi_id"]
-            
-            if (!is.na(chebi.c) && chebi.c != "") {
-              
-              if (grepl("|", chebi.c, fixed = TRUE))
-                chebi.c <- unlist(strsplit(chebi.c, split = "|", fixed = TRUE))[1]
-              
-              entry.biodb <- chebi$getEntry(as.numeric(gsub("CHEBI:", "", chebi.c)))
-              
-              if (!is.null(entry.biodb)) {
-                
-                feat.vc[feat.i] <- paste0(unlist(strsplit(feat.c, split = "_"))[1],
-                                          "_",
-                                          make.names(entry.biodb$getFieldValue('name')[1]))
-                
-              } else
-                feat.vc[feat.i] <- paste0(unlist(strsplit(feat.c, split = "_"))[1], "_")
-              
-            } else
-              feat.vc[feat.i] <- paste0(unlist(strsplit(feat.c, split = "_"))[1])
-            
-          }
-          
-        }
-        
-        feat.vc <- make.names(feat.vc, unique = TRUE)
-        
-        mybiodb$terminate()
-        
-        return(feat.vc)
-        
-      }
-      
-      feat.vc <- rownames(fdata.df)
-      
-      feat_format.vc <- reformat(feat.vc = feat.vc,
-                                 feat.df = fdata.df)
-      
-      stopifnot(length(feat_format.vc) == length(feat.vc))
-      
-      Biobase::featureNames(eset) <- feat_format.vc
-      
-    }
+    # if (grepl("(hyper|hilic)", set.c)) {
+    #   
+    #   # The names of the features from the MTH-Paris metabolomics datasets
+    #   # contain non standard characters.
+    #   # The names of the datasets are modified by using the name from
+    #   # the (first) chebi identifier (instead of the one from the 'chimiotheque').
+    #   
+    #   reformat <- function(feat.vc,
+    #                        feat.df) {
+    #     
+    #     stopifnot("chebi_id" %in% colnames(feat.df))
+    #     
+    #     mybiodb <- biodb::newInst()
+    #     
+    #     chebi <- mybiodb$getFactory()$createConn('chebi')
+    #     
+    #     for (feat.i in seq_along(feat.vc)) {
+    #       
+    #       feat.c <- feat.vc[feat.i]
+    #       
+    #       if (grepl("_", feat.c)) {
+    #         
+    #         chebi.c <- feat.df[feat.i, "chebi_id"]
+    #         
+    #         if (!is.na(chebi.c) && chebi.c != "") {
+    #           
+    #           if (grepl("|", chebi.c, fixed = TRUE))
+    #             chebi.c <- unlist(strsplit(chebi.c, split = "|", fixed = TRUE))[1]
+    #           
+    #           entry.biodb <- chebi$getEntry(as.numeric(gsub("CHEBI:", "", chebi.c)))
+    #           
+    #           if (!is.null(entry.biodb)) {
+    #             
+    #             feat.vc[feat.i] <- paste0(unlist(strsplit(feat.c, split = "_"))[1],
+    #                                       "_",
+    #                                       make.names(entry.biodb$getFieldValue('name')[1]))
+    #             
+    #           } else
+    #             feat.vc[feat.i] <- paste0(unlist(strsplit(feat.c, split = "_"))[1], "_")
+    #           
+    #         } else
+    #           feat.vc[feat.i] <- paste0(unlist(strsplit(feat.c, split = "_"))[1])
+    #         
+    #       }
+    #       
+    #     }
+    #     
+    #     feat.vc <- make.names(feat.vc, unique = TRUE)
+    #     
+    #     mybiodb$terminate()
+    #     
+    #     return(feat.vc)
+    #     
+    #   }
+    #   
+    #   feat.vc <- rownames(fdata.df)
+    #   
+    #   feat_format.vc <- reformat(feat.vc = feat.vc,
+    #                              feat.df = fdata.df)
+    #   
+    #   stopifnot(length(feat_format.vc) == length(feat.vc))
+    #   
+    #   Biobase::featureNames(eset) <- feat_format.vc
+    #   
+    # }
     
     stopifnot(methods::validObject(eset))
     
