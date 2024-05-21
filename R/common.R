@@ -550,7 +550,10 @@ setMethod("imputation_info", signature(x = "ExpressionSet"),
             
           })
 
-
+# select the main sample/feature metadata that will be kept exported in the .tsv files
+# and the supplementary ones that will stored as a "metadata_supp.rdata" file
+# See the details of the selected columns in ".sample_metadata_select" and 
+# ".variable_metadata_select" functions
 metadata_select <- function(mset,
                             step.c) { # e.g. step.c = "2_post_processed"
   
@@ -739,6 +742,12 @@ metadata_select <- function(mset,
                       "monoisotopic_mass",
                       "inchikey",
                       "inchi")
+    
+    if (grepl("acquity", set.c))
+        varmeta.vc <- c(varmeta.vc,
+                        "kegg_id",
+                        "hmdb_id",
+                        "id_comment")
     
     varmeta.vc <- c(varmeta.vc,
                     "MT",
