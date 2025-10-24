@@ -6,7 +6,6 @@
 #' @import Biobase MultiAssayExperiment MultiDataSet SummarizedExperiment
 #' @name ProMetIS-package
 #' @aliases ProMetIS ProMetIS-package
-#' @docType package
 #' @author E. A. Thévenot (CEA)
 #'
 #' Maintainer: Etienne Thevenot <etienne.thevenot@@cea.fr>
@@ -14,4 +13,4 @@
 #' @examples
 #' # See the package vignette
 #'
-NULL
+"_PACKAGE"
